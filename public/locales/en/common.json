@@ -7,6 +7,12 @@
         "remember": "Remember Me",
         "google": "Login with Google"
     },
+    "Signup": {
+        "signup": "Sign Up",
+        "email": "Email",
+        "start": "Start your journey",
+        "google": "Sign Up with Google"
+    },
     "Header": { 
         "home": "Home",
         "about": "About",
