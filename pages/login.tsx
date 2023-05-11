@@ -83,7 +83,7 @@ export default function Login() {
                         <Spacer y={1} />
                         <Button bordered color="gradient" auto>{t("Login.login")}</Button>
                         <Spacer y={1} />
-                        <Button bordered color="gradient" auto><Image width="18" src ="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google icon"/> <Spacer x={0.2} /> {t("Login.google")}</Button>
+                        <Button bordered color="gradient" auto><Image height="18" width="18" src ="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google icon"/> <Spacer x={0.2} /> {t("Login.google")}</Button>
                     </Card>
                 </Container>
             </div>

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@nextui-org/react": "^1.0.0-beta.12",
+    "@supabase/supabase-js": "^2.21.0",
     "i18next": "^22.4.15",
     "next": "13.4.1",
     "next-i18next": "^13.2.2",

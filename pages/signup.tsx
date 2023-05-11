@@ -48,7 +48,7 @@ export default function Signup() {
                                 mb: '20px',
                             }}
                         >
-                            {t("Login.login")}
+                            {t("Signup.signup")}
                         </Text>
                         <Input
                             clearable
@@ -56,32 +56,15 @@ export default function Signup() {
                             fullWidth
                             color="primary"
                             size="lg"
-                            placeholder={t("Login.email")}
+                            placeholder={t("Signup.email")}
                             contentLeft={<Mail />}
                             aria-labelledby="email"
                         />
                         <Spacer y={1} />
-                        <Input
-                            clearable
-                            bordered
-                            fullWidth
-                            color="primary"
-                            size="lg"
-                            placeholder={t("Login.password")}
-                            contentLeft={<Key />}
-                            css={{ mb: '6px' }}
-                            aria-labelledby="password"
-                        />
-                        <Row justify="space-between">
-                            <Checkbox>
-                                <Text size={14}>{t("Login.remember")}</Text>
-                            </Checkbox>
-                            <Text size={14}>{t("Login.forgot")}</Text>
-                        </Row>
                         <Spacer y={1} />
-                        <Button bordered color="gradient" auto>{t("Login.login")}</Button>
+                        <Button bordered color="gradient" auto>{t("Signup.start")}</Button>
                         <Spacer y={1} />
-                        <Button bordered color="gradient" auto><Image width="18" src ="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google icon"/> <Spacer x={0.2} /> {t("Login.google")}</Button>
+                        <Button bordered color="gradient" auto><Image height={18} width="18" src ="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google icon"/> <Spacer x={0.2} /> {t("Signup.google")}</Button>
                     </Card>
                 </Container>
             </div>
