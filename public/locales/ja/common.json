@@ -1,6 +1,11 @@
 {
     "Login": {
-      "login": "ログイン"
+        "login": "ログイン",
+        "email": "メールアドレス",
+        "password": "パスワード",
+        "forgot": "パスワードを忘れましたか？",
+        "remember": "ログイン情報を保存する",
+        "google": "Googleでログイン"
     },
     "Header": { 
         "home": "ホーム",
@@ -8,6 +13,6 @@
         "creators": "クリエイター",
         "notice": "お知らせ",
         "login": "ログイン",
-        "signup": "サインアップ"
+        "signup": "サインイン"
     }
   }

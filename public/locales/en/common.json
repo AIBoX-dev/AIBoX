@@ -1,6 +1,11 @@
 {
     "Login": {
-      "login": "Login"
+        "login": "Login",
+        "email": "Email",
+        "password": "Password",
+        "forgot": "Forgot Password?",
+        "remember": "Remember Me",
+        "google": "Login with Google"
     },
     "Header": { 
         "home": "Home",

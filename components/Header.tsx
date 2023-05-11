@@ -2,8 +2,6 @@ import { Navbar, Button, Link, Text } from "@nextui-org/react";
 import { Layout } from "./header/Layout";
 import { AcmeLogo } from "./header/AcmeLogo";
 import { useRouter } from "next/router";
-import { GetStaticProps } from "next";
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 
 
@@ -22,7 +20,7 @@ export default function Header(props: any) {
                 <Navbar.Content hideIn="xs" variant="highlight-rounded">
                     <Navbar.Link
                         isActive={router.pathname === "/"}
-                        href=""
+                        href="/"
                     >
                         {t('Header.home')}
                     </Navbar.Link>
