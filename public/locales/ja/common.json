@@ -1,0 +1,13 @@
+{
+    "Login": {
+      "login": "ログイン"
+    },
+    "Header": { 
+        "home": "ホーム",
+        "about": "AIBoXについて",
+        "creators": "クリエイター",
+        "notice": "お知らせ",
+        "login": "ログイン",
+        "signup": "サインアップ"
+    }
+  }

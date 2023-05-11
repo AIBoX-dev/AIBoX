@@ -1,0 +1,13 @@
+{
+    "Login": {
+      "login": "Login"
+    },
+    "Header": { 
+        "home": "Home",
+        "about": "About",
+        "creators": "Creators",
+        "notice": "Notice",
+        "login": "Login",
+        "signup": "Sign Up"
+    }
+  }
