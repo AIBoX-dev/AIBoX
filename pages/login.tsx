@@ -59,6 +59,7 @@ export default function Login() {
                             placeholder={t("Login.email")}
                             contentLeft={<Mail />}
                             aria-labelledby="email"
+                            type="email"
                         />
                         <Spacer y={1} />
                         <Input
@@ -71,6 +72,7 @@ export default function Login() {
                             contentLeft={<Key />}
                             css={{ mb: '6px' }}
                             aria-labelledby="password"
+                            type="password"
                         />
                         <Row justify="space-between">
                             <Checkbox>
