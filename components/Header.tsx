@@ -20,8 +20,8 @@ export default function Header(props: any) {
                 <Navbar.Content hideIn="xs" variant="highlight-rounded">
                     <Navbar.Link
                         isActive={router.pathname === "/"}
-                        href="/"
                     >
+                        
                         {t('Header.home')}
                     </Navbar.Link>
                     <Navbar.Link
