@@ -1,4 +1,11 @@
 {
+    "Home": {
+        "forai": "AIBoXはAIクリエイターのための継続的支援サービスです。",
+        "find": "クリエイターを見つける",
+        "slogan1": "あなたの作品で",
+        "slogan2": "新たな可能性を切り開き",
+        "slogan3": "さらに多くのファンへ届けましょう"
+    },
     "Login": {
         "login": "ログイン",
         "email": "メールアドレス",
@@ -7,12 +14,12 @@
         "remember": "ログイン情報を保存する",
         "google": "Googleでログイン"
     },
-    "Header": { 
+    "Header": {
         "home": "ホーム",
         "about": "AIBoXについて",
         "creators": "クリエイター",
         "notice": "お知らせ",
         "login": "ログイン",
-        "signup": "サインイン"
+        "signup": "新規登録"
     }
-  }
+}

@@ -1,4 +1,11 @@
 {
+    "Home": {
+        "forai": "AIBoX is an ongoing support service for AI creators.",
+        "find": "Find a Creators",
+        "slogan1": "Unlock the potential of your work.",
+        "slogan2": "AI unleashes your creativity.",
+        "slogan3": "Share your work with the world"
+    },
     "Login": {
         "login": "Login",
         "email": "Email",
@@ -7,7 +14,7 @@
         "remember": "Remember Me",
         "google": "Login with Google"
     },
-    "Header": { 
+    "Header": {
         "home": "Home",
         "about": "About",
         "creators": "Creators",
@@ -15,4 +22,4 @@
         "login": "Login",
         "signup": "Sign Up"
     }
-  }
+}
