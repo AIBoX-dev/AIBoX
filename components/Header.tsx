@@ -43,7 +43,6 @@ export default function Header(props: any) {
                     >
                         {t('Header.notice')}
                     </Navbar.Link>
-
                 </Navbar.Content>
                 <Navbar.Content>
                     <Navbar.Link color="inherit" href="/login">
