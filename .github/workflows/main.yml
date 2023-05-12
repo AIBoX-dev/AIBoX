@@ -3,6 +3,8 @@ on:
   push:
     branches-ignore:
       - main
+
+  
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -29,4 +31,8 @@ jobs:
         run: npm i
 
       - name: app-build
-        run: npm run build
+        run:
+          touch .env.local
+          echo 'NEXT_PUBLIC_SUPABASE_ANON_KEY=${{ vars.NEXT_PUBLIC_SUPABASE_ANON_KEY}}nNEXT_PUBLIC_SUPABASE_PROJECT_URL=${{vars.NEXT_PUBLIC_SUPABASE_PROJECT_URL}}' >> .env.local
+          npm run build
+          
