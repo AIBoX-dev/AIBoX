@@ -20,6 +20,7 @@ export default function Header(props: any) {
                 <Navbar.Content hideIn="xs" variant="highlight-rounded">
                     <Navbar.Link
                         isActive={router.pathname === "/"}
+                        href="/"
                     >
                         
                         {t('Header.home')}
@@ -45,11 +46,11 @@ export default function Header(props: any) {
 
                 </Navbar.Content>
                 <Navbar.Content>
-                    <Navbar.Link color="inherit" href="#">
+                    <Navbar.Link color="inherit" href="/login">
                         {t('Header.login')}
                     </Navbar.Link>
                     <Navbar.Item>
-                        <Button auto flat as={Link} href="#">
+                        <Button auto flat as={Link} href="/signup">
                         {t('Header.signup')}
                         </Button>
                     </Navbar.Item>

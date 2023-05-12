@@ -15,6 +15,7 @@ import {
     Container,
 } from '@nextui-org/react';
 import { Mail, Key } from "react-feather";
+import Link from "next/link";
 
 
 
@@ -61,6 +62,35 @@ export default function Signup() {
                             aria-labelledby="email"
                         />
                         <Spacer y={1} />
+                        <Input
+                            clearable
+                            bordered
+                            fullWidth
+                            color="primary"
+                            size="lg"
+                            placeholder={t("Signup.password")}
+                            contentLeft={<Key />}
+                            css={{ mb: '6px' }}
+                            aria-labelledby="password"
+                            type="password"
+                        />
+                        <Spacer y={1} />
+                        <Input
+                            clearable
+                            bordered
+                            fullWidth
+                            color="primary"
+                            size="lg"
+                            placeholder={t("Signup.confirm_password")}
+                            contentLeft={<Key />}
+                            css={{ mb: '6px' }}
+                            aria-labelledby="password"
+                            type="password"
+                        />
+                        <Spacer y={1} />
+                        <Checkbox>
+                          <Text size={14}>{t("Signup.agree")}<Link href={"/agreements"}>{t("Signup.agreements")}</Link></Text>
+                        </Checkbox>
                         <Spacer y={1} />
                         <Button bordered color="gradient" auto>{t("Signup.start")}</Button>
                         <Spacer y={1} />

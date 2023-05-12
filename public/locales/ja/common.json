@@ -12,7 +12,11 @@
         "signup": "新規登録",
         "email": "メールアドレス",
         "start": "はじめる",
-        "google": "Googleで登録"
+        "google": "Googleで登録",
+        "password": "パスワード",
+        "confirm_password": "パスワードの確認",
+        "agree": "次の規約に同意する：",
+        "agreements": "利用規約とプライバシーポリシー"
         },
     "Header": { 
         "home": "ホーム",
