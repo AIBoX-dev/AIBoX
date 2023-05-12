@@ -14,12 +14,23 @@
         "remember": "Remember Me",
         "google": "Login with Google"
     },
+    "Signup": {
+        "signup": "Sign Up",
+        "email": "Email",
+        "start": "Start your journey",
+        "google": "Sign Up with Google",
+        "password": "Password",
+        "confirm_password": "パスワードの確認",
+        "agree": "次の規約に同意する：",
+        "agreements": "利用規約とプライバシーポリシー"
+    },
     "Header": {
         "home": "Home",
         "about": "About",
         "creators": "Creators",
         "notice": "Notice",
         "login": "Login",
-        "signup": "Sign Up"
+        "signup": "Sign Up",
+        "google": "Sign Up with Google"
     }
 }
