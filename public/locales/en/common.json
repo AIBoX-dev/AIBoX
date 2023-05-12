@@ -13,7 +13,7 @@
         "start": "Start your journey",
         "google": "Sign Up with Google"
     },
-    "Header": { 
+    "Header": {
         "home": "Home",
         "about": "About",
         "creators": "Creators",
@@ -21,4 +21,4 @@
         "login": "Login",
         "signup": "Sign Up"
     }
-  }
+}
