@@ -3,9 +3,7 @@ on:
   push:
     branches-ignore:
       - main
-env:
-  NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{vars.NEXT_PUBLIC_SUPABASE_ANON_KEY}}
-  NEXT_PUBLIC_SUPABASE_PROJECT_URL: ${{NEXT_PUBLIC_SUPABASE_PROJECT_URL}}
+
   
 jobs:
   build:
@@ -34,3 +32,6 @@ jobs:
 
       - name: app-build
         run: npm run build
+        env:
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{vars.NEXT_PUBLIC_SUPABASE_ANON_KEY}}
+          NEXT_PUBLIC_SUPABASE_PROJECT_URL: ${{NEXT_PUBLIC_SUPABASE_PROJECT_URL}}
