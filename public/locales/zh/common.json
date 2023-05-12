@@ -1,0 +1,24 @@
+{
+    "Login": {
+        "login": "登录",
+        "email": "电子邮件地址",
+        "password": "密码",
+        "forgot": "忘记密码？",
+        "remember": "保存登录信息",
+        "google": "用谷歌登录"
+    },
+    "Signup": {
+        "signup": "新注册",
+        "email": "电子邮件地址",
+        "start": "开始...",
+        "google": "在谷歌注册"
+    },
+    "Header": {
+        "home": "首页",
+        "about": "关于AIBoX",
+        "creators": "创建者",
+        "notice": "通知。",
+        "login": "登录",
+        "signup": "新注册"
+    }
+}
