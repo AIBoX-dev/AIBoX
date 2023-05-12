@@ -14,6 +14,12 @@
         "remember": "ログイン情報を保存する",
         "google": "Googleでログイン"
     },
+    "Signup": {
+        "signup": "新規登録",
+        "email": "メールアドレス",
+        "start": "はじめる",
+        "google": "Googleで登録"
+    },
     "Header": {
         "home": "ホーム",
         "about": "AIBoXについて",

@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import { GetStaticProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
+import Image from "next/image";
 import React from "react";
 import {
     Card,
@@ -53,6 +54,7 @@ export default function Login() {
                             placeholder={t("Login.email")}
                             contentLeft={<Mail />}
                             aria-labelledby="email"
+                            type="email"
                         />
                         <Spacer y={1} />
                         <Input
@@ -65,6 +67,7 @@ export default function Login() {
                             contentLeft={<Key />}
                             css={{ mb: "6px" }}
                             aria-labelledby="password"
+                            type="password"
                         />
                         <Row justify="space-between">
                             <Checkbox>
@@ -78,7 +81,8 @@ export default function Login() {
                         </Button>
                         <Spacer y={1} />
                         <Button bordered color="gradient" auto>
-                            <img
+                            <Image
+                                height="18"
                                 width="18"
                                 src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
                                 alt="Google icon"
