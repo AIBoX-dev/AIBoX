@@ -17,6 +17,7 @@ import {
 } from "@nextui-org/react";
 import { GitHub, Key, Mail, Search } from "react-feather";
 import { AcmeLogo } from "../components/header/AcmeLogo";
+import Header from "@/components/Header";
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
     props: {
@@ -30,14 +31,9 @@ export default function Home() {
     const { t } = useTranslation("common");
     return (
         <>
+        <Header />
             <main className={`${styles.main} ${inter.className}`}>
                 <div className={styles.description}>
-                    <div style={{ display: "flex", alignItems: "center" }}>
-                        <AcmeLogo />
-                        <Text b color="inherit" hideIn="xs">
-                            AIBoX
-                        </Text>
-                    </div>
 
                     <div>
                         <Input
