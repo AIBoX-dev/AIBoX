@@ -33,6 +33,6 @@ jobs:
       - name: app-build
         run:
           touch .env.local
-          echo 'NEXT_PUBLIC_SUPABASE_ANON_KEY=${{ vars.NEXT_PUBLIC_SUPABASE_ANON_KEY}}nNEXT_PUBLIC_SUPABASE_PROJECT_URL=${{NEXT_PUBLIC_SUPABASE_PROJECT_URL}}' >> .env.local
+          echo 'NEXT_PUBLIC_SUPABASE_ANON_KEY=${{ vars.NEXT_PUBLIC_SUPABASE_ANON_KEY}}nNEXT_PUBLIC_SUPABASE_PROJECT_URL=${{vars.NEXT_PUBLIC_SUPABASE_PROJECT_URL}}' >> .env.local
           npm run build
           
