@@ -26,7 +26,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 
 export default function Login() {
     const { t } = useTranslation("common");
-    const { email, setEmail, email_state} = Checks();
+    const { email, setEmail, email_state } = Checks();
     return (
         <>
             <Header />
