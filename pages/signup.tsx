@@ -31,8 +31,8 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 
 export default function Signup() {
     const { t } = useTranslation("common");
-    const { signInWithGoogle } = useAuth();
-    const { data, setData } = Checks();
+    const { signInWithGoogle, createUser } = useAuth();
+    const { userdata, setUserdata } = Checks();
     return (
         <>
             <Header />
@@ -63,10 +63,10 @@ export default function Signup() {
                             placeholder={t("Signup.email")}
                             contentLeft={<Mail />}
                             aria-labelledby="email"
-                            value={data.email}
-                            onChange={(event) => setData({...data, email: event.target.value})}
+                            value={userdata.email}
+                            onChange={(event) => setUserdata({...userdata, email: event.target.value})}
                         />
-                        <p>{data.email_status}</p>
+                        {!userdata.email_status && <p>{t("Check.wrongemail")}</p>}
                         <Spacer y={1} />
                         <Input
                             clearable
@@ -79,8 +79,8 @@ export default function Signup() {
                             css={{ mb: '6px' }}
                             aria-labelledby="password"
                             type="password"
-                            value = {data.password}
-                            onChange={(event) => setData({...data, password: event.target.value})}
+                            value = {userdata.password}
+                            onChange={(event) => setUserdata({...userdata, password: event.target.value})}
                         />
                         <Spacer y={1} />
                         <Input
@@ -100,9 +100,9 @@ export default function Signup() {
                           <Text size={14}>{t("Signup.agree")}<Link href={"/agreements"}>{t("Signup.agreements")}</Link></Text>
                         </Checkbox>
                         <Spacer y={1} />
-                        <Button bordered color="gradient" auto>{t("Signup.start")}</Button>
+                        <Button onPress={() => createUser(userdata.email, userdata.password)} bordered color="gradient" auto>{t("Signup.start")}</Button>
                         <Spacer y={1} />
-                        <Button onClick={signInWithGoogle} bordered color="gradient" auto><Image height={18} width="18" src ="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google icon"/> <Spacer x={0.2} /> {t("Signup.google")}</Button>
+                        <Button onPress={signInWithGoogle} bordered color="gradient" auto><Image height={18} width="18" src ="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google icon"/> <Spacer x={0.2} /> {t("Signup.google")}</Button>
                     </Card>
                 </Container>
             </div>

@@ -1,29 +1,26 @@
 import { useState, useEffect } from "react";
-import { useTranslation } from "next-i18next";
+
 
 export function Checks() {
-    const { t } = useTranslation("common");
-    const [data, setData] = useState({
+    const [userdata, setUserdata] = useState({
         // value
         email: "",
         password: "",
         confirm_password: "",
-        // status
-        email_status: "",
-        password_status: "",
-        confirm_status: "",
+        // status: okay -> true
+        email_status: true,
+        password_status: true,
+        confirm_status: true,
     });
 
     const regex_email = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
     const CheckEmail = () => {
-        if (data.email && !data.email.match(regex_email)) {
-            setData({ ...data, email_status: t("Check.wrongemail") });
-            console.log(data.email);
-            console.log(data.email_status);
+        if (userdata.email && !userdata.email.match(regex_email)) {
+            setUserdata({ ...userdata, email_status: false });
         } else {
-            setData({ ...data, email_status: "" });
-            console.log(data.email);
+            setUserdata({ ...userdata, email_status: true });
+
         }
     };
     const CheckPassword = () => {
@@ -33,14 +30,14 @@ export function Checks() {
     useEffect(() => {
         CheckEmail();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [data.email]);
+    }, [userdata.email]);
 
     useEffect(() => {
         CheckPassword();
-    }, [data.password]);
+    }, [userdata.password]);
 
     return {
-        data,
-        setData,
+        userdata,
+        setUserdata,
     };
 }
