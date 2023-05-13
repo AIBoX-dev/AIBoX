@@ -32,7 +32,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 export default function Signup() {
     const { t } = useTranslation("common");
     const { signInWithGoogle } = useAuth();
-    const { email, setEmail, email_state} = Checks();
+    const { data, setData } = Checks();
     return (
         <>
             <Header />
@@ -63,10 +63,10 @@ export default function Signup() {
                             placeholder={t("Signup.email")}
                             contentLeft={<Mail />}
                             aria-labelledby="email"
-                            value={email}
-                            onChange={(event) => setEmail(event.target.value)}
+                            value={data.email}
+                            onChange={(event) => setData({...data, email: event.target.value})}
                         />
-                        <p>{email_state}</p>
+                        <p>{data.email_status}</p>
                         <Spacer y={1} />
                         <Input
                             clearable
@@ -79,6 +79,8 @@ export default function Signup() {
                             css={{ mb: '6px' }}
                             aria-labelledby="password"
                             type="password"
+                            value = {data.password}
+                            onChange={(event) => setData({...data, password: event.target.value})}
                         />
                         <Spacer y={1} />
                         <Input

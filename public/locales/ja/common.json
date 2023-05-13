@@ -34,6 +34,8 @@
         "google": "Googleで登録"
     },
     "Check": {
-        "wrongemail": "メールアドレスの形式が間違っています"
+        "wrongemail": "メールアドレスの形式が間違っています",
+        "password_length": "パスワードは12文字以上で設定してください",
+        
     }
 }
