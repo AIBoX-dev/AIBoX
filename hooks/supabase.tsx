@@ -21,16 +21,27 @@ export const useAuth = () => {
             });
             // ユーザーが存在するかを確認して、いなかったら表示名設定とかのページに行きたい Ftps
             await router.push("/");
-            if (error) {
-                throw error;
-            }
+            // console.log({ data, error})
 
-            await router.push("/");
         } catch (error) {
             console.error(error);
         }
     };
+
+    const createUser = async ( email: string, password: string): Promise<void> => {
+        try {
+            const { data, error } = await supabase.auth.signUp({
+                email: email,
+                password: password,
+            });
+            // console.log({ data, error });
+        }　catch (error) {
+            console.error(error);
+        }
+    }
+
     return {
         signInWithGoogle,
+        createUser
     };
-};
+}
