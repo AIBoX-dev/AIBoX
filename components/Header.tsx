@@ -17,7 +17,7 @@ export default function Header(props: any) {
                         AIBoX
                     </Text>
                 </Navbar.Brand>
-                <Navbar.Content hideIn="xs" variant="highlight-rounded">
+                <Navbar.Content activeColor="error" hideIn="xs" variant="underline">
                     <Navbar.Link
                         isActive={router.pathname === "/"}
                         href="/"
@@ -45,11 +45,11 @@ export default function Header(props: any) {
                     </Navbar.Link>
                 </Navbar.Content>
                 <Navbar.Content>
-                    <Navbar.Link color="inherit" href="/login">
+                    <Navbar.Link color="error" href="/login">
                         {t('Header.login')}
                     </Navbar.Link>
                     <Navbar.Item>
-                        <Button auto flat as={Link} href="/signup">
+                        <Button auto color="error" flat as={Link} href="/signup">
                         {t('Header.signup')}
                         </Button>
                     </Navbar.Item>
