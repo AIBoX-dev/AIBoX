@@ -94,7 +94,10 @@ export default function Signup() {
                             css={{ mb: '6px' }}
                             aria-labelledby="password"
                             type="password"
+                            value={userdata.confirm_password}
+                            onChange={(event) => setUserdata({...userdata, confirm_password: event.target.value})}
                         />
+                        {!userdata.confirm_status && <p>{t("Check.confirm_notmatch")}</p>}
                         <Spacer y={1} />
                         <Checkbox>
                           <Text size={14}>{t("Signup.agree")}<Link href={"/agreements"}>{t("Signup.agreements")}</Link></Text>

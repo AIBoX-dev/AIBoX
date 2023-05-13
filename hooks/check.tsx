@@ -24,7 +24,12 @@ export function Checks() {
         }
     };
     const CheckPassword = () => {
-        // パスワードの企画をまた考える
+        // パスワードの規格をまた考える
+        if (userdata.confirm_password && userdata.password && userdata.password !== userdata.confirm_password) {
+            setUserdata({ ...userdata, confirm_status: false });
+        } else {
+            setUserdata({ ...userdata, confirm_status: true });
+        }
     };
 
     useEffect(() => {
@@ -34,7 +39,8 @@ export function Checks() {
 
     useEffect(() => {
         CheckPassword();
-    }, [userdata.password]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [userdata.password, userdata.confirm_password]);
 
     return {
         userdata,
