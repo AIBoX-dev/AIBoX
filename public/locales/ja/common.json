@@ -32,5 +32,8 @@
         "login": "ログイン",
         "signup": "新規登録",
         "google": "Googleで登録"
+    },
+    "Check": {
+        "wrongemail": "メールアドレスの形式が間違っています"
     }
 }
