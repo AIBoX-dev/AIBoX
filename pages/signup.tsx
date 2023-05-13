@@ -17,7 +17,7 @@ import {
 import { Mail, Key } from "react-feather";
 import Link from "next/link";
 import {useAuth} from "@/hooks/supabase";
-
+import {Checks} from "@/hooks/check"
 
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
@@ -32,6 +32,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 export default function Signup() {
     const { t } = useTranslation("common");
     const { signInWithGoogle } = useAuth();
+    const { data, setData } = Checks();
     return (
         <>
             <Header />
@@ -62,7 +63,10 @@ export default function Signup() {
                             placeholder={t("Signup.email")}
                             contentLeft={<Mail />}
                             aria-labelledby="email"
+                            value={data.email}
+                            onChange={(event) => setData({...data, email: event.target.value})}
                         />
+                        <p>{data.email_status}</p>
                         <Spacer y={1} />
                         <Input
                             clearable
@@ -75,6 +79,8 @@ export default function Signup() {
                             css={{ mb: '6px' }}
                             aria-labelledby="password"
                             type="password"
+                            value = {data.password}
+                            onChange={(event) => setData({...data, password: event.target.value})}
                         />
                         <Spacer y={1} />
                         <Input

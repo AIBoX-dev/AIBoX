@@ -15,6 +15,8 @@ import {
     Container,
 } from "@nextui-org/react";
 import { Mail, Key } from "react-feather";
+import {Checks} from "@/hooks/check"
+
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
     props: {
@@ -24,6 +26,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 
 export default function Login() {
     const { t } = useTranslation("common");
+    const { email, setEmail, email_state} = Checks();
     return (
         <>
             <Header />
@@ -55,7 +58,10 @@ export default function Login() {
                             contentLeft={<Mail />}
                             aria-labelledby="email"
                             type="email"
+                            value={email}
+                            onChange={(event) => setEmail(event.target.value)}
                         />
+                        <p>{email_state}</p>
                         <Spacer y={1} />
                         <Input
                             clearable
