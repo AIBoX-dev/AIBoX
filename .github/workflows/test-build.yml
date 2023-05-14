@@ -21,6 +21,7 @@ jobs:
           cache: npm
 
       - name: make .env
+        run: |
           touch .env.local
           echo "NEXT_PUBLIC_SUPABASE_ANON_KEY=${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}" >> .env.local
           echo "NEXT_PUBLIC_SUPABASE_PROJECT_URL=${{ secrets.NEXT_PUBLIC_SUPABASE_PROJECT_URL }}" >> .env.local
