@@ -22,10 +22,10 @@ jobs:
 
       - name: make .env
         env:
+          ENV_PATH: ${{ github.workspace }}/.env.local
           NEXT_PUBLIC_SUPABASE_PROJECT_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_PROJECT_URL }}
           NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
         run: |
-          echo "Secrets: NEXT_PUBLIC_SUPABASE_PROJECT_URL=${NEXT_PUBLIC_SUPABASE_PROJECT_URL}"
           echo 'NEXT_PUBLIC_SUPABASE_PROJECT_URL=${NEXT_PUBLIC_SUPABASE_PROJECT_URL}' > .env.local
           echo 'NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY}' >> .env.local
       - name: Clean Install dependices
@@ -35,6 +35,8 @@ jobs:
         run: npm run lint
 
       - name: Build Next.js application
+        env:
+          ENV_PATH: ${{ github.workspace }}/.env.local
         run: npm run build
 
       - name: Actions Status Discord
