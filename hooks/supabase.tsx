@@ -68,7 +68,7 @@ export const useAuth = () => {
             });
             await insertUser(email, password, data)
             // console.log({ data, error });
-        }　catch (error) {
+        } catch (error) {
             console.error(error);
         }
     }
