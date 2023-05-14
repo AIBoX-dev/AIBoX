@@ -102,7 +102,6 @@ export default function Signup() {
                         <Checkbox onChange={() => setUserdata({...userdata, tos_status: !userdata.tos_status})}>
                           <Text size={14}>{t("Signup.agree")}<Link href={"/agreements"}>{t("Signup.agreements")}</Link></Text>
                         </Checkbox>
-                        <p>{userdata.tos_status}</p>
                         <Spacer y={1} />
                         <Button onPress={() => createUser(userdata.email, userdata.password)} bordered color="gradient" auto>{t("Signup.start")}</Button>
                         <Spacer y={1} />
