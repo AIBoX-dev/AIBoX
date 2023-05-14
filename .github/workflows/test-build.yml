@@ -19,15 +19,7 @@ jobs:
         with:
           node-version: 16
           cache: npm
-
-      - name: make .env
-        env:
-          NEXT_PUBLIC_SUPABASE_PROJECT_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_PROJECT_URL }}
-          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
-        run: |
-          echo "Secrets: NEXT_PUBLIC_SUPABASE_PROJECT_URL=${NEXT_PUBLIC_SUPABASE_PROJECT_URL}"
-          echo 'NEXT_PUBLIC_SUPABASE_PROJECT_URL=${NEXT_PUBLIC_SUPABASE_PROJECT_URL}' > .env.local
-          echo 'NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY}' >> .env.local
+          
       - name: Clean Install dependices
         run: rm -rf node_modules && npm ci
 
@@ -35,7 +27,13 @@ jobs:
         run: npm run lint
 
       - name: Build Next.js application
-        run: npm run build
+        env:
+          NEXT_PUBLIC_SUPABASE_PROJECT_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_PROJECT_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+        run: |
+          echo 'NEXT_PUBLIC_SUPABASE_PROJECT_URL=${NEXT_PUBLIC_SUPABASE_PROJECT_URL}' > .env.local
+          echo 'NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY}' >> .env.local
+          npm run build
 
       - name: Actions Status Discord
         uses: sarisia/actions-status-discord@v1.12.0
