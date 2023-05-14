@@ -19,12 +19,15 @@ jobs:
         with:
           node-version: 16
           cache: npm
-          
-      - name: make .env
-        run: |
-          touch .env.local
-          echo 'NEXT_PUBLIC_SUPABASE_ANON_KEY=${{ vars.NEXT_PUBLIC_SUPABASE_ANON_KEY}}nNEXT_PUBLIC_SUPABASE_PROJECT_URL=${{vars.NEXT_PUBLIC_SUPABASE_PROJECT_URL}}' >> .env.local
 
+      - name: make .env
+        env:
+          NEXT_PUBLIC_SUPABASE_PROJECT_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_PROJECT_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+        run: |
+          echo "Secrets: NEXT_PUBLIC_SUPABASE_PROJECT_URL=${NEXT_PUBLIC_SUPABASE_PROJECT_URL}"
+          echo 'NEXT_PUBLIC_SUPABASE_PROJECT_URL=${NEXT_PUBLIC_SUPABASE_PROJECT_URL}' > .env.local
+          echo 'NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY}' >> .env.local
       - name: Clean Install dependices
         run: rm -rf node_modules && npm ci
 
@@ -33,3 +36,9 @@ jobs:
 
       - name: Build Next.js application
         run: npm run build
+
+      - name: Actions Status Discord
+        uses: sarisia/actions-status-discord@v1.12.0
+        if: always()
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}

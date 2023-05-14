@@ -26,7 +26,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 
 export default function Login() {
     const { t } = useTranslation("common");
-    const { email, setEmail, email_state } = Checks();
+    const { userdata, setUserdata } = Checks();
     return (
         <>
             <Header />
@@ -58,10 +58,10 @@ export default function Login() {
                             contentLeft={<Mail />}
                             aria-labelledby="email"
                             type="email"
-                            value={email}
-                            onChange={(event) => setEmail(event.target.value)}
+                            value={userdata.email}
+                            onChange={(event) => setUserdata({...userdata, email: event.target.value})}
                         />
-                        <p>{email_state}</p>
+                        {!userdata.email_status && <p>{t("Check.wrongemail")}</p>}
                         <Spacer y={1} />
                         <Input
                             clearable
@@ -74,6 +74,8 @@ export default function Login() {
                             css={{ mb: "6px" }}
                             aria-labelledby="password"
                             type="password"
+                            value = {userdata.password}
+                            onChange={(event) => setUserdata({...userdata, password: event.target.value})}
                         />
                         <Row justify="space-between">
                             <Checkbox>
