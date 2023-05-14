@@ -43,7 +43,7 @@ export default function Signup() {
                     justify="center"
                     css={{ minHeight: '100vh' }}
                 >
-                    <Card css={{ mw: '700', p: '20px' }} variant="bordered">
+                    <Card css={{ mw: '420px', p: '20px' }} variant="bordered">
                         <Text
                             size={24}
                             weight="bold"
