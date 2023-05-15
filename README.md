@@ -1,17 +1,27 @@
 # AIBoX
-A platform for AI illustrations, like fanbox.
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## [AIBoX](https://aibox.moe)は、AIコミュニティによる、AIクリエイターのための継続支援プラットフォームです。
+[AIものづくり研究会](https://discord.gg/ai-jp)を中心としたオープンソースなWebアプリケーションです。
+
+
+## 技術スタック
+- [Next.js](https://nextjs.org/)
+- [NextUI](https://nextui.org/)
+- [Cloudflare Images](https://www.cloudflare.com/ja-jp/products/cloudflare-images/)
+- [Stripe](https://stripe.com)
+- [Vercel](https://vercel.com)
 
 ## Getting Started
 
-First, run the development server:
+First, Fork & Clone This Repo
+```bash
+git clone https://<your_username>/AIBoX
+cd AIBoX && npm i
+```
+
+Second, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
