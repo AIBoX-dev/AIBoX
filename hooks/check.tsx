@@ -11,6 +11,9 @@ export function Checks() {
         email_status: true,
         password_status: true,
         confirm_status: true,
+        tos_status: true,
+        login_remember: true
+
     });
 
     const regex_email = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;

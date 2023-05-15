@@ -99,7 +99,7 @@ export default function Signup() {
                         />
                         {!userdata.confirm_status && <p>{t("Check.confirm_notmatch")}</p>}
                         <Spacer y={1} />
-                        <Checkbox>
+                        <Checkbox onChange={() => setUserdata({...userdata, tos_status: !userdata.tos_status})}>
                           <Text size={14}>{t("Signup.agree")}<Link href={"/agreements"}>{t("Signup.agreements")}</Link></Text>
                         </Checkbox>
                         <Spacer y={1} />

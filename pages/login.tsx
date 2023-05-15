@@ -80,7 +80,7 @@ export default function Login() {
                             onChange={(event) => setUserdata({...userdata, password: event.target.value})}
                         />
                         <Row justify="space-between">
-                            <Checkbox>
+                            <Checkbox onChange={() => setUserdata({...userdata, login_remember: !userdata.login_remember})}>
                                 <Text size={14}>{t("Login.remember")}</Text>
                             </Checkbox>
                             <Text size={14}>{t("Login.forgot")}</Text>
