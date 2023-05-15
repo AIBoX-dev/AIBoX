@@ -15,6 +15,7 @@ import {
     Container,
 } from "@nextui-org/react";
 import { Mail, Key } from "react-feather";
+import { useAuth } from '@/hooks/supabase'
 import {Checks} from "@/hooks/check"
 
 
@@ -26,6 +27,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 
 export default function Login() {
     const { t } = useTranslation("common");
+    const { signInWithGoogle, loginWithPassword } = useAuth()
     const { userdata, setUserdata } = Checks();
     return (
         <>
@@ -84,11 +86,11 @@ export default function Login() {
                             <Text size={14}>{t("Login.forgot")}</Text>
                         </Row>
                         <Spacer y={1} />
-                        <Button bordered color="gradient" auto>
+                        <Button onPress={() => loginWithPassword(userdata.email, userdata.password)} bordered color="gradient" auto>
                             {t("Login.login")}
                         </Button>
                         <Spacer y={1} />
-                        <Button bordered color="gradient" auto>
+                        <Button onPress={signInWithGoogle}bordered color="gradient" auto>
                             <Image
                                 height="18"
                                 width="18"

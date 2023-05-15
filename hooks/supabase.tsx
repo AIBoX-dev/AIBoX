@@ -73,8 +73,22 @@ export const useAuth = () => {
         }
     }
 
+    const loginWithPassword = async ( email: string, password: string): Promise<void> => {
+        try {
+            console.log(email)
+            const { data, error }= await supabase.auth.signInWithPassword({
+                email: email,
+                password: password
+            })
+            console.log({data, error})
+        } catch(error) {
+            console.error(error)
+        }
+    }
+
     return {
         signInWithGoogle,
-        createUser
+        createUser,
+        loginWithPassword
     };
 }
