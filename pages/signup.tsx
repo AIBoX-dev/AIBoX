@@ -32,7 +32,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 export default function Signup() {
     const { t } = useTranslation("common");
     const { signInWithGoogle, createUser } = useAuth();
-    const { userdata, setUserdata } = Checks();
+    const { userdata, setUserdata, CheckrRequirements } = Checks();
     return (
         <>
             <Header />
@@ -103,7 +103,7 @@ export default function Signup() {
                           <Text size={14}>{t("Signup.agree")}<Link href={"/agreements"}>{t("Signup.agreements")}</Link></Text>
                         </Checkbox>
                         <Spacer y={1} />
-                        <Button onPress={() => createUser(userdata.email, userdata.password)} bordered color="gradient" auto>{t("Signup.start")}</Button>
+                        <Button onPress={() => CheckrRequirements(userdata.email, userdata.password, createUser)} bordered color="gradient" auto>{t("Signup.start")}</Button>
                         <Spacer y={1} />
                         <Button onPress={signInWithGoogle} bordered color="gradient" auto><Image height={18} width="18" src ="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google icon"/> <Spacer x={0.2} /> {t("Signup.google")}</Button>
                     </Card>
