@@ -12,10 +12,12 @@ export default function Header(props: any) {
         <Layout>
             <Navbar isBordered variant="floating">
                 <Navbar.Brand>
-                    <AcmeLogo />
-                    <Text b color="inherit" hideIn="xs">
-                        AIBoX
-                    </Text>
+                    <Link href="/" color={"text"}>
+                        <AcmeLogo />
+                        <Text b color="inherit" hideIn="xs">
+                            AIBoX
+                        </Text>
+                    </Link>
                 </Navbar.Brand>
                 <Navbar.Content activeColor="error" hideIn="xs" variant="underline">
                     <Navbar.Link
