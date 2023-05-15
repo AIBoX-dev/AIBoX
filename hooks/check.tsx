@@ -37,10 +37,8 @@ export function Checks() {
     };
 
     const CheckrRequirements = (email: string, password: string, createUser: Function) => {
-        console.log([userdata.email_status, userdata.confirm_status, userdata.tos_status])
         if (userdata.email_status && userdata.confirm_status && userdata.tos_status) {
             createUser(email, password)
-
         }
     }
 
