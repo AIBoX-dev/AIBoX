@@ -7,6 +7,7 @@
 - [Next.js](https://nextjs.org/)
 - [NextUI](https://nextui.org/)
 - [Cloudflare Images](https://www.cloudflare.com/ja-jp/products/cloudflare-images/)
+- [Supabase](https://supabase.com/)
 - [Stripe](https://stripe.com)
 - [Vercel](https://vercel.com)
 
