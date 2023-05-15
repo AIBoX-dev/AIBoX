@@ -4,6 +4,7 @@ import { createClient } from "@supabase/supabase-js";
 const supabase_url = process.env.NEXT_PUBLIC_SUPABASE_PROJECT_URL as string;
 const supabase_key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string;
 
+import {Checks} from "@/hooks/check"
 const crypto = require('crypto');
 const supabase = createClient(supabase_url, supabase_key);
 
@@ -14,26 +15,20 @@ const insertUser = async (email: string, password: string, userdata: { [key: str
     .from('user')
     .insert([
         {
-            banned_at: null,
-            created_at: userdata["user"]["created_at"],
+            user_id: userdata["user"]["id"],
             email: email,
-            is_activated: false,
-            is_banned: false,
-            is_official: false,
-            is_shaddowbanned: false,
-            last_login: userdata["user"]["identities"]["last_sign_in_at"],
-            officialized_at: null,
             password_hash: hash,
             salt: salt,
-            shadowbanned_at: userdata["user"]["updated_at"],
-            updated_at: new Date(),
-            user_id: userdata["user"]["id"]
+            created_at: userdata["user"]["created_at"],
+            last_login: userdata["user"]["identities"]["last_sign_in_at"],
+            updated_at: userdata["user"]["updated_at"],
         },
         ]);
 
     if (error) {
         console.error(error);
         return;
+        //errorコードの処理を
     }
 };
 
@@ -65,16 +60,33 @@ export const useAuth = () => {
             const { data, error } = await supabase.auth.signUp({
                 email: email,
                 password: password,
-            });
-            await insertUser(email, password, data)
+            })
+            if (!error) {
+                await insertUser(email, password, data)
+            }
             // console.log({ data, error });
-        }　catch (error) {
+        } catch (error) {
+
             console.error(error);
+        }
+    }
+
+    const loginWithPassword = async ( email: string, password: string): Promise<void> => {
+        try {
+            console.log(email)
+            const { data, error }= await supabase.auth.signInWithPassword({
+                email: email,
+                password: password
+            })
+            console.log({data, error})
+        } catch(error) {
+            console.error(error)
         }
     }
 
     return {
         signInWithGoogle,
-        createUser
+        createUser,
+        loginWithPassword
     };
 }

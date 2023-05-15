@@ -43,7 +43,7 @@ export default function Signup() {
                     justify="center"
                     css={{ minHeight: '100vh' }}
                 >
-                    <Card css={{ mw: '700', p: '20px' }} variant="bordered">
+                    <Card css={{ mw: '420px', p: '20px' }} variant="bordered">
                         <Text
                             size={24}
                             weight="bold"
@@ -99,7 +99,7 @@ export default function Signup() {
                         />
                         {!userdata.confirm_status && <p>{t("Check.confirm_notmatch")}</p>}
                         <Spacer y={1} />
-                        <Checkbox>
+                        <Checkbox onChange={() => setUserdata({...userdata, tos_status: !userdata.tos_status})}>
                           <Text size={14}>{t("Signup.agree")}<Link href={"/agreements"}>{t("Signup.agreements")}</Link></Text>
                         </Checkbox>
                         <Spacer y={1} />
