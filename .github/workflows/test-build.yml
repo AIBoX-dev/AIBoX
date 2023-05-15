@@ -28,8 +28,9 @@ jobs:
 
       - name: Build Next.js application
         run: |
-          touch .env.local
-          echo 'NEXT_PUBLIC_SUPABASE_ANON_KEY=${{ vars.NEXT_PUBLIC_SUPABASE_ANON_KEY}}\nNEXT_PUBLIC_SUPABASE_PROJECT_URL=${{vars.NEXT_PUBLIC_SUPABASE_PROJECT_URL}}' >> .env.local
+          touch .env.local          
+          echo "NEXT_PUBLIC_SUPABASE_ANON_KEY=${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}" >> .env.local
+          echo "NEXT_PUBLIC_SUPABASE_PROJECT_URL=${{ secrets.NEXT_PUBLIC_SUPABASE_PROJECT_URL }}" >> .env.local
           npm run build
 
       - name: Actions Status Discord
