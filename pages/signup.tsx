@@ -66,7 +66,21 @@ export default function Signup() {
                             value={userdata.email}
                             onChange={(event) => setUserdata({ ...userdata, email: event.target.value })}
                         />
-                        {!userdata.email_status && <p>{t("Check.wrongemail")}</p>}
+                        {userdata.email_status &&
+                        <Text
+                            color="error"
+                            size={14}
+                            css={{
+                                display: "flex",
+                                alignItems: "center"
+                            }}
+                            ><AlertTriangle style={
+                                {
+                                    marginRight: "5px"
+                                }
+                        }/>
+                            {t("Check.wrongemail")}
+                        </Text>}
                         <Spacer y={1} />
                         <Input.Password
                             clearable
@@ -82,6 +96,36 @@ export default function Signup() {
                             value={userdata.password}
                             onChange={(event) => setUserdata({ ...userdata, password: event.target.value })}
                         />
+                        {!userdata.pw_length &&
+                        <Text
+                            color="error"
+                            size={14}
+                            css={{
+                            display: "flex",
+                                alignItems: "center"
+                        }}
+                            ><AlertTriangle style={
+                                {
+                                    marginRight: "5px"
+                                }
+                        }/>
+                            {t("Check.pw_length")}
+                        </Text>}
+                        {!userdata.pw_include_symbol &&
+                        <Text
+                            color="error"
+                            size={14}
+                            css={{
+                            display: "flex",
+                                alignItems: "center"
+                        }}
+                            ><AlertTriangle style={
+                                {
+                                    marginRight: "5px"
+                                }
+                        }/>
+                            {t("Check.pw_include_symbol")}
+                        </Text>}
                         <Spacer y={1} />
                         <Input.Password
                             clearable
