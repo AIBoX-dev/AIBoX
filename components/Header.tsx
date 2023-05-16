@@ -12,10 +12,13 @@ export default function Header(props: any) {
         <Layout>
             <Navbar isBordered variant="floating">
                 <Navbar.Brand>
-                    <AcmeLogo />
-                    <Text b color="inherit" hideIn="xs">
-                        AIBoX
-                    </Text>
+                    <Navbar.Toggle aria-label="toggle navigation" showIn="xs" />
+                    <Link href="/" color={"text"}>
+                        <AcmeLogo />
+                        <Text b color="inherit" hideIn="xs">
+                            AIBoX
+                        </Text>
+                    </Link>
                 </Navbar.Brand>
                 <Navbar.Content activeColor="error" hideIn="xs" variant="underline">
                     <Navbar.Link
@@ -44,6 +47,28 @@ export default function Header(props: any) {
                         {t('Header.notice')}
                     </Navbar.Link>
                 </Navbar.Content>
+                <Navbar.Collapse>
+                    <Navbar.CollapseItem>
+                        <Link color="inherit" href="/">
+                            {t('Header.home')}
+                        </Link>
+                    </Navbar.CollapseItem>
+                    <Navbar.CollapseItem>
+                        <Link color="inherit" href="/about">
+                            {t('Header.about')}
+                        </Link>
+                    </Navbar.CollapseItem>
+                    <Navbar.CollapseItem>
+                        <Link color="inherit" href="/creators">
+                            {t('Header.creators')}
+                        </Link>
+                    </Navbar.CollapseItem>
+                    <Navbar.CollapseItem>
+                        <Link color="inherit" href="/notice">
+                            {t('Header.notice')}
+                        </Link>
+                    </Navbar.CollapseItem>
+                </Navbar.Collapse>
                 <Navbar.Content>
                     <Navbar.Link color="error" href="/login">
                         {t('Header.login')}
