@@ -1,9 +1,3 @@
-import Header from "@/components/Header";
-import { GetStaticProps } from "next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useTranslation } from "next-i18next";
-import Image from "next/image";
-import React from "react";
 import {
     Card,
     Spacer,
@@ -14,9 +8,15 @@ import {
     Checkbox,
     Container,
 } from "@nextui-org/react";
+import { GetStaticProps } from "next";
+import Image from "next/image";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import React from "react";
 import { Mail, Key, AlertTriangle } from "react-feather";
-import { useAuth } from '@/hooks/supabase'
+import Header from "@/components/Header";
 import {Checks} from "@/hooks/check"
+import { useAuth } from '@/hooks/supabase'
 
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
