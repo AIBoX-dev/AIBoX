@@ -39,7 +39,7 @@ export default function Login() {
                     justify="center"
                     css={{ minHeight: "100vh" }}
                 >
-                    <Card css={{ mw: "700", p: "20px" }} variant="bordered">
+                    <Card css={{ mw: "420px", p: "20px" }} variant="bordered">
                         <Text
                             size={24}
                             weight="bold"
@@ -65,7 +65,7 @@ export default function Login() {
                         />
                         {!userdata.email_status && <p>{t("Check.wrongemail")}</p>}
                         <Spacer y={1} />
-                        <Input
+                        <Input.Password
                             clearable
                             bordered
                             fullWidth

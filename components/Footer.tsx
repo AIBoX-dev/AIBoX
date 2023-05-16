@@ -1,16 +1,16 @@
-import { Navbar, Button, Link, Text } from "@nextui-org/react";
-import { Layout } from "./header/Layout";
-import { AcmeLogo } from "./header/AcmeLogo";
-import { useRouter } from "next/router";
-import { useTranslation } from 'next-i18next';
+import { Navbar, Text, Link, Button } from '@nextui-org/react';
+import { Layout } from './header/Layout';
+import { AcmeLogo } from './header/AcmeLogo';
+import { useRouter } from 'next/router';
+import { useTranslation } from "next-i18next";
 
-
-export default function Header(props: any) {
+export default function Footer() {
+    const { t } = useTranslation("common");
     const router = useRouter();
-    const { t } = useTranslation('common');
     return (
-        <Layout>
-            <Navbar isBordered variant="floating">
+        <>
+            <Layout>
+            <Navbar isBordered>
                 <Navbar.Brand>
                     <Navbar.Toggle aria-label="toggle navigation" showIn="xs" />
                     <Link href="/" color={"text"}>
@@ -22,26 +22,17 @@ export default function Header(props: any) {
                 </Navbar.Brand>
                 <Navbar.Content activeColor="error" hideIn="xs" variant="underline">
                     <Navbar.Link
-                        isActive={router.pathname === "/"}
                         href="/"
                     >
                         
                         {t('Header.home')}
                     </Navbar.Link>
                     <Navbar.Link
-                        isActive={router.pathname === "/about"}
                         href="/about"
                     >
                         {t('Header.about')}
                     </Navbar.Link>
                     <Navbar.Link
-                        isActive={router.pathname === "/creators"}
-                        href="/creators"
-                    >
-                        {t('Header.creators')}
-                    </Navbar.Link>
-                    <Navbar.Link
-                        isActive={router.pathname === "/notice"}
                         href="/notice"
                     >
                         {t('Header.notice')}
@@ -69,17 +60,8 @@ export default function Header(props: any) {
                         </Link>
                     </Navbar.CollapseItem>
                 </Navbar.Collapse>
-                <Navbar.Content>
-                    <Navbar.Link color="error" href="/login">
-                        {t('Header.login')}
-                    </Navbar.Link>
-                    <Navbar.Item>
-                        <Button auto color="error" flat as={Link} href="/signup">
-                        {t('Header.signup')}
-                        </Button>
-                    </Navbar.Item>
-                </Navbar.Content>
             </Navbar>
         </Layout>
-    )
+        </>
+    );
 }

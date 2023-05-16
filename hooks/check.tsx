@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-
+import { useAuth } from "@/hooks/supabase";
+import {promises} from "dns";
 
 export function Checks() {
     const [userdata, setUserdata] = useState({
@@ -11,7 +12,7 @@ export function Checks() {
         email_status: true,
         password_status: true,
         confirm_status: true,
-        tos_status: true,
+        tos_status: false,
         login_remember: true
 
     });
@@ -35,6 +36,12 @@ export function Checks() {
         }
     };
 
+    const CheckrRequirements = (email: string, password: string, createUser: Function) => {
+        if (userdata.email_status && userdata.confirm_status && userdata.tos_status) {
+            createUser(email, password)
+        }
+    }
+
     useEffect(() => {
         CheckEmail();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -48,5 +55,6 @@ export function Checks() {
     return {
         userdata,
         setUserdata,
+        CheckrRequirements
     };
 }
