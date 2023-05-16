@@ -21,6 +21,9 @@
     "dependencies": {
         "@nextui-org/react": "^1.0.0-beta.12",
         "@supabase/supabase-js": "^2.21.0",
+        "@tiptap/pm": "^2.0.3",
+        "@tiptap/react": "^2.0.3",
+        "@tiptap/starter-kit": "^2.0.3",
         "@types/styled-components": "^5.1.26",
         "i18next": "^22.4.15",
         "next": "13.4.1",
