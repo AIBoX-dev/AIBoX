@@ -63,7 +63,7 @@ export default function Login() {
                         />
                         {!userdata.email_status && <p>{t("Check.wrongemail")}</p>}
                         <Spacer y={1} />
-                        <Input
+                        <Input.Password
                             clearable
                             bordered
                             fullWidth
