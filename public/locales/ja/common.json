@@ -44,5 +44,8 @@
         "display_name": "表示名",
         "dob": "生年月日",
         "start": "はじめる"
+    },
+    "Dashboard": {
+        "dashboard": "ダッシュボード"
     }
 }
