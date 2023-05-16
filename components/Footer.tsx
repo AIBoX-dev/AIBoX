@@ -1,8 +1,8 @@
 import { Navbar, Text, Link, Button } from '@nextui-org/react';
-import { Layout } from './header/Layout';
-import { AcmeLogo } from './header/AcmeLogo';
 import { useRouter } from 'next/router';
 import { useTranslation } from "next-i18next";
+import { AcmeLogo } from './header/AcmeLogo';
+import { Layout } from './header/Layout';
 
 export default function Footer() {
     const { t } = useTranslation("common");
