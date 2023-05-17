@@ -1,5 +1,6 @@
-import { useRouter } from "next/router";
 import { createClient } from "@supabase/supabase-js";
+
+import { useRouter } from "next/router";
 
 const supabase_url = process.env.NEXT_PUBLIC_SUPABASE_PROJECT_URL as string;
 const supabase_key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string;

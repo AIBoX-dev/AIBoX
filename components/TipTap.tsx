@@ -1,6 +1,7 @@
 'use client'
 
 import { useEditor, EditorContent } from '@tiptap/react'
+// eslint-disable-next-line import/no-named-as-default
 import StarterKit from '@tiptap/starter-kit'
 
 const Tiptap = () => {

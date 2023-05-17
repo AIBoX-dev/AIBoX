@@ -1,11 +1,14 @@
 import { Card, Container, Text, Button, Spacer, Input, Row } from "@nextui-org/react";
-import { useTranslation } from "next-i18next";
+
 import { GetStaticProps } from "next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import { useState } from "react";
+
 import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+
+
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
     props: {
