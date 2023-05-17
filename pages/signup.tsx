@@ -12,6 +12,7 @@ import {
 import { GetStaticProps } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from 'react';
@@ -32,14 +33,19 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 
 export default function Signup() {
     const { t } = useTranslation("common");
+    const router = useRouter();
     const { signInWithGoogle, createUser } = useAuth();
     const { userdata, setUserdata, CheckrRequirements } = Checks();
     const [loading, setLoading] = React.useState(false);
-    const  handleSignup = async () => {
-        //
-        await createUser(userdata.email, userdata.password)
-        location.href = "/signup/mail_sent"
+    const handleSignup = async () => {
+        if (CheckrRequirements()) {
+             await createUser(userdata.email, userdata.password)
+            await router.push(`/signup/mail_sent?email=${encodeURIComponent(userdata.email)}`);
+        } else {
+            setLoading(false)
+        }
     };
+
     return (
         <>
             <Header />
