@@ -1,6 +1,6 @@
 name: Build Test
 on:
-    pull_request:
+    pull_request_target:
         branches:
             - dev
             - main
@@ -26,6 +26,7 @@ jobs:
                   touch .env.local          
                   echo "NEXT_PUBLIC_SUPABASE_ANON_KEY=${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}" >> .env.local
                   echo "NEXT_PUBLIC_SUPABASE_PROJECT_URL=${{ secrets.NEXT_PUBLIC_SUPABASE_PROJECT_URL }}" >> .env.local
+                  echo "NEXT_PUBLIC_TURNSTILE_SITE_KEY"= ${{ secrets.NEXT_PUBLIC_TURNSTILE_SITE_KEY }} >> .env.local
                   npm run build
 
             - name: Actions Status Discord
