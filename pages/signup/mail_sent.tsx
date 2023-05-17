@@ -45,8 +45,6 @@ export default function MailSent() {
     }
     useEffect(() => {
         const regex_email = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-        console.log(decodeURIComponent(String(emailParam)))
-        console.log(Boolean(decodeURIComponent(String(emailParam)).match(regex_email)))
         if (!String(emailParam).match(regex_email)) {
             router.push('/signup')
         }
