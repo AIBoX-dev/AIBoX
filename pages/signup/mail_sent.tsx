@@ -6,9 +6,10 @@ import { useRouter } from "next/router";
 
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import React from "react";
+import React, { useEffect } from "react";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { Checks } from "@/hooks/check"
 import { useAuth } from '@/hooks/supabase'
 
 
@@ -42,6 +43,14 @@ export default function MailSent() {
         }
         , 30000)
     }
+    useEffect(() => {
+        const regex_email = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+        console.log(decodeURIComponent(String(emailParam)))
+        console.log(Boolean(decodeURIComponent(String(emailParam)).match(regex_email)))
+        if (!String(emailParam).match(regex_email)) {
+            router.push('/signup')
+        }
+    }, [])
 
 
     return (
