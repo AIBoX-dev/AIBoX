@@ -9,6 +9,7 @@ export default function Footer() {
     const router = useRouter();
     return (
         <>
+        <div style={{ height: "100%", position: "sticky", bottom: "0px", top: "100vh" }}>
             <Layout>
             <Navbar isBordered>
                 <Navbar.Brand>
@@ -62,6 +63,7 @@ export default function Footer() {
                 </Navbar.Collapse>
             </Navbar>
         </Layout>
+        </div>
         </>
     );
 }

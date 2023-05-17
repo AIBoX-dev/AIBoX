@@ -90,7 +90,7 @@ export default function Signup() {
                             color="primary"
                             size="lg"
                             placeholder={t("Signup.confirm_password")}
-                            contentLeft={<Key />}
+                            contentLeft={<Key strokeDasharray={4} />}
                             css={{ mb: '6px' }}
                             aria-labelledby="password"
                             type="password"
