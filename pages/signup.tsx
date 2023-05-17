@@ -7,6 +7,7 @@ import {
     Row,
     Checkbox,
     Container,
+    Loading
 } from '@nextui-org/react';
 import { GetStaticProps } from "next";
 import Image from "next/image";
@@ -33,6 +34,12 @@ export default function Signup() {
     const { t } = useTranslation("common");
     const { signInWithGoogle, createUser } = useAuth();
     const { userdata, setUserdata, CheckrRequirements } = Checks();
+    const [loading, setLoading] = React.useState(false);
+    const  handleSignup = async () => {
+        //
+        await createUser(userdata.email, userdata.password)
+        location.href = "/signup/mail_sent"
+    };
     return (
         <>
             <Header />
@@ -162,7 +169,7 @@ export default function Signup() {
                         <Text size={14}>{t("Signup.agree")}<Link href={"/agreements"}>{t("Signup.agreements")}</Link></Text>
                     </Checkbox>
                     <Spacer y={1} />
-                    <Button onPress={() => CheckrRequirements(userdata.email, userdata.password, createUser)} bordered color="gradient" auto>{t("Signup.start")}</Button>
+                    <Button onClick={() => {setLoading(true)}} onPress={handleSignup} bordered color="gradient" auto disabled={loading}>{loading ? <Loading type="points-opacity"/> : t("Signup.start")}</Button>
                     <Spacer y={1} />
                     <Button onPress={signInWithGoogle} bordered color="gradient" auto><Image height={18} width="18" src ="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google icon"/> <Spacer x={0.2} /> {t("Signup.google")}</Button>
                 </Card>

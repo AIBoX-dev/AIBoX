@@ -1,13 +1,15 @@
-import { Card, Container, Text, Button, Spacer, Input, Row } from "@nextui-org/react";
+import { Card, Container, Text, Button, Spacer, Input, Row, Loading } from "@nextui-org/react";
 
 import { GetStaticProps } from "next";
 
 import { useRouter } from "next/router";
+
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import React from "react";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-
+import { useAuth } from '@/hooks/supabase'
 
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
@@ -23,6 +25,23 @@ export default function MailSent() {
     const { t } = useTranslation("common");
     const router = useRouter();
     const { email: emailParam } = router.query;
+    const { resendVerificationEmail } = useAuth()
+    const [loading, setLoading] = React.useState(false)
+    const [resent, setResent] = React.useState(false)
+    const [is_resendable, setResendable] = React.useState(false)
+
+    const handleResend = () => {
+        setResendable(false)
+        setResent(false)
+        resendVerificationEmail(emailParam as string)
+        setResent(true)
+        setLoading(false)
+        // wait 30 seconds before allowing another resend
+        setTimeout(() => {
+            setResendable(true)
+        }
+        , 30000)
+    }
 
 
     return (
@@ -57,11 +76,21 @@ export default function MailSent() {
                             {t("MailSent.mailsentto", { email: emailParam })}
                         </Text>
                         <Spacer y={1} />
-                        <Button bordered color="gradient" auto>
-                            {t("MailSent.resend")}
+                        <Text
+                            size={15}
+                            css={{
+                                as: "center",
+                                mb: "20px",
+                            }}
+                        >
+                            {resent ? t("MailSent.resent"): ""}
+                        </Text>
+                        <Spacer y={1} />
+                        <Button bordered color="gradient" auto onClick={() => {setLoading(true)}} disabled={is_resendable} onPress={handleResend}>
+                            {loading ? <Loading /> : t("MailSent.resend")}
                         </Button>
                         <Spacer y={1} />
-                        <Button bordered color="gradient" auto>
+                        <Button bordered color="gradient" auto onClick={() => {location.href = "/signup"}}>
                             {t("MailSent.back")}
                         </Button>
                         <Spacer y={1} />

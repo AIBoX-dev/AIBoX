@@ -85,9 +85,24 @@ export const useAuth = () => {
         }
     }
 
+    const resendVerificationEmail = async (email: string) => {
+        try {
+            const { data, error } = await supabase.auth.resend({
+                type: "signup",
+                email: email,
+            });
+            console.log({ data, error });
+            }
+        catch (error) {
+            console.error(error);
+        }
+    };
+
+
     return {
         signInWithGoogle,
         createUser,
-        loginWithPassword
+        loginWithPassword,
+        resendVerificationEmail
     };
 }

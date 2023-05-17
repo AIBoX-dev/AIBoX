@@ -64,7 +64,8 @@
         "mailsent": "登録メールを送信完了",
         "mailsentto": "登録メールを {{ email }} に送信しました",
         "resend": "再送信する",
-        "back": "戻る"
+        "back": "戻る",
+        "resent": "再送信完了"
     }
 }
 
