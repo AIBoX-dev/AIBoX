@@ -1,10 +1,10 @@
-import React from 'react';
 import { Pagination,Card, Text, Container, Input, Spacer, Button, Checkbox, Row, Image } from "@nextui-org/react";
-import Header from '@/components/Header';
 import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import React from 'react';
 import { AtSign, Eye, Calendar } from 'react-feather';
+import Header from '@/components/Header';
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
     props: {

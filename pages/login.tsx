@@ -1,9 +1,3 @@
-import Header from "@/components/Header";
-import { GetStaticProps } from "next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useTranslation } from "next-i18next";
-import Image from "next/image";
-import React from "react";
 import {
     Card,
     Spacer,
@@ -14,9 +8,15 @@ import {
     Checkbox,
     Container,
 } from "@nextui-org/react";
-import { Mail, Key } from "react-feather";
-import { useAuth } from '@/hooks/supabase'
+import { GetStaticProps } from "next";
+import Image from "next/image";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import React from "react";
+import { Mail, Key, AlertTriangle } from "react-feather";
+import Header from "@/components/Header";
 import {Checks} from "@/hooks/check"
+import { useAuth } from '@/hooks/supabase'
 
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
@@ -63,7 +63,21 @@ export default function Login() {
                             value={userdata.email}
                             onChange={(event) => setUserdata({...userdata, email: event.target.value})}
                         />
-                        {!userdata.email_status && <p>{t("Check.wrongemail")}</p>}
+                        {userdata.email_status &&
+                        <Text
+                            color="error"
+                            size={14}
+                            css={{
+                            display: "flex",
+                                alignItems: "center"
+                        }}
+                            ><AlertTriangle style={
+                                {
+                                    marginRight: "5px"
+                                }
+                        }/>
+                            {t("Check.wrongemail")}
+                        </Text>}
                         <Spacer y={1} />
                         <Input.Password
                             clearable
@@ -90,7 +104,7 @@ export default function Login() {
                             {t("Login.login")}
                         </Button>
                         <Spacer y={1} />
-                        <Button onPress={signInWithGoogle}bordered color="gradient" auto>
+                        <Button onPress={signInWithGoogle} bordered color="gradient" auto>
                             <Image
                                 height="18"
                                 width="18"

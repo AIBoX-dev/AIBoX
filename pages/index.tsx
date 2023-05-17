@@ -1,9 +1,3 @@
-import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
-import { GetStaticProps } from "next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useTranslation } from "next-i18next";
-import React from "react";
 import {
     Grid,
     Card,
@@ -15,9 +9,16 @@ import {
     Checkbox,
     Container,
 } from "@nextui-org/react";
+import { GetStaticProps } from "next";
+import { Inter } from "next/font/google";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import React from "react";
 import { GitHub, Key, Mail, Search } from "react-feather";
 import { AcmeLogo } from "../components/header/AcmeLogo";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import styles from "@/styles/Home.module.css";
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
     props: {
@@ -31,10 +32,9 @@ export default function Home() {
     const { t } = useTranslation("common");
     return (
         <>
-        <Header />
+            <Header />
             <main className={`${styles.main} ${inter.className}`}>
                 <div className={styles.description}>
-
                     <div>
                         <Input
                             clearable
@@ -98,6 +98,7 @@ export default function Home() {
                     </Text>
                 </div>
             </main>
+            <Footer />
         </>
     );
 }

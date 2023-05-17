@@ -6,6 +6,11 @@
         "slogan2": "新たな可能性を切り開き",
         "slogan3": "さらに多くのファンへ届けましょう"
     },
+    "About": {
+        "creater": "AIクリエイターのための",
+        "patron": "支援サービス",
+        "aibox": "「AIBoX」"
+    },
     "Login": {
         "login": "ログイン",
         "email": "メールアドレス",
@@ -23,7 +28,7 @@
         "confirm_password": "パスワードの確認",
         "agree": "次の規約に同意する：",
         "agreements": "利用規約とプライバシーポリシー"
-        },
+    },
     "Header": {
         "home": "ホーム",
         "about": "AIBoXについて",
@@ -36,7 +41,9 @@
     "Check": {
         "wrongemail": "メールアドレスの形式が間違っています",
         "password_length": "パスワードは12文字以上で設定してください",
-        "confirm_notmatch": "パスワードが一致しません"
+        "confirm_notmatch": "パスワードが一致しません",
+        "pw_length": "パスワードは八文字以上で設定してください",
+        "pw_include_symbol": "パスワードには記号を入れてください"
     },
     "Setup": {
         "setup": "セットアップ",

@@ -1,8 +1,8 @@
-import React from 'react';
-import Header from '@/components/Header';
 import { Text, Container } from '@nextui-org/react';
 import { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import React from 'react';
+import Header from '@/components/Header';
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
     props: {

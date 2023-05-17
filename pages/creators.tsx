@@ -25,7 +25,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => ({
     },
 });
 
-export default function Notice() {
+export default function Creators() {
     const { t } = useTranslation("common");
     return (
         <>

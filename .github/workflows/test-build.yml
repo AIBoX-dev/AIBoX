@@ -1,40 +1,35 @@
 name: Build Test
 on:
-  push:
-    branches-ignore:
-      - main
-  pull_request:
-    branches:
-      - dev
+    pull_request:
+        branches:
+            - dev
+            - main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@v3
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout
+              uses: actions/checkout@v3
 
-      - name: setup-node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: npm
-          
-      - name: Clean Install dependices
-        run: rm -rf node_modules && npm ci
+            - name: setup-node
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 18
+                  cache: npm
+            - run: |
+                  npm ci
+                  npm run lint
 
-      - name: Lint code
-        run: npm run lint
+            - name: Build Next.js application
+              run: |
+                  touch .env.local          
+                  echo "NEXT_PUBLIC_SUPABASE_ANON_KEY=${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}" >> .env.local
+                  echo "NEXT_PUBLIC_SUPABASE_PROJECT_URL=${{ secrets.NEXT_PUBLIC_SUPABASE_PROJECT_URL }}" >> .env.local
+                  npm run build
 
-      - name: Build Next.js application
-        run: |
-          touch .env.local          
-          echo "NEXT_PUBLIC_SUPABASE_ANON_KEY=${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}" >> .env.local
-          echo "NEXT_PUBLIC_SUPABASE_PROJECT_URL=${{ secrets.NEXT_PUBLIC_SUPABASE_PROJECT_URL }}" >> .env.local
-          npm run build
-
-      - name: Actions Status Discord
-        uses: sarisia/actions-status-discord@v1.12.0
-        if: always()
-        with:
-          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+            - name: Actions Status Discord
+              uses: sarisia/actions-status-discord@v1.12.0
+              if: always()
+              with:
+                  webhook: ${{ secrets.DISCORD_WEBHOOK }}
