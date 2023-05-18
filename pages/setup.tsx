@@ -11,10 +11,7 @@ import { useAuth } from '@/hooks/supabase';
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
     props: {
-        ...(await serverSideTranslations(
-            locale!,
-            ["common"],
-        )),
+        ...(await serverSideTranslations(locale!, ["common"])),
     },
 });
 
@@ -109,5 +106,5 @@ export default function Setup() {
                     </Card>
                 </Container>
         </>
-    )
+    );
 }

@@ -1,3 +1,4 @@
+import { Turnstile } from "@marsidev/react-turnstile";
 import {
     Card,
     Spacer,
@@ -15,9 +16,8 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
 import { Mail, Key, AlertTriangle } from "react-feather";
 import Header from "@/components/Header";
-import {Checks} from "@/hooks/check"
-import { useAuth } from '@/hooks/supabase'
-
+import { Checks } from "@/hooks/check";
+import { useAuth } from "@/hooks/supabase";
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
     props: {
@@ -27,7 +27,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 
 export default function Login() {
     const { t } = useTranslation("common");
-    const { signInWithGoogle, loginWithPassword } = useAuth()
+    const { signInWithGoogle, loginWithPassword } = useAuth();
     const { userdata, setUserdata } = Checks();
     return (
         <>
@@ -61,23 +61,30 @@ export default function Login() {
                             aria-labelledby="email"
                             type="email"
                             value={userdata.email}
-                            onChange={(event) => setUserdata({...userdata, email: event.target.value})}
+                            onChange={(event) =>
+                                setUserdata({
+                                    ...userdata,
+                                    email: event.target.value,
+                                })
+                            }
                         />
-                        {userdata.email_status &&
-                        <Text
-                            color="error"
-                            size={14}
-                            css={{
-                            display: "flex",
-                                alignItems: "center"
-                        }}
-                            ><AlertTriangle style={
-                                {
-                                    marginRight: "5px"
-                                }
-                        }/>
-                            {t("Check.wrongemail")}
-                        </Text>}
+                        {userdata.email_status && (
+                            <Text
+                                color="error"
+                                size={14}
+                                css={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                }}
+                            >
+                                <AlertTriangle
+                                    style={{
+                                        marginRight: "5px",
+                                    }}
+                                />
+                                {t("Check.wrongemail")}
+                            </Text>
+                        )}
                         <Spacer y={1} />
                         <Input.Password
                             clearable
@@ -90,21 +97,59 @@ export default function Login() {
                             css={{ mb: "6px" }}
                             aria-labelledby="password"
                             type="password"
-                            value = {userdata.password}
-                            onChange={(event) => setUserdata({...userdata, password: event.target.value})}
+                            value={userdata.password}
+                            onChange={(event) =>
+                                setUserdata({
+                                    ...userdata,
+                                    password: event.target.value,
+                                })
+                            }
                         />
                         <Row justify="space-between">
-                            <Checkbox onChange={() => setUserdata({...userdata, login_remember: !userdata.login_remember})}>
+                            <Checkbox
+                                onChange={() =>
+                                    setUserdata({
+                                        ...userdata,
+                                        login_remember:
+                                            !userdata.login_remember,
+                                    })
+                                }
+                            >
                                 <Text size={14}>{t("Login.remember")}</Text>
                             </Checkbox>
                             <Text size={14}>{t("Login.forgot")}</Text>
                         </Row>
                         <Spacer y={1} />
-                        <Button onPress={() => loginWithPassword(userdata.email, userdata.password)} bordered color="gradient" auto>
+                        <Turnstile
+                            siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+                            // sitekey=1x00000000000000000000AA
+                            className=""
+                            options={{
+                                action: "submit-form",
+                                theme: "light",
+                            }}
+                        />
+                        <Spacer y={1} />
+                        <Button
+                            onPress={() =>
+                                loginWithPassword(
+                                    userdata.email,
+                                    userdata.password
+                                )
+                            }
+                            bordered
+                            color="gradient"
+                            auto
+                        >
                             {t("Login.login")}
                         </Button>
                         <Spacer y={1} />
-                        <Button onPress={signInWithGoogle} bordered color="gradient" auto>
+                        <Button
+                            onPress={signInWithGoogle}
+                            bordered
+                            color="gradient"
+                            auto
+                        >
                             <Image
                                 height="18"
                                 width="18"

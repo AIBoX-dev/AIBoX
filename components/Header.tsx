@@ -4,7 +4,9 @@ import { useTranslation } from "next-i18next";
 import { AcmeLogo } from "./header/AcmeLogo";
 import { Layout } from "./header/Layout";
 
-export default function Header(props: any) {
+interface Props {}
+
+export default function Header(props: Props) {
     const router = useRouter();
     const { t } = useTranslation("common");
     return (
