@@ -1,3 +1,4 @@
+import { Turnstile } from "@marsidev/react-turnstile";
 import {
     Card,
     Spacer,
@@ -17,7 +18,6 @@ import { Mail, Key, AlertTriangle } from "react-feather";
 import Header from "@/components/Header";
 import { Checks } from "@/hooks/check";
 import { useAuth } from "@/hooks/supabase";
-import { Turnstile } from "@marsidev/react-turnstile";
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
     props: {
