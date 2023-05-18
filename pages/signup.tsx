@@ -207,7 +207,7 @@ export default function Signup() {
                         </Checkbox>
                         <Spacer y={1} />
                         <Turnstile
-                            siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+                            siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY as string}
                             // sitekey=1x00000000000000000000AA
                             className=""
                             options={{

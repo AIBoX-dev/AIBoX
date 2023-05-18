@@ -56,6 +56,15 @@ const insertProfile = async (id: number, user_id: string, display_name: string, 
         ]);
 };
 
+const getActivated = async (id: number) => {
+    const { data, error } = await supabase
+        .from('user')
+        .select('is_activated')
+        .eq('id', id)
+    return data && data[0] ? data[0]["is_activated"] : false;
+};
+
+
 
 
 export const useAuth = () => {
@@ -97,6 +106,15 @@ export const useAuth = () => {
         }
     };
 
+    const getActivationStatus = async (id: number) => {
+        try {
+            await getActivated(id)
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+
 
     const createProfile = async (id: number, user_id: string, display_name: string, dob:string) => {
         try {
@@ -137,13 +155,16 @@ export const useAuth = () => {
         }
     };
 
+    
+
 
     return {
         signInWithGoogle,
         createUser,
         loginWithPassword,
         resendVerificationEmail,
-        createProfile
+        createProfile,
+        getActivationStatus
     };
 }
 
