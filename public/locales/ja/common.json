@@ -58,7 +58,8 @@
         "assets": "投稿",
         "plans": "支援プラン",
         "packages": "パッケージ",
-        "earnings": "収益"
+        "earnings": "収益",
+        "addProfile": "プロフィールを追加"
     },
     "MailSent": {
         "mailsent": "登録メールを送信完了",

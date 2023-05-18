@@ -121,7 +121,7 @@ export default function Login() {
                         </Row>
                         <Spacer y={1} />
                         <Turnstile
-                            siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+                            siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || ""}
                             // sitekey=1x00000000000000000000AA
                             className=""
                             options={{
@@ -131,11 +131,13 @@ export default function Login() {
                         />
                         <Spacer y={1} />
                         <Button
-                            onPress={() =>
+                            onPress={() => {
+
                                 loginWithPassword(
                                     userdata.email,
                                     userdata.password
                                 )
+                            }
                             }
                             bordered
                             color="gradient"
