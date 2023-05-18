@@ -1,5 +1,8 @@
 name: Build Test
 on:
+    push:
+        branches:
+            dev
     pull_request_target:
         types: [opened]
         branches:
