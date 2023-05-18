@@ -38,7 +38,7 @@ export default function MailSent() {
         setResent(true)
         setLoading(false)
         // wait 30 seconds before allowing another resend
-        setTimeout(() => {
+        setTimeout(() => {    const router = useRouter();
             setResendable(true)
         }
         , 30000)
