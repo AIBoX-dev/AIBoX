@@ -48,7 +48,7 @@ export default function MailSent() {
         if (!String(emailParam).match(regex_email)) {
             router.push('/signup')
         }
-    }, [])
+    })
 
 
     return (
