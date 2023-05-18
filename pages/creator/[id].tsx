@@ -21,7 +21,7 @@ export default function Creator() {
     const { t } = useTranslation("common");
     const router = useRouter()
     const { id } = router.query
-    
+}
 
 
 
