@@ -21,6 +21,7 @@
     "dependencies": {
         "@marsidev/react-turnstile": "^0.2.1",
         "@nextui-org/react": "^1.0.0-beta.12",
+        "@supabase/gotrue-js": "github:supabase/gotrue-js",
         "@supabase/supabase-js": "^2.21.0",
         "@tiptap/pm": "^2.0.3",
         "@tiptap/react": "^2.0.3",

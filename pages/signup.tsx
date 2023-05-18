@@ -7,10 +7,12 @@ import {
     Row,
     Checkbox,
     Container,
-} from "@nextui-org/react";
+    Loading
+} from '@nextui-org/react';
 import { GetStaticProps } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
@@ -28,8 +30,19 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 
 export default function Signup() {
     const { t } = useTranslation("common");
+    const router = useRouter();
     const { signInWithGoogle, createUser } = useAuth();
     const { userdata, setUserdata, CheckrRequirements } = Checks();
+    const [loading, setLoading] = React.useState(false);
+    const handleSignup = async () => {
+        if (CheckrRequirements()) {
+             await createUser(userdata.email, userdata.password)
+            await router.push(`/signup/mail_sent?email=${encodeURIComponent(userdata.email)}`);
+        } else {
+            setLoading(false)
+        }
+    };
+
     return (
         <>
             <Header />
@@ -147,8 +160,8 @@ export default function Signup() {
                             color="primary"
                             size="lg"
                             placeholder={t("Signup.confirm_password")}
-                            contentLeft={<Key />}
-                            css={{ mb: "6px" }}
+                            contentLeft={<Key strokeDasharray={4} />}
+                            css={{ mb: '6px' }}
                             aria-labelledby="password"
                             type="password"
                             value={userdata.confirm_password}

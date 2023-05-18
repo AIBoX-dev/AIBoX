@@ -10,7 +10,6 @@ import {
     Container,
     Image,
 } from "@nextui-org/react";
-import { t } from "i18next";
 import { GetStaticProps } from "next";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";

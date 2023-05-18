@@ -18,85 +18,92 @@ export default function Dashboard() {
 
     const { t } = useTranslation("common");
 
-  return (
-    <>
-    <div>
-    <Header />
-    <Container fluid css={{marginTop: "10px"}}>
-        <Text h1 size={40} color="black" >
-            {t("Dashboard.dashboard")}
-        </Text>
-      <Row gap={1}>
-        <Col>
-          <Card >
-            <Card.Header>
-                <Text h2 size={30} color="black" >
-                    My Profiles
-                </Text>
-            </Card.Header>
-            <Card.Body>
-              <Text h6 size={15} color="black" >
-                1 of 2
-              </Text>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-      <Spacer y={1} />
-      <Row gap={1}>
-        <Col>
-          <Card >
-            <Card.Header>
-                <Text h2 size={30} color="black" >
-                    My Assets
-                </Text>
-            </Card.Header>
-            <Card.Body>
-              <Text h6 size={15} color="black" >
-                1 of 2
-              </Text>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-      <Spacer y={1} />
-      <Row gap={1}>
-        <Col>
-          <Card >
-            <Card.Header>
-                <Text h2 size={30} color="black" >
-                    My Plans
-                </Text>
-            </Card.Header>
-            <Card.Body>
-              <Text h6 size={15} color="black" >
-                1 of 2
-              </Text>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-      <Row gap={1}>
-        <Col>
-          <Card >
-            <Card.Header>
-                <Text h2 size={30} color="black" >
-                    Support
-                </Text>
-            </Card.Header>
-            <Card.Body>
-              <Text h6 size={15} color="black" >
-                1 of 2
-              </Text>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-      <Spacer y={1} />
-      <Spacer y={1} />
-    </Container>
-    <Footer />
-    </div>
-    </>
-  );
+    return (
+        <>
+            <div>
+                <Header />
+                <Container fluid css={{ marginTop: "10px" }}>
+                    <Text h1 size={40} color="black" >
+                        {t("Dashboard.dashboard")}
+                    </Text>
+                    <Row gap={1}>
+                        <Col>
+                            <Card>
+                                <Card.Header>
+                                    <Text h2 size={30} color="black" >
+                                        {t("Dashboard.profile")}
+                                    </Text>
+                                </Card.Header>
+                                <Card.Body>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    </Row>
+                    <Spacer y={1} />
+                    <Row gap={1}>
+                        <Col>
+                            <Card>
+                                <Card.Header>
+                                    <Text h2 size={30} color="black" >
+                                        {t("Dashboard.assets")}
+                                    </Text>
+                                </Card.Header>
+                                <Card.Body>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    </Row>
+                    <Spacer y={1} />
+                    <Row gap={1}>
+                        <Col>
+                            <Card>
+                                <Card.Header>
+                                    <Text h2 size={30} color="black" >
+                                        {t("Dashboard.plans")}
+                                    </Text>
+                                </Card.Header>
+                                <Card.Body>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    </Row>
+                    <Spacer y={1} />
+                    <Row gap={1}>
+                        <Col>
+                            <Card>
+                                <Card.Header>
+                                    <Text h2 size={30} color="black" >
+                                        {t("Dashboard.packages")}
+                                    </Text>
+                                </Card.Header>
+                                <Card.Body>
+                                    <Text h6 size={15} color="black" >
+                                    </Text>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    </Row>
+                    <Spacer y={1} />
+                    <Row gap={1}>
+                        <Col>
+                            <Card>
+                                <Card.Header>
+                                    <Text h2 size={30} color="black" >
+                                        {t("Dashboard.earnings")}
+                                    </Text>
+                                </Card.Header>
+                                <Card.Body>
+                                    <Text h6 size={15} color="black" >
+                                    </Text>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    </Row>
+                    <Spacer y={1} />
+                    <Spacer y={1} />
+                </Container>
+                <Footer />
+            </div>
+        </>
+    );
 }

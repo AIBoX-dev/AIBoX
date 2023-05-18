@@ -1,5 +1,6 @@
-import { useRouter } from "next/router";
 import { createClient } from "@supabase/supabase-js";
+
+import { useRouter } from "next/router";
 
 const supabase_url = process.env.NEXT_PUBLIC_SUPABASE_PROJECT_URL as string;
 const supabase_key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string;
@@ -84,9 +85,24 @@ export const useAuth = () => {
         }
     }
 
+    const resendVerificationEmail = async (email: string) => {
+        try {
+            const { data, error } = await supabase.auth.resend({
+                type: "signup",
+                email: email,
+            });
+            console.log({ data, error });
+            }
+        catch (error) {
+            console.error(error);
+        }
+    };
+
+
     return {
         signInWithGoogle,
         createUser,
-        loginWithPassword
+        loginWithPassword,
+        resendVerificationEmail
     };
 }

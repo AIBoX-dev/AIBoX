@@ -53,6 +53,19 @@
         "start": "はじめる"
     },
     "Dashboard": {
-        "dashboard": "ダッシュボード"
+        "dashboard": "ダッシュボード",
+        "profile": "プロフィール",
+        "assets": "投稿",
+        "plans": "支援プラン",
+        "packages": "パッケージ",
+        "earnings": "収益"
+    },
+    "MailSent": {
+        "mailsent": "登録メールを送信完了",
+        "mailsentto": "登録メールを {{ email }} に送信しました",
+        "resend": "再送信する",
+        "back": "戻る",
+        "resent": "再送信完了"
     }
 }
+
