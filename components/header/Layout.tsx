@@ -1,6 +1,11 @@
+import { ReactNode } from "react";
 import { Box } from "./Box";
 
-export const Layout = ({ children }: any) => (
+interface Props {
+  children: ReactNode | ReactNode[];
+}
+
+export const Layout = ({ children }: Props) => (
   <Box
     css={{
       maxW: "100%"
