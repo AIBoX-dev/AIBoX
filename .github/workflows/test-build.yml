@@ -1,9 +1,9 @@
 name: Build Test
 on:
-    pull_request_target:
-        branches:
-            - dev
-            - main
+  pull_request_target:
+      branches:
+          - dev
+          - main
 
 jobs:
     build:
@@ -11,6 +11,8 @@ jobs:
         steps:
             - name: checkout
               uses: actions/checkout@v3
+              with:
+                ref: ${{ github.event.pull_request.head.ref }}
 
             - name: setup-node
               uses: actions/setup-node@v3
