@@ -13,16 +13,16 @@ const { insertUser, insertProfile } = database()
 
 const updateDob = async (id: number, dob: string) => {
     const { data, error } = await supabase
-        .from('user')
+        .from('users')
         .update({ dob: dob })
-        .eq('id', id)
+        .eq('user_id', id)
 };
 
 const getActivated = async (id: string) => {
     const { data, error } = await supabase
         .from('users')
         .select('is_activated')
-        //.eq('user_id', id)
+        .eq('user_id', id)
     return data?.[0]?.is_activated ?? false;
 };
 
