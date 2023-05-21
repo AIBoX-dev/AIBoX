@@ -2,67 +2,36 @@ import { createClient } from "@supabase/supabase-js";
 
 import { useRouter } from "next/router";
 
+import { database } from "@/hooks/database"
 const supabase_url = process.env.NEXT_PUBLIC_SUPABASE_PROJECT_URL as string;
 const supabase_key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string;
 
-import { Checks } from "@/hooks/check"
-const crypto = require('crypto');
-const supabase = createClient(supabase_url, supabase_key);
+export const supabase = createClient(supabase_url, supabase_key);
+const { insertUser, insertProfile } = database()
 
-const insertUser = async (email: string, password: string, userdata: { [key: string]: any }) => {
-    const salt = crypto.randomBytes(16).toString('hex');
-    const hash = crypto.pbkdf2Sync(password, salt, 10000, 512, 'sha512').toString('hex')
-    const { data, error } = await supabase
-        .from('user')
-        .insert([
-            {
-                user_id: userdata["user"]["id"],
-                email: email,
-                password_hash: hash,
-                salt: salt,
-                created_at: userdata["user"]["created_at"],
-                last_login: userdata["user"]["identities"]["last_sign_in_at"],
-                updated_at: userdata["user"]["updated_at"],
-            },
-        ]);
 
-    if (error) {
-        console.error(error);
-        return;
-        //errorコードの処理を
-    }
-};
 
 const updateDob = async (id: number, dob: string) => {
     const { data, error } = await supabase
-        .from('user')
+        .from('users')
         .update({ dob: dob })
-        .eq('id', id)
+        .eq('user_id', id)
 };
 
-
-const insertProfile = async (id: number, user_id: string, display_name: string, description: string, created_at: string, updated_at: string) => {
+const getActivated = async (id: string) => {
     const { data, error } = await supabase
-        .from('profile')
-        .insert([
-            {
-                id: id,
-                user_id: user_id,
-                display_name: display_name,
-                description: description,
-                created_at: created_at,
-                updated_at: updated_at,
-            },
-        ]);
-};
-
-const getActivated = async (id: number) => {
-    const { data, error } = await supabase
-        .from('user')
+        .from('users')
         .select('is_activated')
-        .eq('id', id)
-    return data && data[0] ? data[0]["is_activated"] : false;
+        .eq('user_id', id)
+    return data?.[0]?.is_activated ?? false;
 };
+
+const setActivated = async(user_id: number) => {
+    const { data, error } = await supabase
+        .from('users')
+        .update({ is_activated: true })
+        .eq('user_id', user_id);
+}
 
 
 
@@ -106,9 +75,9 @@ export const useAuth = () => {
         }
     };
 
-    const getActivationStatus = async (id: number) => {
+    const getActivationStatus = async (userdata: { [key: string]: any }) => {
         try {
-            await getActivated(id)
+            return await getActivated(userdata.user.id)
         } catch (error) {
             console.error(error)
         }
@@ -131,12 +100,20 @@ export const useAuth = () => {
 
     const loginWithPassword = async (email: string, password: string): Promise<void> => {
         try {
-            console.log(email)
             const { data, error } = await supabase.auth.signInWithPassword({
                 email: email,
                 password: password
             })
-            console.log({ data, error })
+            const is_activated = await getActivationStatus(data)
+            if (!error) {
+                if (!is_activated) {
+                await router.push(`/setup?id=${encodeURIComponent(String(is_activated))}`);
+                }
+                else {
+                    await router.push(`/search?id=${encodeURIComponent(String(data.session.access_token))}`)
+                }
+            }  else {
+            }
         } catch (error) {
             console.error(error)
         }
@@ -148,7 +125,6 @@ export const useAuth = () => {
                 type: "signup",
                 email: email,
             });
-            console.log({ data, error });
         }
         catch (error) {
             console.error(error);
