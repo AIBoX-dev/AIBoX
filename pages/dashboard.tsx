@@ -50,7 +50,8 @@ export default function Dashboard() {
                                     </Card.Header>
                                     <Card.Body>
                                         <Row gap={1}>
-                                            <Card variant="bordered" onClick={handleAddProfile} css={{ "border": "thin", "borderColor": "#000000", "borderStyle": "dashed", width: "200px", height: "300px" }}>
+                                            <div onClick={handleAddProfile}>
+                                            <Card variant="bordered" onPress={handleAddProfile} css={{ "border": "thin", "borderColor": "#000000", "borderStyle": "dashed", width: "200px", height: "300px" }}>
                                                 <Card.Body>
                                                     <Plus style={{ width: "60%", height: "60%", marginLeft: "20%", marginTop: "20%", strokeWidth: "0.5px" }} />
                                                     <Text weight={"light"} size={20} style={{ textAlign: "center" }}>
@@ -58,6 +59,7 @@ export default function Dashboard() {
                                                     </Text>
                                                 </Card.Body>
                                             </Card>
+                                            </div>
                                         </Row>
                                     </Card.Body>
                                 </Card>
@@ -75,10 +77,7 @@ export default function Dashboard() {
                     >
                         <Modal.Header>
                             <Text id="modal-title" size={18}>
-                                Welcome to
-                                <Text b size={18}>
-                                    NextUI
-                                </Text>
+                                Create new profile
                             </Text>
                         </Modal.Header>
                         <Modal.Body>
@@ -88,7 +87,7 @@ export default function Dashboard() {
                                 fullWidth
                                 color="primary"
                                 size="lg"
-                                placeholder="Email"
+                                placeholder="user id"
                             />
                             <Input
                                 clearable
@@ -96,21 +95,15 @@ export default function Dashboard() {
                                 fullWidth
                                 color="primary"
                                 size="lg"
-                                placeholder="Password"
+                                placeholder="display name"
                             />
-                            <Row justify="space-between">
-                                <Checkbox>
-                                    <Text size={14}>Remember me</Text>
-                                </Checkbox>
-                                <Text size={14}>Forgot password?</Text>
-                            </Row>
                         </Modal.Body>
                         <Modal.Footer>
                             <Button auto flat color="error" onPress={closer}>
                                 Close
                             </Button>
                             <Button auto onPress={closer}>
-                                Sign in
+                                Create
                             </Button>
                         </Modal.Footer>
                     </Modal>
