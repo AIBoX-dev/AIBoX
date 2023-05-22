@@ -3,16 +3,28 @@ import { useRouter } from "next/router";
 
 import { useTranslation } from "next-i18next";
 
-import React from "react";
+import React, {useEffect} from "react";
 import { AcmeLogo } from "./header/AcmeLogo";
 import { Layout } from "./header/Layout";
+
+import { useCookies } from "@/hooks/cookie"
+import { database } from "@/hooks/database"
 
 interface Props { }
 
 export default function Header(props: Props) {
     const router = useRouter();
     const { t } = useTranslation("common");
-    const [logged, setLogged] = React.useState(true);
+    const { checkLoginStatus, logged } = useCookies()
+
+
+    useEffect(() => {
+        checkLoginStatus()
+    })
+
+    if (logged) {
+
+    }
     return (
         <Layout>
             <Navbar isBordered variant="floating">
@@ -108,7 +120,7 @@ export default function Header(props: Props) {
                 ) : (
                     <Navbar.Content>
                         <Navbar.Link color="primary" href="/login">
-                            {t("Header.logiSn")}
+                            {t("Header.login")}
                         </Navbar.Link>
                         <Navbar.Item>
                             <Button

@@ -1,8 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
-
 import { useRouter } from "next/router";
-
 import { database } from "@/hooks/database"
+
 const supabase_url = process.env.NEXT_PUBLIC_SUPABASE_PROJECT_URL as string;
 const supabase_key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string;
 
@@ -98,7 +97,7 @@ export const useAuth = () => {
     };
 
 
-    const loginWithPassword = async (email: string, password: string): Promise<void> => {
+    const loginWithPassword = async (email: string, password: string, login_remember: boolean): Promise<void> => {
         try {
             const { data, error } = await supabase.auth.signInWithPassword({
                 email: email,
@@ -107,9 +106,13 @@ export const useAuth = () => {
             const is_activated = await getActivationStatus(data)
             if (!error) {
                 if (!is_activated) {
-                await router.push(`/setup?id=${encodeURIComponent(String(is_activated))}`);
+                // await router.push(`/setup?id=${encodeURIComponent(String(is_activated))}`);
                 }
                 else {
+                    if (login_remember) {
+                        document.cookie = 'access_token=${data.session.access_token}; '//expires=
+                        localStorage.setItem('user', JSON.stringify(data))
+                    }
                     await router.push(`/search?id=${encodeURIComponent(String(data.session.access_token))}`)
                 }
             }  else {
