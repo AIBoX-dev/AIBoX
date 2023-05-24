@@ -14,7 +14,7 @@ export function Checks() {
         password_status: true,
         confirm_status: true,
         tos_status: false,
-        login_remember: true,
+        login_remember: false,
         // password_status: okay -> true
         pw_length: true,
         pw_include_symbol: true

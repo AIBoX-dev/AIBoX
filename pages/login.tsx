@@ -132,10 +132,10 @@ export default function Login() {
                         <Spacer y={1} />
                         <Button
                             onPress={() => {
-
                                 loginWithPassword(
                                     userdata.email,
-                                    userdata.password
+                                    userdata.password,
+                                    userdata.login_remember
                                 )
                             }
                             }

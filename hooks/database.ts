@@ -42,11 +42,20 @@ export const database = () => {
             ]);
     };
     
+    const getUserProfile = async () => {
+        const { data: profile, error } = await supabase
+        .from('profile')
+        .select('display_name')
+        //.eq('user_id', id)
+        return profile
+    }
+
     const changePassword = async (id: number, user_id: string, password: string) => {
         
     }
     return {
         insertUser,
-        insertProfile
+        insertProfile,
+        getUserProfile
     };
 }
