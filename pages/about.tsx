@@ -17,8 +17,8 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
 import { Mail, Key } from "react-feather";
 import Header from "@/components/Header";
+import { useAuth } from "@/hooks/auth";
 import { Checks } from "@/hooks/check";
-import { useAuth } from "@/hooks/supabase";
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
     props: {

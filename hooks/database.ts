@@ -50,12 +50,37 @@ export const database = () => {
         return profile
     }
 
+    const updateDob = async (id: number, dob: string) => {
+        const { data, error } = await supabase
+        .from('users')
+        .update({ dob: dob })
+        .eq('user_id', id)
+    };
+
+    const getActivated = async (id: string) => {
+        const { data, error } = await supabase
+        .from('users')
+        .select('is_activated')
+        .eq('user_id', id)
+    return data?.[0]?.is_activated ?? false;
+    };
+
+    const setActivated = async(user_id: number) => {
+        const { data, error } = await supabase
+        .from('users')
+        .update({ is_activated: true })
+        .eq('user_id', user_id);
+    }
+
     const changePassword = async (id: number, user_id: string, password: string) => {
         
     }
     return {
         insertUser,
         insertProfile,
-        getUserProfile
+        getUserProfile,
+        updateDob,
+        getActivated,
+        setActivated
     };
 }

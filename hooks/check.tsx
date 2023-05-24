@@ -1,6 +1,6 @@
 import {promises} from "dns";
 import { useState, useEffect } from "react";
-import { useAuth } from "@/hooks/supabase";
+import { useAuth } from "@/hooks/auth";
 
 
 export function Checks() {

@@ -7,6 +7,7 @@ import React, {useEffect} from "react";
 import { AcmeLogo } from "./header/AcmeLogo";
 import { Layout } from "./header/Layout";
 
+import { useAuth } from "@/hooks/auth";
 import { useCookies } from "@/hooks/cookie"
 import { database } from "@/hooks/database"
 
@@ -15,6 +16,7 @@ interface Props { }
 export default function Header(props: Props) {
     const router = useRouter();
     const { t } = useTranslation("common");
+    const { logoutUser } = useAuth()
     const { checkLoginStatus, logged } = useCookies()
 
 
@@ -105,7 +107,9 @@ export default function Header(props: Props) {
                                     zoey@example.com
                                 </Text>
                             </Dropdown.Item>
-                            <Dropdown.Item key="configurations" withDivider>Dashboard</Dropdown.Item>
+                            <Dropdown.Item key="configurations" withDivider>
+                                <Link href="/dashboard">Dashboard</Link>
+                            </Dropdown.Item>
                             <Dropdown.Item key="settings" >
                                 Settings
                             </Dropdown.Item>
@@ -113,7 +117,7 @@ export default function Header(props: Props) {
                                 Help & Feedback
                             </Dropdown.Item>
                             <Dropdown.Item key="logout" color="error" withDivider>
-                                Log Out
+                                <a onClick={logoutUser}>Log Out</a>
                             </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
