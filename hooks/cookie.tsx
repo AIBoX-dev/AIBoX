@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import { supabase } from '@/hooks/supabase'
 
 export function useCookies() {
     const [logged, setLogged] = useState(false)
@@ -7,8 +6,7 @@ export function useCookies() {
     const checkLoginStatus = () => {
         const data = localStorage.getItem('data')
         const accessToekn = getCookie('access_token')
-        setLogged(accessToekn ? true : false);
-        
+        setLogged(!!accessToekn);
     }
     
     const getCookie = ( name: string ) => {

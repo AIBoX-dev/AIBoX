@@ -7,7 +7,7 @@ import React from 'react';
 
 import { AtSign, Eye, Calendar } from 'react-feather';
 import Header from '@/components/Header';
-import { useAuth } from '@/hooks/supabase';
+import { useAuth } from "@/hooks/auth";
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
     props: {
