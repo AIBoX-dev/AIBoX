@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 import { useTranslation } from "next-i18next";
 
-import React, {useEffect} from "react";
+import React, { useEffect, useState } from "react";
 import { AcmeLogo } from "./header/AcmeLogo";
 import { Layout } from "./header/Layout";
 
@@ -14,18 +14,23 @@ import { database } from "@/hooks/database"
 interface Props { }
 
 export default function Header(props: Props) {
+    const [sessionData, setSessionData] = useState({
+        logged: false,
+        displayname: "",
+        icon_url: "",
+        account_id: "",
+        email: ""
+    })
     const router = useRouter();
     const { t } = useTranslation("common");
-    const { logoutUser } = useAuth()
-    const { checkLoginStatus, logged } = useCookies()
+    const { logoutUser, getSessionUser } = useAuth()
 
 
     useEffect(() => {
-        checkLoginStatus()
-    })
+        getSessionUser(sessionData, setSessionData)
+    }, [])
 
-    if (logged) {
-
+    if (sessionData.logged) {
     }
     return (
         <Layout>
@@ -88,14 +93,14 @@ export default function Header(props: Props) {
                         </Link>
                     </Navbar.CollapseItem>
                 </Navbar.Collapse>
-                {logged ? (
+                {sessionData.logged ? (
                     <Dropdown placement="bottom-left">
                         <Dropdown.Trigger>
                             <User
-                                src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-                                name="Ariana Wattson"
+                                src={sessionData.icon_url}
+                                name={sessionData.displayname}
                             >
-                                <User.Link href="https://nextui.org/">@watsonari</User.Link>
+                                <User.Link href="https://nextui.org/">@{sessionData.account_id}</User.Link>
                             </User>
                         </Dropdown.Trigger>
                         <Dropdown.Menu color="secondary" aria-label="Avatar Actions">
@@ -104,7 +109,7 @@ export default function Header(props: Props) {
                                     Signed in as
                                 </Text>
                                 <Text b color="inherit" css={{ d: "flex" }}>
-                                    zoey@example.com
+                                    {sessionData.email}
                                 </Text>
                             </Dropdown.Item>
                             <Dropdown.Item key="configurations" withDivider>

@@ -1,7 +1,8 @@
 import { useRouter } from "next/router";
+import { useState } from 'react'
 import { database } from "@/hooks/database"
 import { supabase } from "@/hooks/supabase";
-const { insertUser, insertProfile, updateDob, getActivated } = database()
+const { insertUser, insertProfile, updateDob, getActivated, getUserProfile } = database()
 
 export const useAuth = () => {
     const router = useRouter();
@@ -108,6 +109,22 @@ export const useAuth = () => {
         }
     };
 
+    const getSessionUser = async (sessionData:any, setSessionData: any) => {
+        const { data } = await supabase.auth.getSession()
+        if (data.session !== null) {
+            const { data: { user } } = await supabase.auth.getUser()
+
+            const userdata = await getUserProfile(user.id)
+            await setSessionData({...sessionData,
+                logged: true,
+                displayname: userdata[0].display_name,
+                icon_url: userdata[0].icon_url,
+                account_id: userdata[0].account_id,
+                email: user.email
+            })
+        }
+    }
+
 
 
 
@@ -118,6 +135,7 @@ export const useAuth = () => {
         resendVerificationEmail,
         createProfile,
         getActivationStatus,
-        logoutUser
+        logoutUser,
+        getSessionUser
     };
 }
