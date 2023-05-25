@@ -11,11 +11,11 @@ import Header from '@/components/Header';
 
 
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => ({
-    props: {
-        ...(await serverSideTranslations(locale!, ["common"])),
-    },
-});
+// export const getStaticProps: GetStaticProps = async ({ locale }) => ({
+//     props: {
+//         ...(await serverSideTranslations(locale!, ["common"])),
+//     },
+// });
 
 export default function Creator() {
     const { t } = useTranslation("common");
