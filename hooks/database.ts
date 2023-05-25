@@ -27,19 +27,24 @@ export const database = () => {
         }
     };
     
-    const insertProfile = async (id: number, user_id: string, display_name: string, description: string, created_at: string, updated_at: string) => {
+    const insertProfile = async (uid: string, account_id: string, display_name: string, description: string, created_at: string, updated_at: string) => {
+        const id = await getID(uid)
+        if (!id) return
         const { data, error } = await supabase
         .from('profile')
         .insert([
             {
-                id: id,
-                user_id: user_id,
+                id: id[0].id,
+                user_id: uid,
+                account_id: account_id,
                 display_name: display_name,
                 description: description,
                 created_at: created_at,
                 updated_at: updated_at,
             },
             ]);
+
+        console.log({data, error})
     };
     
     const getUserProfile = async (uid: string) => {
@@ -50,7 +55,15 @@ export const database = () => {
         return profile
     }
 
-    const updateDob = async (id: number, dob: string) => {
+    const getID = async (uid: string) => {
+        const { data: id, error } = await supabase
+        .from('users')
+        .select('id')
+        .eq('user_id', uid)
+        return id
+    }
+
+    const updateDob = async (id: string, dob: string) => {
         const { data, error } = await supabase
         .from('users')
         .update({ dob: dob })
