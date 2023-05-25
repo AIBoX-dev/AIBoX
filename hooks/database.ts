@@ -42,11 +42,11 @@ export const database = () => {
             ]);
     };
     
-    const getUserProfile = async () => {
+    const getUserProfile = async (uid: string) => {
         const { data: profile, error } = await supabase
         .from('profile')
-        .select('display_name')
-        //.eq('user_id', id)
+        .select()
+        .eq('user_id', uid)
         return profile
     }
 
