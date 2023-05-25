@@ -88,7 +88,7 @@ export const useAuth = () => {
                         document.cookie = 'access_token=${data.session.access_token}; '//expires=
                         localStorage.setItem('user', JSON.stringify(data))
                     }
-                    await router.push(`/search?id=${encodeURIComponent(String(data.session.access_token))}`)
+                    await router.push(`/search?id=${encodeURIComponent(String(data.session?.access_token))}`)
                 }
             }  else {
             }
@@ -113,8 +113,9 @@ export const useAuth = () => {
         const { data } = await supabase.auth.getSession()
         if (data.session !== null) {
             const { data: { user } } = await supabase.auth.getUser()
-
+            if (!user) return
             const userdata = await getUserProfile(user.id)
+            if (!userdata) return
             await setSessionData({...sessionData,
                 logged: true,
                 displayname: userdata[0].display_name,
