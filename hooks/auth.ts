@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-import { useState } from 'react'
 import { database } from "@/hooks/database"
 import { supabase } from "@/hooks/supabase";
 const { insertUser, insertProfile, updateDob, getActivated, getUserProfile } = database()
@@ -59,13 +58,13 @@ export const useAuth = () => {
 
 
 
-    const createProfile = async (id: number, user_id: string, display_name: string, dob:string) => {
+    const createProfile = async (uid: string, account_id: string, display_name: string, dob:string) => {
         try {
             const description = "Hello!"
             const created_at = new Date().toISOString()
             const updated_at = new Date().toISOString()
-            await insertProfile(id, user_id, display_name, description, created_at, updated_at)
-            await updateDob(id, dob)
+            await insertProfile(uid, account_id, display_name, description, created_at, updated_at)
+            await updateDob(uid, dob)
         } catch (error) {
             console.error(error)
         }
@@ -81,7 +80,8 @@ export const useAuth = () => {
             const is_activated = await getActivationStatus(data)
             if (!error) {
                 if (!is_activated) {
-                    // await router.push(`/setup?id=${encodeURIComponent(String(is_activated))}`);
+                    console.log(data.session?.user.id)
+                    await router.push(`/setup?id=${encodeURIComponent(String(data.session?.user.id))}`);
                 }
                 else {
                     if (login_remember) {
@@ -109,8 +109,18 @@ export const useAuth = () => {
         }
     };
 
+    const getSession = async () => {
+        return await supabase.auth.getSession()
+    }
+
+    const confirmSession = async (user_id: string): Promise<boolean> => {
+        const { data } = await getSession();
+        console.log(data)
+        return data.session !== null && user_id === data.session?.user.id;
+    }
+
     const getSessionUser = async (sessionData: object, setSessionData: Function) => {
-        const { data } = await supabase.auth.getSession()
+        const { data } = await getSession();
         if (data.session !== null) {
             const { data: { user } } = await supabase.auth.getUser()
             if (!user) return
@@ -137,6 +147,7 @@ export const useAuth = () => {
         createProfile,
         getActivationStatus,
         logoutUser,
+        confirmSession,
         getSessionUser
     };
 }
