@@ -109,7 +109,7 @@ export const useAuth = () => {
         }
     };
 
-    const getSessionUser = async (sessionData:any, setSessionData: any) => {
+    const getSessionUser = async (sessionData: object, setSessionData: Function) => {
         const { data } = await supabase.auth.getSession()
         if (data.session !== null) {
             const { data: { user } } = await supabase.auth.getUser()
