@@ -6,6 +6,11 @@
         "slogan2": "AI unleashes your creativity.",
         "slogan3": "Share your work with the world"
     },
+    "About": {
+        "creater": "AIクリエイターのための",
+        "patron": "支援サービス",
+        "aibox": "「AIBoX」"
+    },
     "Login": {
         "login": "Login",
         "email": "Email",
@@ -32,5 +37,35 @@
         "login": "Login",
         "signup": "Sign Up",
         "google": "Sign Up with Google"
+    },
+    "Check": {
+        "wrongemail": "メールアドレスの形式が間違っています",
+        "password_length": "パスワードは12文字以上で設定してください",
+        "confirm_notmatch": "パスワードが一致しません",
+        "pw_length": "パスワードは八文字以上で設定してください",
+        "pw_include_symbol": "パスワードには記号を入れてください"
+    },
+    "Setup": {
+        "setup": "セットアップ",
+        "user_id": "ユーザーID",
+        "display_name": "表示名",
+        "dob": "生年月日",
+        "start": "Start your journey"
+    },
+    "Dashboard": {
+        "dashboard": "ダッシュボード",
+        "profile": "プロフィール",
+        "assets": "投稿",
+        "plans": "支援プラン",
+        "packages": "パッケージ",
+        "earnings": "収益",
+        "addProfile": "プロフィールを追加"
+    },
+    "MailSent": {
+        "mailsent": "登録メールを送信完了",
+        "mailsentto": "登録メールを {{ email }} に送信しました",
+        "resend": "再送信する",
+        "back": "戻る",
+        "resent": "再送信完了"
     }
 }
