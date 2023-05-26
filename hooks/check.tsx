@@ -26,7 +26,7 @@ export function Checks() {
     const CheckEmail = () => {
         setUserdata({
             ...userdata,
-            email_status: Boolean(
+            email_status: !Boolean(
                 userdata.email && !userdata.email.match(regex_email)
             ),
         });
@@ -52,7 +52,7 @@ export function Checks() {
         if (
             userdata.email &&
             userdata.password &&
-            !userdata.email_status &&
+            userdata.email_status &&
             userdata.confirm_status &&
             userdata.tos_status
         ) {

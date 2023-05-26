@@ -83,7 +83,7 @@ export default function Signup() {
                                 })
                             }
                         />
-                        {userdata.email_status && (
+                        {!userdata.email_status && (
                             <Text
                                 color="error"
                                 size={14}
