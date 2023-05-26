@@ -219,7 +219,7 @@ export default function Signup() {
                         <Spacer y={1} />
                         <Button
                             onPress={() =>
-                                CheckrRequirements()
+                                handleSignup()
                             }
                             bordered
                             color="gradient"
