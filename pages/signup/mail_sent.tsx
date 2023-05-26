@@ -1,4 +1,13 @@
-import { Card, Container, Text, Button, Spacer, Input, Row, Loading } from "@nextui-org/react";
+import {
+    Card,
+    Container,
+    Text,
+    Button,
+    Spacer,
+    Input,
+    Row,
+    Loading,
+} from "@nextui-org/react";
 
 import { GetStaticProps } from "next";
 
@@ -10,15 +19,11 @@ import React, { useEffect } from "react";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { useAuth } from "@/hooks/auth";
-import { Checks } from "@/hooks/check"
-
+import { Checks } from "@/hooks/check";
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
     props: {
-        ...(await serverSideTranslations(
-            locale!,
-            ["common"],
-        )),
+        ...(await serverSideTranslations(locale!, ["common"])),
     },
 });
 
@@ -26,30 +31,29 @@ export default function MailSent() {
     const { t } = useTranslation("common");
     const router = useRouter();
     const { email: emailParam } = router.query;
-    const { resendVerificationEmail } = useAuth()
-    const [loading, setLoading] = React.useState(false)
-    const [resent, setResent] = React.useState(false)
-    const [is_resendable, setResendable] = React.useState(false)
+    const { resendVerificationEmail } = useAuth();
+    const [loading, setLoading] = React.useState(false);
+    const [resent, setResent] = React.useState(false);
+    const [is_resendable, setResendable] = React.useState(false);
 
     const handleResend = () => {
-        setResendable(false)
-        setResent(false)
-        resendVerificationEmail(emailParam as string)
-        setResent(true)
-        setLoading(false)
+        setResendable(false);
+        setResent(false);
+        resendVerificationEmail(emailParam as string);
+        setResent(true);
+        setLoading(false);
         // wait 30 seconds before allowing another resend
         setTimeout(() => {
-            setResendable(true)
-        }
-        , 30000)
-    }
+            setResendable(true);
+        }, 30000);
+    };
     useEffect(() => {
-        const regex_email = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+        const regex_email =
+            /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
         if (!String(emailParam).match(regex_email)) {
-            router.push('/signup')
+            router.push("/signup");
         }
-    })
-
+    });
 
     return (
         <>
@@ -90,14 +94,30 @@ export default function MailSent() {
                                 mb: "20px",
                             }}
                         >
-                            {resent ? t("MailSent.resent"): ""}
+                            {resent ? t("MailSent.resent") : ""}
                         </Text>
                         <Spacer y={1} />
-                        <Button bordered color="gradient" auto onClick={() => {setLoading(true)}} disabled={is_resendable} onPress={handleResend}>
+                        <Button
+                            bordered
+                            color="gradient"
+                            auto
+                            onClick={() => {
+                                setLoading(true);
+                            }}
+                            disabled={is_resendable}
+                            onPress={handleResend}
+                        >
                             {loading ? <Loading /> : t("MailSent.resend")}
                         </Button>
                         <Spacer y={1} />
-                        <Button bordered color="gradient" auto onClick={() => {location.href = "/signup"}}>
+                        <Button
+                            bordered
+                            color="gradient"
+                            auto
+                            onClick={() => {
+                                location.href = "/signup";
+                            }}
+                        >
                             {t("MailSent.back")}
                         </Button>
                         <Spacer y={1} />
@@ -106,5 +126,5 @@ export default function MailSent() {
                 <Footer />
             </div>
         </>
-        );
-    }
+    );
+}
