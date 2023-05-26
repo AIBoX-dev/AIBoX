@@ -8,7 +8,7 @@ import {
     Row,
     Checkbox,
     Container,
-    Loading
+    Loading,
 } from "@nextui-org/react";
 import { GetStaticProps } from "next";
 import Image from "next/image";
@@ -135,7 +135,9 @@ export default function Login() {
                         />
                         <Spacer y={1} />
                         <Button
-                            onClick={() => {setLoading(true)}}
+                            onClick={() => {
+                                setLoading(true);
+                            }}
                             onPress={() => {
                                 loginWithPassword(
                                     userdata.email,
@@ -147,8 +149,12 @@ export default function Login() {
                             color="gradient"
                             auto
                             disabled={loading}
-                            >
-                            {loading ? <Loading type="points-opacity"/> : t("Login.login")}
+                        >
+                            {loading ? (
+                                <Loading type="points-opacity" />
+                            ) : (
+                                t("Login.login")
+                            )}
                         </Button>
                         <Spacer y={1} />
                         <Button
