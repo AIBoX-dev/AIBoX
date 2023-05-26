@@ -100,7 +100,9 @@ export default function Header(props: Props) {
                                 name={sessionData.displayname}
                             >
                                 <User.Link href="https://nextui.org/">
-                                    {sessionData.account_id ? `@${sessionData.account_id}` : null}
+                                    {sessionData.account_id
+                                        ? `@${sessionData.account_id}`
+                                        : null}
                                 </User.Link>
                             </User>
                         </Dropdown.Trigger>
