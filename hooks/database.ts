@@ -78,7 +78,7 @@ export const database = () => {
     return data?.[0]?.is_activated ?? false;
     };
 
-    const setActivated = async(user_id: number) => {
+    const setActivated = async(user_id: string) => {
         const { data, error } = await supabase
         .from('users')
         .update({ is_activated: true })

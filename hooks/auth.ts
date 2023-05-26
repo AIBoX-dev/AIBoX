@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { database } from "@/hooks/database"
 import { supabase } from "@/hooks/supabase";
-const { insertUser, insertProfile, updateDob, getActivated, getUserProfile } = database()
+const { insertUser, insertProfile, updateDob, getActivated, getUserProfile, setActivated } = database()
 
 export const useAuth = () => {
     const router = useRouter();
@@ -66,6 +66,7 @@ export const useAuth = () => {
             const updated_at = new Date().toISOString()
             await insertProfile(uid, account_id, display_name, description, created_at, updated_at)
             await updateDob(uid, dob)
+            await setActivated(uid)
         } catch (error) {
             console.error(error)
         }
