@@ -139,7 +139,7 @@ export default function Header(props: Props) {
                     </Dropdown>
                 ) : (
                     <Navbar.Content>
-                        <Navbar.Link color="primary" href="/login">
+                        <Navbar.Link color="error" href="/login">
                             {t("Header.login")}
                         </Navbar.Link>
                         <Navbar.Item>
