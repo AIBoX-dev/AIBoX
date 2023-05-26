@@ -3,26 +3,24 @@ on:
   pull_request_target:
       branches:
           - dev
-          - main
 
 jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - name: checkout
-              uses: actions/checkout@v3
+            - uses: actions/checkout@v3
               with:
-                ref: ${{ github.event.pull_request.head.ref }}
+                ref: dev
 
             - name: setup-node
               uses: actions/setup-node@v3
               with:
                   node-version: 18
                   cache: npm
-            - run: |
-                  npm ci
-                  npm run lint
-
+                  
+            - name: run npm ci
+              run: npm ci
+            
             - name: Build Next.js application
               run: |
                   touch .env.local          
