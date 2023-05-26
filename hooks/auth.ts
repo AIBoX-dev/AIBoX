@@ -53,6 +53,7 @@ export const useAuth = () => {
     const logoutUser = async () => {
         const { error } = await supabase.auth.signOut()
         document.cookie="access_token=;"
+        await router.push("/")
 
     }
 
