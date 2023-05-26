@@ -8,8 +8,8 @@ import {
     Row,
     Checkbox,
     Container,
-    Loading
-} from '@nextui-org/react';
+    Loading,
+} from "@nextui-org/react";
 import { GetStaticProps } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -21,7 +21,6 @@ import { Mail, Key, AlertTriangle } from "react-feather";
 import Header from "@/components/Header";
 import { useAuth } from "@/hooks/auth";
 import { Checks } from "@/hooks/check";
-
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
     props: {
@@ -37,10 +36,12 @@ export default function Signup() {
     const [loading, setLoading] = React.useState(false);
     const handleSignup = async () => {
         if (CheckrRequirements()) {
-             await createUser(userdata.email, userdata.password)
-            await router.push(`/signup/mail_sent?email=${encodeURIComponent(userdata.email)}`);
+            await createUser(userdata.email, userdata.password);
+            await router.push(
+                `/signup/mail_sent?email=${encodeURIComponent(userdata.email)}`
+            );
         } else {
-            setLoading(false)
+            setLoading(false);
         }
     };
 
@@ -162,7 +163,7 @@ export default function Signup() {
                             size="lg"
                             placeholder={t("Signup.confirm_password")}
                             contentLeft={<Key strokeDasharray={4} />}
-                            css={{ mb: '6px' }}
+                            css={{ mb: "6px" }}
                             aria-labelledby="password"
                             type="password"
                             value={userdata.confirm_password}
@@ -208,7 +209,9 @@ export default function Signup() {
                         </Checkbox>
                         <Spacer y={1} />
                         <Turnstile
-                            siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || ""}
+                            siteKey={
+                                process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || ""
+                            }
                             // sitekey=1x00000000000000000000AA
                             className=""
                             options={{
@@ -218,9 +221,9 @@ export default function Signup() {
                         />
                         <Spacer y={1} />
                         <Button
-                            onPress={() =>
-                                handleSignup()
-                            }
+
+
+                            onPress={() => CheckrRequirements()}
                             bordered
                             color="gradient"
                             auto
