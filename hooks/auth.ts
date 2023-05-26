@@ -163,10 +163,10 @@ export const useAuth = () => {
             await setSessionData({
                 ...sessionData,
                 logged: true,
-                displayname: userdata[0].display_name,
-                icon_url: userdata[0].icon_url,
-                account_id: userdata[0].account_id,
-                email: user.email,
+                displayname: userdata[0]?.display_name ?? null,
+                icon_url: userdata[0]?.icon_url ?? null,
+                account_id: userdata[0]?.account_id ?? null,
+                email: user.email ?? null,
             });
         }
     };
