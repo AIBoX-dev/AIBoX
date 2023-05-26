@@ -6,7 +6,8 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint --fix"
+        "lint": "next lint --fix",
+        "format": "prettier --write --ignore-path .gitignore ./**/*.{js,jsx,ts,tsx,json}"
     },
     "husky": {
         "hooks": {

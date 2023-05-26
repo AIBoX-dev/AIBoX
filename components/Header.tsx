@@ -8,10 +8,10 @@ import { AcmeLogo } from "./header/AcmeLogo";
 import { Layout } from "./header/Layout";
 
 import { useAuth } from "@/hooks/auth";
-import { useCookies } from "@/hooks/cookie"
-import { database } from "@/hooks/database"
+import { useCookies } from "@/hooks/cookie";
+import { database } from "@/hooks/database";
 
-interface Props { }
+interface Props {}
 
 export default function Header(props: Props) {
     const [sessionData, setSessionData] = useState({
@@ -19,16 +19,15 @@ export default function Header(props: Props) {
         displayname: "",
         icon_url: "",
         account_id: "",
-        email: ""
-    })
+        email: "",
+    });
     const router = useRouter();
     const { t } = useTranslation("common");
-    const { logoutUser, getSessionUser } = useAuth()
-
+    const { logoutUser, getSessionUser } = useAuth();
 
     useEffect(() => {
-        getSessionUser(sessionData, setSessionData)
-    }, [])
+        getSessionUser(sessionData, setSessionData);
+    }, []);
 
     if (sessionData.logged) {
     }
@@ -100,11 +99,19 @@ export default function Header(props: Props) {
                                 src={sessionData.icon_url}
                                 name={sessionData.displayname}
                             >
-                                <User.Link href="https://nextui.org/">@{sessionData.account_id}</User.Link>
+                                <User.Link href="https://nextui.org/">
+                                    @{sessionData.account_id}
+                                </User.Link>
                             </User>
                         </Dropdown.Trigger>
-                        <Dropdown.Menu color="secondary" aria-label="Avatar Actions">
-                            <Dropdown.Item key="profile" css={{ height: "$18" }} >
+                        <Dropdown.Menu
+                            color="secondary"
+                            aria-label="Avatar Actions"
+                        >
+                            <Dropdown.Item
+                                key="profile"
+                                css={{ height: "$18" }}
+                            >
                                 <Text b color="inherit" css={{ d: "flex" }}>
                                     Signed in as
                                 </Text>
@@ -115,20 +122,24 @@ export default function Header(props: Props) {
                             <Dropdown.Item key="configurations" withDivider>
                                 <Link href="/dashboard">Dashboard</Link>
                             </Dropdown.Item>
-                            <Dropdown.Item key="settings" >
+                            <Dropdown.Item key="settings">
                                 Settings
                             </Dropdown.Item>
                             <Dropdown.Item key="help_and_feedback" withDivider>
                                 Help & Feedback
                             </Dropdown.Item>
-                            <Dropdown.Item key="logout" color="error" withDivider>
+                            <Dropdown.Item
+                                key="logout"
+                                color="error"
+                                withDivider
+                            >
                                 <a onClick={logoutUser}>Log Out</a>
                             </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                 ) : (
                     <Navbar.Content>
-                        <Navbar.Link color="primary" href="/login">
+                        <Navbar.Link color="error" href="/login">
                             {t("Header.login")}
                         </Navbar.Link>
                         <Navbar.Item>
