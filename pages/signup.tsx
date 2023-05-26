@@ -221,7 +221,9 @@ export default function Signup() {
                         />
                         <Spacer y={1} />
                         <Button
-                            onPress={() => CheckrRequirements()}
+                            onPress={() =>
+                                handleSignup()
+                            }
                             bordered
                             color="gradient"
                             auto
