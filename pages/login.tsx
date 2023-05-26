@@ -121,7 +121,9 @@ export default function Login() {
                         </Row>
                         <Spacer y={1} />
                         <Turnstile
-                            siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || ""}
+                            siteKey={
+                                process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || ""
+                            }
                             // sitekey=1x00000000000000000000AA
                             className=""
                             options={{
@@ -136,9 +138,8 @@ export default function Login() {
                                     userdata.email,
                                     userdata.password,
                                     userdata.login_remember
-                                )
-                            }
-                            }
+                                );
+                            }}
                             bordered
                             color="gradient"
                             auto
