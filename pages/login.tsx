@@ -70,7 +70,7 @@ export default function Login() {
                                 })
                             }
                         />
-                        {userdata.email_status && (
+                        {!userdata.email_status && (
                             <Text
                                 color="error"
                                 size={14}
