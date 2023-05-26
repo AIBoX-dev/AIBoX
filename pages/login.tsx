@@ -8,6 +8,7 @@ import {
     Row,
     Checkbox,
     Container,
+    Loading
 } from "@nextui-org/react";
 import { GetStaticProps } from "next";
 import Image from "next/image";
@@ -29,6 +30,7 @@ export default function Login() {
     const { t } = useTranslation("common");
     const { signInWithGoogle, loginWithPassword } = useAuth();
     const { userdata, setUserdata } = Checks();
+    const [loading, setLoading] = React.useState(false);
     return (
         <>
             <Header />
@@ -133,6 +135,7 @@ export default function Login() {
                         />
                         <Spacer y={1} />
                         <Button
+                            onClick={() => {setLoading(true)}}
                             onPress={() => {
                                 loginWithPassword(
                                     userdata.email,
@@ -143,8 +146,9 @@ export default function Login() {
                             bordered
                             color="gradient"
                             auto
-                        >
-                            {t("Login.login")}
+                            disabled={loading}
+                            >
+                            {loading ? <Loading type="points-opacity"/> : t("Login.login")}
                         </Button>
                         <Spacer y={1} />
                         <Button

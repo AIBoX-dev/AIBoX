@@ -221,12 +221,14 @@ export default function Signup() {
                         />
                         <Spacer y={1} />
                         <Button
+                            onClick={() => {setLoading(true)}}
                             onPress={() => handleSignup()}
                             bordered
                             color="gradient"
                             auto
+                            disabled={loading}
                         >
-                            {t("Signup.start")}
+                            {loading ? <Loading type="points-opacity"/> : t("Signup.start")}
                         </Button>
                         <Spacer y={1} />
                         <Button
