@@ -227,3 +227,23 @@
     transform: rotate(0deg);
   }
 }
+
+@keyframes animate_button {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated_button{
+  background: linear-gradient(90deg, #F953C6, #F05E91);
+  animation: animate_button 10s ease infinite;
+  transform-origin:center;
+  display: block;
+  width: fit-content;
+}

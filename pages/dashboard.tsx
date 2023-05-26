@@ -1,4 +1,15 @@
-import { Modal, Container, Card, Row, Text, Col, Spacer, Button, Checkbox, Input } from "@nextui-org/react";
+import {
+    Modal,
+    Container,
+    Card,
+    Row,
+    Text,
+    Col,
+    Spacer,
+    Button,
+    Checkbox,
+    Input,
+} from "@nextui-org/react";
 import { GetStaticProps } from "next";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -7,18 +18,13 @@ import { Plus } from "react-feather";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 
-
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
     props: {
-        ...(await serverSideTranslations(
-            locale!,
-            ["common"],
-        )),
+        ...(await serverSideTranslations(locale!, ["common"])),
     },
 });
 
 export default function Dashboard() {
-
     const { t } = useTranslation("common");
 
     const [AddVisible, setAddVisible] = React.useState(false);
@@ -36,7 +42,7 @@ export default function Dashboard() {
             <div>
                 <Header />
                 <Container fluid css={{ marginTop: "10px" }}>
-                    <Text h1 size={33}  >
+                    <Text h1 size={33}>
                         {t("Dashboard.dashboard")}
                     </Text>
                     <Row gap={1}>
@@ -44,29 +50,57 @@ export default function Dashboard() {
                             <Row gap={1}>
                                 <Card variant="bordered">
                                     <Card.Header>
-                                        <Text weight="normal" size="$xl"  >
+                                        <Text weight="normal" size="$xl">
                                             {t("Dashboard.addProfile")}
                                         </Text>
                                     </Card.Header>
                                     <Card.Body>
                                         <Row gap={1}>
                                             <div onClick={handleAddProfile}>
-                                            <Card variant="bordered" onPress={handleAddProfile} css={{ "border": "thin", "borderColor": "#000000", "borderStyle": "dashed", width: "200px", height: "300px" }}>
-                                                <Card.Body>
-                                                    <Plus style={{ width: "60%", height: "60%", marginLeft: "20%", marginTop: "20%", strokeWidth: "0.5px" }} />
-                                                    <Text weight={"light"} size={20} style={{ textAlign: "center" }}>
-                                                        {t("Dashboard.addProfile")}
-                                                    </Text>
-                                                </Card.Body>
-                                            </Card>
+                                                <Card
+                                                    variant="bordered"
+                                                    onPress={handleAddProfile}
+                                                    css={{
+                                                        border: "thin",
+                                                        borderColor: "#000000",
+                                                        borderStyle: "dashed",
+                                                        width: "200px",
+                                                        height: "300px",
+                                                    }}
+                                                >
+                                                    <Card.Body>
+                                                        <Plus
+                                                            style={{
+                                                                width: "60%",
+                                                                height: "60%",
+                                                                marginLeft:
+                                                                    "20%",
+                                                                marginTop:
+                                                                    "20%",
+                                                                strokeWidth:
+                                                                    "0.5px",
+                                                            }}
+                                                        />
+                                                        <Text
+                                                            weight={"light"}
+                                                            size={20}
+                                                            style={{
+                                                                textAlign:
+                                                                    "center",
+                                                            }}
+                                                        >
+                                                            {t(
+                                                                "Dashboard.addProfile"
+                                                            )}
+                                                        </Text>
+                                                    </Card.Body>
+                                                </Card>
                                             </div>
                                         </Row>
                                     </Card.Body>
                                 </Card>
                             </Row>
-
                         </Col>
-
                     </Row>
                     <Modal
                         closeButton
@@ -112,17 +146,26 @@ export default function Dashboard() {
                         <Col>
                             <Card variant="bordered">
                                 <Card.Header>
-                                    <Text weight="normal" size="$xl"  >
+                                    <Text weight="normal" size="$xl">
                                         {t("Dashboard.assets")}
                                     </Text>
                                 </Card.Header>
                                 <Card.Body>
-                                <Row gap={1}>
-                                            <Card variant="bordered" onClick={handleAddProfile} css={{ "border": "thin", "borderColor": "#000000", "borderStyle": "solid", width: "100px", height: "100px" }}>
-                                                <Card.Body>
-                                                </Card.Body>
-                                            </Card>
-                                        </Row>
+                                    <Row gap={1}>
+                                        <Card
+                                            variant="bordered"
+                                            onClick={handleAddProfile}
+                                            css={{
+                                                border: "thin",
+                                                borderColor: "#000000",
+                                                borderStyle: "solid",
+                                                width: "100px",
+                                                height: "100px",
+                                            }}
+                                        >
+                                            <Card.Body></Card.Body>
+                                        </Card>
+                                    </Row>
                                 </Card.Body>
                             </Card>
                         </Col>
@@ -132,12 +175,11 @@ export default function Dashboard() {
                         <Col>
                             <Card variant="bordered">
                                 <Card.Header>
-                                    <Text weight="normal" size="$xl"  >
+                                    <Text weight="normal" size="$xl">
                                         {t("Dashboard.plans")}
                                     </Text>
                                 </Card.Header>
-                                <Card.Body>
-                                </Card.Body>
+                                <Card.Body></Card.Body>
                             </Card>
                         </Col>
                     </Row>
@@ -146,13 +188,12 @@ export default function Dashboard() {
                         <Col>
                             <Card variant="bordered">
                                 <Card.Header>
-                                    <Text weight="normal" size="$xl"  >
+                                    <Text weight="normal" size="$xl">
                                         {t("Dashboard.packages")}
                                     </Text>
                                 </Card.Header>
                                 <Card.Body>
-                                    <Text h6 size={15}  >
-                                    </Text>
+                                    <Text h6 size={15}></Text>
                                 </Card.Body>
                             </Card>
                         </Col>
@@ -162,13 +203,12 @@ export default function Dashboard() {
                         <Col>
                             <Card variant="bordered">
                                 <Card.Header>
-                                    <Text weight="normal" size="$xl"  >
+                                    <Text weight="normal" size="$xl">
                                         {t("Dashboard.earnings")}
                                     </Text>
                                 </Card.Header>
                                 <Card.Body>
-                                    <Text h6 size={15}  >
-                                    </Text>
+                                    <Text h6 size={15}></Text>
                                 </Card.Body>
                             </Card>
                         </Col>

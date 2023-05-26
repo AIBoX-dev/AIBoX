@@ -1,13 +1,12 @@
 import {
-    Grid,
-    Card,
-    Spacer,
-    Button,
     Text,
-    Input,
-    Row,
-    Checkbox,
+    Image,
     Container,
+    Spacer,
+    Row,
+    Col,
+    Button,
+    Input,
 } from "@nextui-org/react";
 import { GetStaticProps } from "next";
 import { Inter } from "next/font/google";
@@ -34,68 +33,222 @@ export default function Home() {
         <>
             <Header />
             <main className={`${styles.main} ${inter.className}`}>
-                <div className={styles.description}>
-                    <div>
-                        <Input
-                            clearable
-                            bordered
-                            color="primary"
-                            labelPlaceholder="Search"
-                            type="search"
-                            contentRight={<Search size="xs" />}
+                <Container
+                    gap={2}
+                    css={{
+                        d: "flex",
+                        flexWrap: "nowrap",
+                        padding: "0rem 3rem 0rem",
+                    }}
+                >
+                    <Container
+                        css={{
+                            width: "auto",
+                        }}
+                    >
+                        <Text
+                            h2
+                            size="2.75rem"
+                            weight="bold"
+                            css={{
+                                textGradient: "90deg, #F953C6, #F05E91",
+                                letterSpacing: "inherit",
+                            }}
+                        >
+                            AIクリエイターのための
+                            <br />
+                            支援サービス
+                            <br />
+                            「AIBoX」
+                            <Spacer y={1} />
+                        </Text>
+                        <Text size="$lg" color="$gray800">
+                            AIBoXを使ってあなたの作品で新たな可能性を切り開き、
+                            <br />
+                            さらに多くのファンへ届けましょう。
+                        </Text>
+                    </Container>
+                    <Image
+                        css={{
+                            borderRadius: "1rem",
+                        }}
+                        objectFit="cover"
+                        width={500}
+                        src="https://github.com/nextui-org/nextui/blob/next/apps/docs/public/nextui-banner.jpeg?raw=true"
+                        alt="Default Image"
+                    />
+                </Container>
+                <Spacer
+                    y={2}
+                    css={{
+                        width: "90%",
+                        borderTop: "2px solid $pink200",
+                        marginTop: "5rem!important",
+                        paddingBottom: "4.5rem",
+                    }}
+                />
+                <Container
+                    css={{
+                        padding: "0rem 4rem 0rem",
+                    }}
+                >
+                    <Row>
+                        {[0, 1, 2].map((key) => {
+                            return (
+                                <Col key={key}>
+                                    <Image
+                                        css={{
+                                            borderRadius: "1rem",
+                                        }}
+                                        width={370}
+                                        src="https://github.com/nextui-org/nextui/blob/next/apps/docs/public/nextui-banner.jpeg?raw=true"
+                                        alt="Default Image"
+                                    />
+                                </Col>
+                            );
+                        })}
+                    </Row>
+                    <Spacer y={1} />
+                    <Row>
+                        {[0, 1, 2].map((key) => {
+                            return (
+                                <Col key={key}>
+                                    <Image
+                                        css={{
+                                            borderRadius: "1rem",
+                                        }}
+                                        width={370}
+                                        src="https://github.com/nextui-org/nextui/blob/next/apps/docs/public/nextui-banner.jpeg?raw=true"
+                                        alt="Default Image"
+                                    />
+                                </Col>
+                            );
+                        })}
+                    </Row>
+                </Container>
+                <Container className={`${styles.center}`}>
+                    <Button size="lg" className={`${styles.animated_button} `}>
+                        <Text weight="semibold" color="$white" size="lg">
+                            AIクリエイターを探す
+                        </Text>
+                    </Button>
+                </Container>
+                <div
+                    style={{
+                        backgroundColor: "#FFF0FB",
+                        width: "100vw",
+                    }}
+                >
+                    <Spacer
+                        y={2}
+                        css={{
+                            width: "90%",
+                            marginTop: "1.5rem!important",
+                            paddingBottom: "3rem",
+                        }}
+                    />
+                    <Container
+                        gap={2}
+                        css={{
+                            d: "flex",
+                            flexWrap: "nowrap",
+                            padding: "0rem 3rem 0rem",
+                        }}
+                    >
+                        <Container
+                            css={{
+                                width: "auto",
+                            }}
+                        >
+                            <Text
+                                h3
+                                weight="bold"
+                                css={{
+                                    letterSpacing: "inherit",
+                                }}
+                            >
+                                クリエイターを探す
+                            </Text>
+                            <Spacer y={1} />
+                            <Text size="$lg" color="$gray800">
+                                AIを使って様々な作品を作るクリエイターたちを支援しよう
+                            </Text>
+                            <Spacer y={1} />
+                            <Button
+                                size="lg"
+                                className={`${styles.animated_button} `}
+                            >
+                                <Text
+                                    weight="semibold"
+                                    color="$white"
+                                    size="lg"
+                                >
+                                    AIクリエイターを探す
+                                </Text>
+                            </Button>
+                        </Container>
+                        <Image
+                            css={{
+                                borderRadius: "1rem",
+                            }}
+                            objectFit="cover"
+                            width={500}
+                            src="https://github.com/nextui-org/nextui/blob/next/apps/docs/public/nextui-banner.jpeg?raw=true"
+                            alt="Default Image"
                         />
-                    </div>
-                </div>
-                <div className={styles.center}>
-                    <Text
-                        h1
-                        size={120}
+                    </Container>
+                    <Spacer y={3} />
+                    <Container
+                        gap={2}
                         css={{
-                            textGradient: "45deg, $blue600 -20%, $pink600 50%",
+                            d: "flex",
+                            flexWrap: "nowrap",
+                            padding: "0rem 3rem 0rem",
                         }}
-                        weight="bold"
                     >
-                        AIBoX
-                    </Text>
-                </div>
-                <div className={styles.center}>
-                    <Text h1 size={40} color="#C1C8CD">
-                        {t("Home.forai")}
-                    </Text>
-                </div>
-                <div>
-                    <Text
-                        h1
-                        size={50}
-                        css={{
-                            textGradient: "45deg, $blue600 -20%, $pink600 50%",
-                        }}
-                        weight="bold"
-                    >
-                        {t("Home.slogan1")}
-                    </Text>
-                    <Text
-                        h1
-                        size={50}
-                        css={{
-                            textGradient:
-                                "45deg, $purple600 -20%, $pink600 100%",
-                        }}
-                        weight="bold"
-                    >
-                        {t("Home.slogan2")}
-                    </Text>
-                    <Text
-                        h1
-                        size={50}
-                        css={{
-                            textGradient:
-                                "45deg, $yellow600 -20%, $red600 100%",
-                        }}
-                        weight="bold"
-                    >
-                        {t("Home.slogan3")}
-                    </Text>
+                        <Image
+                            css={{
+                                borderRadius: "1rem",
+                            }}
+                            objectFit="cover"
+                            width={500}
+                            src="https://github.com/nextui-org/nextui/blob/next/apps/docs/public/nextui-banner.jpeg?raw=true"
+                            alt="Default Image"
+                        />
+                        <Container
+                            css={{
+                                width: "auto",
+                            }}
+                        >
+                            <Text
+                                h3
+                                weight="bold"
+                                css={{
+                                    letterSpacing: "inherit",
+                                }}
+                            >
+                                AIBoXを始める
+                            </Text>
+                            <Spacer y={1} />
+                            <Text size="$lg" color="$gray800">
+                                高い還元率であなたのクリエイター活動を支援します
+                            </Text>
+                            <Spacer y={1} />
+                            <Button
+                                size="lg"
+                                className={`${styles.animated_button} `}
+                            >
+                                <Text
+                                    weight="semibold"
+                                    color="$white"
+                                    size="lg"
+                                >
+                                    今すぐ始める
+                                </Text>
+                            </Button>
+                        </Container>
+                    </Container>
+                    <Spacer y={3} />
                 </div>
             </main>
             <Footer />

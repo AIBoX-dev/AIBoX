@@ -1,8 +1,9 @@
 import { useRouter } from "next/router";
-import { useState } from 'react'
-import { database } from "@/hooks/database"
+import { useState } from "react";
+import { database } from "@/hooks/database";
 import { supabase } from "@/hooks/supabase";
-const { insertUser, insertProfile, updateDob, getActivated, getUserProfile } = database()
+const { insertUser, insertProfile, updateDob, getActivated, getUserProfile } =
+    database();
 
 export const useAuth = () => {
     const router = useRouter();
@@ -21,81 +22,98 @@ export const useAuth = () => {
             // ユーザーが存在するかを確認して、いなかったら表示名設定とかのページに行きたい Ftps
             await router.push("/");
             // console.log({ data, error})
-
         } catch (error) {
             console.error(error);
         }
     };
 
-    const createUser = async (email: string, password: string): Promise<void> => {
+    const createUser = async (
+        email: string,
+        password: string
+    ): Promise<void> => {
         try {
             const { data, error } = await supabase.auth.signUp({
                 email: email,
                 password: password,
-            })
+            });
             if (!error) {
-                await insertUser(email, password, data)
+                await insertUser(email, password, data);
             }
             // console.log({ data, error });
         } catch (error) {
-
             console.error(error);
         }
     };
 
     const getActivationStatus = async (userdata: { [key: string]: any }) => {
         try {
-            return await getActivated(userdata.user.id)
+            return await getActivated(userdata.user.id);
         } catch (error) {
-            console.error(error)
-        }
-    }
-
-    const logoutUser = async () => {
-        const { error } = await supabase.auth.signOut()
-        document.cookie="access_token=;"
-
-    }
-
-
-
-    const createProfile = async (id: number, user_id: string, display_name: string, dob:string) => {
-        try {
-            const description = "Hello!"
-            const created_at = new Date().toISOString()
-            const updated_at = new Date().toISOString()
-            await insertProfile(id, user_id, display_name, description, created_at, updated_at)
-            await updateDob(id, dob)
-        } catch (error) {
-            console.error(error)
+            console.error(error);
         }
     };
 
+    const logoutUser = async () => {
+        const { error } = await supabase.auth.signOut();
+        document.cookie = "access_token=;";
+    };
 
-    const loginWithPassword = async (email: string, password: string, login_remember: boolean): Promise<void> => {
+    const createProfile = async (
+        id: number,
+        user_id: string,
+        display_name: string,
+        dob: string
+    ) => {
+        try {
+            const description = "Hello!";
+            const created_at = new Date().toISOString();
+            const updated_at = new Date().toISOString();
+            await insertProfile(
+                id,
+                user_id,
+                display_name,
+                description,
+                created_at,
+                updated_at
+            );
+            await updateDob(id, dob);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const loginWithPassword = async (
+        email: string,
+        password: string,
+        login_remember: boolean
+    ): Promise<void> => {
         try {
             const { data, error } = await supabase.auth.signInWithPassword({
                 email: email,
-                password: password
-            })
-            const is_activated = await getActivationStatus(data)
+                password: password,
+            });
+            const is_activated = await getActivationStatus(data);
             if (!error) {
                 if (!is_activated) {
                     // await router.push(`/setup?id=${encodeURIComponent(String(is_activated))}`);
-                }
-                else {
+                } else {
                     if (login_remember) {
-                        document.cookie = 'access_token=${data.session.access_token}; '//expires=
-                        localStorage.setItem('user', JSON.stringify(data))
+                        document.cookie =
+                            "access_token=${data.session.access_token}; "; //expires=
+                        localStorage.setItem("user", JSON.stringify(data));
                     }
-                    await router.push(`/search?id=${encodeURIComponent(String(data.session?.access_token))}`)
+                    await router.push(
+                        `/search?id=${encodeURIComponent(
+                            String(data.session?.access_token)
+                        )}`
+                    );
                 }
-            }  else {
+            } else {
             }
         } catch (error) {
-            console.error(error)
+            console.error(error);
         }
-    }
+    };
 
     const resendVerificationEmail = async (email: string) => {
         try {
@@ -103,31 +121,33 @@ export const useAuth = () => {
                 type: "signup",
                 email: email,
             });
-        }
-        catch (error) {
+        } catch (error) {
             console.error(error);
         }
     };
 
-    const getSessionUser = async (sessionData: object, setSessionData: Function) => {
-        const { data } = await supabase.auth.getSession()
+    const getSessionUser = async (
+        sessionData: object,
+        setSessionData: Function
+    ) => {
+        const { data } = await supabase.auth.getSession();
         if (data.session !== null) {
-            const { data: { user } } = await supabase.auth.getUser()
-            if (!user) return
-            const userdata = await getUserProfile(user.id)
-            if (!userdata) return
-            await setSessionData({...sessionData,
+            const {
+                data: { user },
+            } = await supabase.auth.getUser();
+            if (!user) return;
+            const userdata = await getUserProfile(user.id);
+            if (!userdata) return;
+            await setSessionData({
+                ...sessionData,
                 logged: true,
                 displayname: userdata[0].display_name,
                 icon_url: userdata[0].icon_url,
                 account_id: userdata[0].account_id,
-                email: user.email
-            })
+                email: user.email,
+            });
         }
-    }
-
-
-
+    };
 
     return {
         signInWithGoogle,
@@ -137,6 +157,6 @@ export const useAuth = () => {
         createProfile,
         getActivationStatus,
         logoutUser,
-        getSessionUser
+        getSessionUser,
     };
-}
+};
