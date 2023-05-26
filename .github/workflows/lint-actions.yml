@@ -15,10 +15,13 @@ jobs:
               with:
                   node-version: 18
                   cache: npm
-            - run: |
-                  npm ci
-                  npm run format
-                  npm run lint
+            - run: npm ci
+            
+            - name: format
+              run: npm run format
+            
+            - name: lint
+              run: npm run lint
 
             - name: commit
               run: |
