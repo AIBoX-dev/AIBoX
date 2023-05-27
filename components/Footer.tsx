@@ -25,10 +25,7 @@ export default function Footer() {
                             </Text>
                         </Link>
                     </Navbar.Brand>
-                    <Navbar.Content
-                        activeColor="error"
-                        variant="underline"
-                    >
+                    <Navbar.Content activeColor="error" variant="underline">
                         <Navbar.Link href="/">{t("Header.home")}</Navbar.Link>
                         <Navbar.Link href="/about">
                             {t("Header.about")}
