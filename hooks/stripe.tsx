@@ -5,9 +5,8 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
     apiVersion: "2022-11-15",
 });
 
-export const stripePayment = ()  => {
+export const stripePayment = () => {
     const stripeCreateNormalCustomer = async (id: string, email: string) => {
-
         return await stripe.customers.create({
             metadata: {
                 user_id: id,
@@ -101,7 +100,6 @@ export const stripePayment = ()  => {
             cancel_url: cancel_url,
         });
     };
-    
 
     return {
         stripeCreateNormalCustomer,
@@ -113,7 +111,6 @@ export const stripePayment = ()  => {
         stripeCreateSubscription,
         stripeGetSubscription,
         stripeCancelSubscription,
-        stripeCreateSubscriptionCheckoutSession
-    }
-
-}
+        stripeCreateSubscriptionCheckoutSession,
+    };
+};
