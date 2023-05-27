@@ -118,50 +118,64 @@ export default function Header(props: Props) {
                                     <User
                                         src={sessionData.icon_url}
                                         name={sessionData.displayname}
-                                        >
+                                    >
                                         <User.Link href="https://nextui.org/">
                                             {sessionData.account_id
-                                        ? `@${sessionData.account_id}`
-                                        : null}
+                                                ? `@${sessionData.account_id}`
+                                                : null}
                                         </User.Link>
                                     </User>
                                 </Dropdown.Trigger>
                                 <Dropdown.Menu
                                     color="secondary"
                                     aria-label="Avatar Actions"
-                                    >
+                                >
                                     <Dropdown.Item
                                         key="profile"
                                         css={{ height: "$18" }}
+                                    >
+                                        <Text
+                                            b
+                                            color="inherit"
+                                            css={{ d: "flex" }}
                                         >
-                                        <Text b color="inherit" css={{ d: "flex" }}>
                                             Signed in as
                                         </Text>
-                                        <Text b color="inherit" css={{ d: "flex" }}>
+                                        <Text
+                                            b
+                                            color="inherit"
+                                            css={{ d: "flex" }}
+                                        >
                                             {sessionData.email}
                                         </Text>
                                     </Dropdown.Item>
-                                    <Dropdown.Item key="configurations" withDivider>
+                                    <Dropdown.Item
+                                        key="configurations"
+                                        withDivider
+                                    >
                                         <Link href="/dashboard">Dashboard</Link>
                                     </Dropdown.Item>
                                     <Dropdown.Item key="settings">
                                         Settings
                                     </Dropdown.Item>
-                                    <Dropdown.Item key="help_and_feedback" withDivider>
+                                    <Dropdown.Item
+                                        key="help_and_feedback"
+                                        withDivider
+                                    >
                                         Help & Feedback
                                     </Dropdown.Item>
                                     <Dropdown.Item
                                         key="logout"
                                         color="error"
                                         withDivider
-                                        >
+                                    >
                                         <a onClick={logoutUser}>Log Out</a>
                                     </Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
-                            )}
+                        )}
                     </Navbar.Content>
-                        ) : (
+                ) : (
                     <Navbar.Content>
                         <SearchInput
                             onClick={() => {
