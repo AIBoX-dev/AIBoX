@@ -8,3 +8,5 @@ updates:
           branches:
               - "main"
               - "dev"
+      labels:
+        - "Dependabot"
