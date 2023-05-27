@@ -13,10 +13,18 @@ type props = {
     onClose: () => void;
     onCancel: () => void;
     src: string;
+    onBlob: (blob: Blob | null) => void;
 };
 
 type Cropprops = {
     src: string;
+};
+
+const saveBlob = (blob: Blob) => {
+    const downloadLink = document.createElement("a");
+    downloadLink.href = URL.createObjectURL(blob);
+    downloadLink.download = "aaa.png";
+    downloadLink.click();
 };
 
 export const AvatarModal: React.FC<props> = ({
@@ -24,10 +32,15 @@ export const AvatarModal: React.FC<props> = ({
     onClose,
     onCancel,
     src,
+    onBlob
 }) => {
     const completedRef = useRef<PixelCrop | null>(null);
     const imgRef = useRef<HTMLImageElement>(null);
     const canvasRef = useRef<HTMLCanvasElement>(null);
+
+    const handleBlob = (blob: Blob | null) => {
+        onBlob(blob);
+    };
 
     const AvatarCrop: React.FC<Cropprops> = ({ src }) => {
         const [crop, setCrop] = useState<PercentCrop | PixelCrop>({
@@ -113,6 +126,9 @@ export const AvatarModal: React.FC<props> = ({
                         canvasRef.current.toBlob(async function (blob) {
                             if (!blob) return;
                             console.log(URL.createObjectURL(blob));
+                            handleBlob(blob);
+                            saveBlob(blob)
+
                         });
                         onClose();
                     }}

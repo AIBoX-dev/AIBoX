@@ -35,6 +35,7 @@ export default function Setup() {
     const [displayName, setDisplayName] = React.useState("");
     const [dob, setDob] = React.useState("");
     const [userId, setUserId] = React.useState("");
+    const [blob, setBlob] = React.useState<Blob | null>(null);
 
     const handleProfile = () => {
         try {
@@ -113,7 +114,7 @@ export default function Setup() {
                         onChange={(e) => setDob(e.target.value)}
                     />
                     <Spacer y={1} />
-                    <FileInput />
+                    <FileInput setBlob={setBlob}/>
                     <Spacer y={1} />
                     <Button
                         onPress={handleProfile}
