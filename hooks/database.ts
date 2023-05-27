@@ -115,7 +115,6 @@ export const stripeDatabase = () => {
         .insert([
             {
                 user_id: id,
-                stripe_id: stripe_id
             }
         ])
     }
@@ -126,24 +125,56 @@ export const stripeDatabase = () => {
         .update([
             {
                 user_id: uid,
-                email: email,
-                phone: phone
             }
         ])
         .eq("stripe_id", stripe_id )
+
+        await supabase
+        .from("users")
+        .update({phone: phone})
+        .eq("user_id", uid)
     }
 
-    const DeleteCustomerRow = async () => {
+    const DeleteCustomerRow = async (uid: string) => {
         await supabase
         .from("CustomerPlans")
         .update({ is_deleted: true })
+        .eq("user_id", uid)
     }
 
+    const createPlanRow = async (name: string, plan_id: string, price: number, uid: string) => {
+        await supabase
+        .from("CustomerPlans")
+        .update([{
+            name: name,
+            stripe_id: plan_id,
+            price: price,
+        }])
+        .eq("user_id", uid)
+    }
 
+    const createSubscriptionRow = async (uid: string, plan_id: string) => {
+        await supabase
+        .from("Subscription")
+        .insert({plan_id: plan_id})
+        .eq("user_id", uid)
+    }
 
+    const CancelSubscriptionArray = async (id: string, uid: string) => {
+        await supabase
+        .from("Subscription")
+        .update({ plan_id: `array_remove(plan_id, ${id})` })
+        .match({ plan_id: id })
+        .eq("user_id", uid)
+    }
+
+    
     return {
         createCustomerRow,
         updateCustomerRow,
-        DeleteCustomerRow
+        DeleteCustomerRow,
+        createPlanRow,
+        createSubscriptionRow,
+        CancelSubscriptionArray
     }
 }

@@ -47,7 +47,7 @@ export const stripePayment = ()  => {
         name: string,
         plan_id: string,
         price: number,
-        creator_id: string
+        uid: string
     ) => {
         return await stripe.plans.create({
             amount: price,
@@ -58,7 +58,7 @@ export const stripePayment = ()  => {
             },
             metadata: {
                 plan_id: plan_id,
-                creator_id: creator_id,
+                user_id: uid,
             },
             id: plan_id,
         });
@@ -68,9 +68,9 @@ export const stripePayment = ()  => {
         return await stripe.plans.retrieve(id);
     };
 
-    const stripeCreateSubscription = async (customer_id: string, plan_id: string) => {
+    const stripeCreateSubscription = async (uid: string, plan_id: string) => {
         return await stripe.subscriptions.create({
-            customer: customer_id,
+            customer: uid,
             items: [{ plan: plan_id }],
         });
     };
@@ -84,13 +84,13 @@ export const stripePayment = ()  => {
     };
 
     const stripeCreateSubscriptionCheckoutSession = async (
-        customer_id: string,
+        uid: string,
         plan_id: string,
         success_url: string,
         cancel_url: string
     ) => {
         return await stripe.checkout.sessions.create({
-            customer: customer_id,
+            customer: uid,
             line_items: [
                 {
                     price: plan_id,
@@ -101,6 +101,7 @@ export const stripePayment = ()  => {
             cancel_url: cancel_url,
         });
     };
+    
 
     return {
         stripeCreateNormalCustomer,
