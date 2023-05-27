@@ -107,3 +107,43 @@ export const database = () => {
         setActivated,
     };
 };
+
+export const stripeDatabase = () => {
+    const createCustomerRow = async (id: string, stripe_id: string) => {
+        await supabase
+        .from("CustomerPlans")
+        .insert([
+            {
+                user_id: id,
+                stripe_id: stripe_id
+            }
+        ])
+    }
+
+    const updateCustomerRow = async (stripe_id: string, uid: string, email: string, phone: string) => {
+        await supabase
+        .from("CustomerPlans")
+        .update([
+            {
+                user_id: uid,
+                email: email,
+                phone: phone
+            }
+        ])
+        .eq("stripe_id", stripe_id )
+    }
+
+    const DeleteCustomerRow = async () => {
+        await supabase
+        .from("CustomerPlans")
+        .update({ is_deleted: true })
+    }
+
+
+
+    return {
+        createCustomerRow,
+        updateCustomerRow,
+        DeleteCustomerRow
+    }
+}

@@ -5,8 +5,8 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
     apiVersion: "2022-11-15",
 });
 
-export const stripePayment = async ()  => {
-    const createNormalCustomer = async (id: string, email: string) => {
+export const stripePayment = ()  => {
+    const stripeCreateNormalCustomer = async (id: string, email: string) => {
         return await stripe.customers.create({
             metadata: {
                 user_id: id,
@@ -16,7 +16,7 @@ export const stripePayment = async ()  => {
         });
     };
 
-    const updateCreatorCustomer = async (
+    const stripeUpdateCreatorCustomer = async (
         stripe_id: string,
         id: string,
         email: string,
@@ -32,17 +32,17 @@ export const stripePayment = async ()  => {
         });
     };
 
-    const DeleteCustomer = async (stripe_id: string) => {
+    const stripeDeleteCustomer = async (stripe_id: string) => {
         return await stripe.customers.del(stripe_id);
     };
 
-    const getCustomer = async (id: string) => {
+    const stripeGetCustomer = async (id: string) => {
         return stripe.customers.search({
             query: "metadata['user_id']:" + id,
         });
     };
 
-    const createPlan = async (
+    const stripeCreatePlan = async (
         name: string,
         plan_id: string,
         price: number,
@@ -63,26 +63,26 @@ export const stripePayment = async ()  => {
         });
     };
 
-    const getPlan = async (id: string) => {
+    const stripeGetPlan = async (id: string) => {
         return await stripe.plans.retrieve(id);
     };
 
-    const createSubscription = async (customer_id: string, plan_id: string) => {
+    const stripeCreateSubscription = async (customer_id: string, plan_id: string) => {
         return await stripe.subscriptions.create({
             customer: customer_id,
             items: [{ plan: plan_id }],
         });
     };
 
-    const getSubscription = async (id: string) => {
+    const stripeGetSubscription = async (id: string) => {
         return await stripe.subscriptions.retrieve(id);
     };
 
-    const cancelSubscription = async (id: string) => {
+    const stripeCancelSubscription = async (id: string) => {
         return await stripe.subscriptions.del(id);
     };
 
-    const createSubscriptionCheckoutSession = async (
+    const stripeCreateSubscriptionCheckoutSession = async (
         customer_id: string,
         plan_id: string,
         success_url: string,
@@ -102,16 +102,16 @@ export const stripePayment = async ()  => {
     };
 
     return {
-        createNormalCustomer,
-        updateCreatorCustomer,
-        DeleteCustomer,
-        getCustomer,
-        createPlan,
-        getPlan,
-        createSubscription,
-        getSubscription,
-        cancelSubscription,
-        createSubscriptionCheckoutSession
+        stripeCreateNormalCustomer,
+        stripeUpdateCreatorCustomer,
+        stripeDeleteCustomer,
+        stripeGetCustomer,
+        stripeCreatePlan,
+        stripeGetPlan,
+        stripeCreateSubscription,
+        stripeGetSubscription,
+        stripeCancelSubscription,
+        stripeCreateSubscriptionCheckoutSession
     }
 
 }
