@@ -16,12 +16,19 @@ const InputContainer = styled.div`
     }
 `;
 
-export const FileInput = () => {
+type FileInputProps = {
+    setBlob: (blob: Blob | null) => void;
+};
+
+export const FileInput: React.FC<FileInputProps> = ({ setBlob }) => {
     const [fileName, setFileName] = useState<string>("選択されていません");
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [url, setUrl] = useState<string>("");
     const inputRef = useRef<HTMLInputElement | null>(null);
 
+    const handleBlob = (blob: Blob | null) => {
+        setBlob(blob);
+    };
     return (
         <>
             <p>アイコン</p>
@@ -37,6 +44,7 @@ export const FileInput = () => {
                     setIsOpen(false)
                 }}
                 src={url}
+                onBlob={handleBlob}
             />
             <InputContainer
                 onClick={() => {
