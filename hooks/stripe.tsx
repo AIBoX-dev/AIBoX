@@ -7,6 +7,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
 
 export const stripePayment = ()  => {
     const stripeCreateNormalCustomer = async (id: string, email: string) => {
+
         return await stripe.customers.create({
             metadata: {
                 user_id: id,
@@ -21,7 +22,7 @@ export const stripePayment = ()  => {
         id: string,
         email: string,
         phone: string
-        ) => {
+    ) => {
         return await stripe.customers.update(stripe_id, {
             metadata: {
                 user_id: id,
@@ -47,7 +48,7 @@ export const stripePayment = ()  => {
         plan_id: string,
         price: number,
         creator_id: string
-        ) => {
+    ) => {
         return await stripe.plans.create({
             amount: price,
             currency: "jpy",
@@ -87,7 +88,7 @@ export const stripePayment = ()  => {
         plan_id: string,
         success_url: string,
         cancel_url: string
-        ) => {
+    ) => {
         return await stripe.checkout.sessions.create({
             customer: customer_id,
             line_items: [
@@ -95,7 +96,7 @@ export const stripePayment = ()  => {
                     price: plan_id,
                     quantity: 1,
                 },
-                ],
+            ],
             success_url: success_url,
             cancel_url: cancel_url,
         });

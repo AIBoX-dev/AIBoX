@@ -18,10 +18,6 @@ export default function Footer() {
             <Layout>
                 <Navbar isBordered>
                     <Navbar.Brand>
-                        <Navbar.Toggle
-                            aria-label="toggle navigation"
-                            showIn="xs"
-                        />
                         <Link href="/" color={"text"}>
                             <AcmeLogo />
                             <Text b color="inherit" hideIn="xs">
@@ -29,11 +25,7 @@ export default function Footer() {
                             </Text>
                         </Link>
                     </Navbar.Brand>
-                    <Navbar.Content
-                        activeColor="error"
-                        hideIn="xs"
-                        variant="underline"
-                    >
+                    <Navbar.Content activeColor="error" variant="underline">
                         <Navbar.Link href="/">{t("Header.home")}</Navbar.Link>
                         <Navbar.Link href="/about">
                             {t("Header.about")}
@@ -42,28 +34,6 @@ export default function Footer() {
                             {t("Header.notice")}
                         </Navbar.Link>
                     </Navbar.Content>
-                    <Navbar.Collapse>
-                        <Navbar.CollapseItem>
-                            <Link color="inherit" href="/">
-                                {t("Header.home")}
-                            </Link>
-                        </Navbar.CollapseItem>
-                        <Navbar.CollapseItem>
-                            <Link color="inherit" href="/about">
-                                {t("Header.about")}
-                            </Link>
-                        </Navbar.CollapseItem>
-                        <Navbar.CollapseItem>
-                            <Link color="inherit" href="/creators">
-                                {t("Header.creators")}
-                            </Link>
-                        </Navbar.CollapseItem>
-                        <Navbar.CollapseItem>
-                            <Link color="inherit" href="/notice">
-                                {t("Header.notice")}
-                            </Link>
-                        </Navbar.CollapseItem>
-                    </Navbar.Collapse>
                 </Navbar>
             </Layout>
         </div>
