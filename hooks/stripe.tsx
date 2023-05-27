@@ -5,7 +5,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
     apiVersion: "2022-11-15",
 });
 
-export const stripePayment = async ()  => {
+export const stripePayment = async () => {
     const createNormalCustomer = async (id: string, email: string) => {
         return await stripe.customers.create({
             metadata: {
@@ -21,7 +21,7 @@ export const stripePayment = async ()  => {
         id: string,
         email: string,
         phone: string
-        ) => {
+    ) => {
         return await stripe.customers.update(stripe_id, {
             metadata: {
                 user_id: id,
@@ -47,7 +47,7 @@ export const stripePayment = async ()  => {
         plan_id: string,
         price: number,
         creator_id: string
-        ) => {
+    ) => {
         return await stripe.plans.create({
             amount: price,
             currency: "jpy",
@@ -87,7 +87,7 @@ export const stripePayment = async ()  => {
         plan_id: string,
         success_url: string,
         cancel_url: string
-        ) => {
+    ) => {
         return await stripe.checkout.sessions.create({
             customer: customer_id,
             line_items: [
@@ -95,7 +95,7 @@ export const stripePayment = async ()  => {
                     price: plan_id,
                     quantity: 1,
                 },
-                ],
+            ],
             success_url: success_url,
             cancel_url: cancel_url,
         });
@@ -111,7 +111,6 @@ export const stripePayment = async ()  => {
         createSubscription,
         getSubscription,
         cancelSubscription,
-        createSubscriptionCheckoutSession
-    }
-
-}
+        createSubscriptionCheckoutSession,
+    };
+};
