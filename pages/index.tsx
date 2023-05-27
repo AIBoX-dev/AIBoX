@@ -31,37 +31,49 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
     const { t } = useTranslation("common");
-    const isxs = useMediaQuery('(max-width: 650px)')
-    const issm = useMediaQuery('(max-width: 960px)')
-    const ismd = useMediaQuery('(max-width: 1280px)')
-    const islg = useMediaQuery('(max-width: 1400px)')
-    const isxl = useMediaQuery('(max-width: 1920px)')
+    const isxs = useMediaQuery("(max-width: 650px)");
+    const issm = useMediaQuery("(max-width: 960px)");
+    const ismd = useMediaQuery("(max-width: 1280px)");
+    const islg = useMediaQuery("(max-width: 1400px)");
+    const isxl = useMediaQuery("(max-width: 1920px)");
 
     return (
         <>
             <Header />
-            <main className={`${styles.main} ${inter.className}`} style={{
-                paddingTop: issm ? "3rem" : "6rem"
-            }}>
-                <Container
-                    md
-                >
-                    <Row gap={1.5} css={{
-                        flexDirection: issm ? "column" : "row",
-                        margin: "0px"
-                    }}>
-                        <Col css={{
-                            padding: "0px"
-                        }}>
+            <main
+                className={`${styles.main} ${inter.className}`}
+                style={{
+                    paddingTop: issm ? "3rem" : "6rem",
+                }}
+            >
+                <Container md>
+                    <Row
+                        gap={1.5}
+                        css={{
+                            flexDirection: issm ? "column" : "row",
+                            margin: "0px",
+                        }}
+                    >
+                        <Col
+                            css={{
+                                padding: "0px",
+                            }}
+                        >
                             <Container
                                 css={{
                                     width: "auto",
-                                    padding: isxs ? "0px" : ""
+                                    padding: isxs ? "0px" : "",
                                 }}
                             >
                                 <Text
                                     h2
-                                    size={isxs ? "1.75rem" : issm ? "2.2rem" : "2.5rem"}
+                                    size={
+                                        isxs
+                                            ? "1.75rem"
+                                            : issm
+                                            ? "2.2rem"
+                                            : "2.5rem"
+                                    }
                                     weight="bold"
                                     css={{
                                         textGradient: "90deg, #F953C6, #F05E91",
@@ -86,9 +98,11 @@ export default function Home() {
                             </Container>
                         </Col>
                         {issm && <Spacer y={2} />}
-                        <Col css={{
-                            padding: "0px"
-                        }}>
+                        <Col
+                            css={{
+                                padding: "0px",
+                            }}
+                        >
                             <Image
                                 css={{
                                     borderRadius: "1rem",
@@ -109,19 +123,22 @@ export default function Home() {
                         paddingBottom: "4.5rem",
                     }}
                 />
-                <Container
-                    md
-                    gap={2}
-                >
-                    <Row gap={1.5} css={{
-                        flexDirection: issm ? "column" : "row",
-                        margin: "0px"
-                    }}>
+                <Container md gap={2}>
+                    <Row
+                        gap={1.5}
+                        css={{
+                            flexDirection: issm ? "column" : "row",
+                            margin: "0px",
+                        }}
+                    >
                         {[0, 1, 2].map((key) => {
                             return (
-                                <Col key={key} css={{
-                                    padding: issm ? "0px" : ""
-                                }}>
+                                <Col
+                                    key={key}
+                                    css={{
+                                        padding: issm ? "0px" : "",
+                                    }}
+                                >
                                     <Image
                                         css={{
                                             borderRadius: "1rem",
@@ -135,15 +152,21 @@ export default function Home() {
                         })}
                     </Row>
                     {!issm && <Spacer y={1} />}
-                    <Row gap={1.5} css={{
-                        flexDirection: issm ? "column" : "row",
-                        margin: "0px"
-                    }}>
+                    <Row
+                        gap={1.5}
+                        css={{
+                            flexDirection: issm ? "column" : "row",
+                            margin: "0px",
+                        }}
+                    >
                         {[0, 1, 2].map((key) => {
                             return (
-                                <Col key={key} css={{
-                                    padding: issm ? "0px" : ""
-                                }}>
+                                <Col
+                                    key={key}
+                                    css={{
+                                        padding: issm ? "0px" : "",
+                                    }}
+                                >
                                     <Image
                                         css={{
                                             borderRadius: "1rem",
@@ -157,9 +180,12 @@ export default function Home() {
                         })}
                     </Row>
                 </Container>
-                <Container className={`${styles.center}`} style={{
-                    paddingTop: issm ? "3rem" : "6rem"
-                }}>
+                <Container
+                    className={`${styles.center}`}
+                    style={{
+                        paddingTop: issm ? "3rem" : "6rem",
+                    }}
+                >
                     <Button size="lg" className={`${styles.animated_button} `}>
                         <Text weight="semibold" color="$white" size="lg">
                             AIクリエイターを探す
@@ -185,7 +211,7 @@ export default function Home() {
                         css={{
                             padding: "0rem 3rem 0rem",
                             flexDirection: issm ? "column-reverse" : "row",
-                            margin: "0px"
+                            margin: "0px",
                         }}
                     >
                         <Container
@@ -237,7 +263,7 @@ export default function Home() {
                         css={{
                             padding: "0rem 3rem 0rem",
                             flexDirection: issm ? "column" : "row",
-                            margin: "0px"
+                            margin: "0px",
                         }}
                     >
                         <Image

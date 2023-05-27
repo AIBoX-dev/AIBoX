@@ -1,4 +1,12 @@
-import { Navbar, Button, Link, Text, User, Dropdown, Input } from "@nextui-org/react";
+import {
+    Navbar,
+    Button,
+    Link,
+    Text,
+    User,
+    Dropdown,
+    Input,
+} from "@nextui-org/react";
 import { useRouter } from "next/router";
 
 import { useTranslation } from "next-i18next";
@@ -6,18 +14,17 @@ import { useTranslation } from "next-i18next";
 import React, { useEffect, useState } from "react";
 import { AcmeLogo } from "./header/AcmeLogo";
 import { Layout } from "./header/Layout";
-import SearchInput from "./header/SearchInput"
+import SearchInput from "./header/SearchInput";
 
 import { useAuth } from "@/hooks/auth";
 import { useCookies } from "@/hooks/cookie";
 import { database } from "@/hooks/database";
 
-const login_disabled = process.env.NEXT_PUBLIC_DISABLE_LOGIN == "true" || false
+const login_disabled = process.env.NEXT_PUBLIC_DISABLE_LOGIN == "true" || false;
 
 interface Props {}
 
 export default function Header(props: Props) {
-
     const [sessionData, setSessionData] = useState({
         logged: false,
         displayname: "",
@@ -146,21 +153,26 @@ export default function Header(props: Props) {
                     </Dropdown>
                 ) : (
                     <Navbar.Content>
-                        <SearchInput onClick={() => {setIsSearchOpen(!isSearchOpen)}} isOpen={isSearchOpen} />
-                        {!isSearchOpen &&
-                        <Navbar.Item>
-                            <Button
-                                auto
-                                color="error"
-                                flat
-                                as={Link}
-                                href="/login"
-                                disabled={login_disabled}
-                            >
-                                {t("Header.login")}
-                            </Button>
-                        </Navbar.Item>
-                        }
+                        <SearchInput
+                            onClick={() => {
+                                setIsSearchOpen(!isSearchOpen);
+                            }}
+                            isOpen={isSearchOpen}
+                        />
+                        {!isSearchOpen && (
+                            <Navbar.Item>
+                                <Button
+                                    auto
+                                    color="error"
+                                    flat
+                                    as={Link}
+                                    href="/login"
+                                    disabled={login_disabled}
+                                >
+                                    {t("Header.login")}
+                                </Button>
+                            </Navbar.Item>
+                        )}
                     </Navbar.Content>
                 )}
             </Navbar>
