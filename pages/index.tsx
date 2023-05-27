@@ -6,7 +6,8 @@ import {
     Row,
     Col,
     Button,
-    Input,
+    Grid,
+    Card,
 } from "@nextui-org/react";
 import { GetStaticProps } from "next";
 import { Inter } from "next/font/google";
@@ -15,6 +16,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
 import { GitHub, Key, Mail, Search } from "react-feather";
 import { AcmeLogo } from "../components/header/AcmeLogo";
+import useMediaQuery from "../hooks/mediaquery";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import styles from "@/styles/Home.module.css";
@@ -29,104 +31,135 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
     const { t } = useTranslation("common");
+    const isxs = useMediaQuery('(max-width: 650px)')
+    const issm = useMediaQuery('(max-width: 960px)')
+    const ismd = useMediaQuery('(max-width: 1280px)')
+    const islg = useMediaQuery('(max-width: 1400px)')
+    const isxl = useMediaQuery('(max-width: 1920px)')
+
     return (
         <>
             <Header />
-            <main className={`${styles.main} ${inter.className}`}>
+            <main className={`${styles.main} ${inter.className}`} style={{
+                paddingTop: issm ? "3rem" : "6rem"
+            }}>
                 <Container
-                    gap={2}
-                    css={{
-                        d: "flex",
-                        flexWrap: "nowrap",
-                        padding: "0rem 3rem 0rem",
-                    }}
+                    md
                 >
-                    <Container
-                        css={{
-                            width: "auto",
-                        }}
-                    >
-                        <Text
-                            h2
-                            size="2.75rem"
-                            weight="bold"
-                            css={{
-                                textGradient: "90deg, #F953C6, #F05E91",
-                                letterSpacing: "inherit",
-                            }}
-                        >
-                            AIクリエイターのための
-                            <br />
-                            支援サービス
-                            <br />
-                            「AIBoX」
-                            <Spacer y={1} />
-                        </Text>
-                        <Text size="$lg" color="$gray800">
-                            AIBoXを使ってあなたの作品で新たな可能性を切り開き、
-                            <br />
-                            さらに多くのファンへ届けましょう。
-                        </Text>
-                    </Container>
-                    <Image
-                        css={{
-                            borderRadius: "1rem",
-                        }}
-                        objectFit="cover"
-                        width={500}
-                        src="https://github.com/nextui-org/nextui/blob/next/apps/docs/public/nextui-banner.jpeg?raw=true"
-                        alt="Default Image"
-                    />
+                    <Row gap={1.5} css={{
+                        flexDirection: issm ? "column" : "row",
+                        margin: "0px"
+                    }}>
+                        <Col css={{
+                            padding: "0px"
+                        }}>
+                            <Container
+                                css={{
+                                    width: "auto",
+                                    padding: isxs ? "0px" : ""
+                                }}
+                            >
+                                <Text
+                                    h2
+                                    size={isxs ? "1.75rem" : issm ? "2.2rem" : "2.5rem"}
+                                    weight="bold"
+                                    css={{
+                                        textGradient: "90deg, #F953C6, #F05E91",
+                                        letterSpacing: "inherit",
+                                    }}
+                                >
+                                    AIクリエイターのための
+                                    <br />
+                                    支援サービス
+                                    <br />
+                                    「AIBoX」
+                                </Text>
+                                <Spacer y={2} />
+                                <Text size="$lg" color="$gray800">
+                                    AIBoXを使ってあなたの作品で新たな可能性を切り開き、
+                                    <br />
+                                    さらに多くのファンへ届けましょう。
+                                </Text>
+                                {/* <Text>
+                                    {"xs: " + isxs} {"sm: " + issm} {"md: " + ismd} {"lg: " + islg} {"xl: " + isxl}
+                                </Text> */}
+                            </Container>
+                        </Col>
+                        {issm && <Spacer y={2} />}
+                        <Col css={{
+                            padding: "0px"
+                        }}>
+                            <Image
+                                css={{
+                                    borderRadius: "1rem",
+                                }}
+                                objectFit="cover"
+                                src="https://github.com/nextui-org/nextui/blob/next/apps/docs/public/nextui-banner.jpeg?raw=true"
+                                alt="Default Image"
+                            />
+                        </Col>
+                    </Row>
                 </Container>
                 <Spacer
                     y={2}
                     css={{
-                        width: "90%",
+                        width: "80%",
                         borderTop: "2px solid $pink200",
                         marginTop: "5rem!important",
                         paddingBottom: "4.5rem",
                     }}
                 />
                 <Container
-                    css={{
-                        padding: "0rem 4rem 0rem",
-                    }}
+                    md
+                    gap={2}
                 >
-                    <Row>
+                    <Row gap={1.5} css={{
+                        flexDirection: issm ? "column" : "row",
+                        margin: "0px"
+                    }}>
                         {[0, 1, 2].map((key) => {
                             return (
-                                <Col key={key}>
+                                <Col key={key} css={{
+                                    padding: issm ? "0px" : ""
+                                }}>
                                     <Image
                                         css={{
                                             borderRadius: "1rem",
                                         }}
-                                        width={370}
                                         src="https://github.com/nextui-org/nextui/blob/next/apps/docs/public/nextui-banner.jpeg?raw=true"
                                         alt="Default Image"
                                     />
+                                    {issm && <Spacer y={1} />}
                                 </Col>
                             );
                         })}
                     </Row>
-                    <Spacer y={1} />
-                    <Row>
+                    {!issm && <Spacer y={1} />}
+                    <Row gap={1.5} css={{
+                        flexDirection: issm ? "column" : "row",
+                        margin: "0px"
+                    }}>
                         {[0, 1, 2].map((key) => {
                             return (
-                                <Col key={key}>
+                                <Col key={key} css={{
+                                    padding: issm ? "0px" : ""
+                                }}>
                                     <Image
                                         css={{
                                             borderRadius: "1rem",
                                         }}
-                                        width={370}
                                         src="https://github.com/nextui-org/nextui/blob/next/apps/docs/public/nextui-banner.jpeg?raw=true"
                                         alt="Default Image"
                                     />
+                                    {issm && <Spacer y={1} />}
                                 </Col>
                             );
                         })}
                     </Row>
                 </Container>
-                <Container className={`${styles.center}`}>
+                <Container className={`${styles.center}`} style={{
+                    paddingTop: issm ? "3rem" : "6rem"
+                }}>
                     <Button size="lg" className={`${styles.animated_button} `}>
                         <Text weight="semibold" color="$white" size="lg">
                             AIクリエイターを探す
@@ -147,12 +180,12 @@ export default function Home() {
                             paddingBottom: "3rem",
                         }}
                     />
-                    <Container
+                    <Row
                         gap={2}
                         css={{
-                            d: "flex",
-                            flexWrap: "nowrap",
                             padding: "0rem 3rem 0rem",
+                            flexDirection: issm ? "column-reverse" : "row",
+                            margin: "0px"
                         }}
                     >
                         <Container
@@ -187,6 +220,7 @@ export default function Home() {
                                 </Text>
                             </Button>
                         </Container>
+                        {issm && <Spacer y={1.5} />}
                         <Image
                             css={{
                                 borderRadius: "1rem",
@@ -196,14 +230,14 @@ export default function Home() {
                             src="https://github.com/nextui-org/nextui/blob/next/apps/docs/public/nextui-banner.jpeg?raw=true"
                             alt="Default Image"
                         />
-                    </Container>
+                    </Row>
                     <Spacer y={3} />
-                    <Container
+                    <Row
                         gap={2}
                         css={{
-                            d: "flex",
-                            flexWrap: "nowrap",
                             padding: "0rem 3rem 0rem",
+                            flexDirection: issm ? "column" : "row",
+                            margin: "0px"
                         }}
                     >
                         <Image
@@ -215,6 +249,7 @@ export default function Home() {
                             src="https://github.com/nextui-org/nextui/blob/next/apps/docs/public/nextui-banner.jpeg?raw=true"
                             alt="Default Image"
                         />
+                        {issm && <Spacer y={1.5} />}
                         <Container
                             css={{
                                 width: "auto",
@@ -247,7 +282,7 @@ export default function Home() {
                                 </Text>
                             </Button>
                         </Container>
-                    </Container>
+                    </Row>
                     <Spacer y={3} />
                 </div>
             </main>

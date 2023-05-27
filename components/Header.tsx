@@ -1,4 +1,4 @@
-import { Navbar, Button, Link, Text, User, Dropdown } from "@nextui-org/react";
+import { Navbar, Button, Link, Text, User, Dropdown, Input } from "@nextui-org/react";
 import { useRouter } from "next/router";
 
 import { useTranslation } from "next-i18next";
@@ -6,14 +6,18 @@ import { useTranslation } from "next-i18next";
 import React, { useEffect, useState } from "react";
 import { AcmeLogo } from "./header/AcmeLogo";
 import { Layout } from "./header/Layout";
+import SearchInput from "./header/SearchInput"
 
 import { useAuth } from "@/hooks/auth";
 import { useCookies } from "@/hooks/cookie";
 import { database } from "@/hooks/database";
 
+const login_disabled = process.env.NEXT_PUBLIC_DISABLE_LOGIN == "true" || false
+
 interface Props {}
 
 export default function Header(props: Props) {
+
     const [sessionData, setSessionData] = useState({
         logged: false,
         displayname: "",
@@ -24,6 +28,7 @@ export default function Header(props: Props) {
     const router = useRouter();
     const { t } = useTranslation("common");
     const { logoutUser, getSessionUser } = useAuth();
+    const [isSearchOpen, setIsSearchOpen] = useState<Boolean>(false);
 
     useEffect(() => {
         getSessionUser(sessionData, setSessionData);
@@ -139,20 +144,21 @@ export default function Header(props: Props) {
                     </Dropdown>
                 ) : (
                     <Navbar.Content>
-                        <Navbar.Link color="error" href="/login">
-                            {t("Header.login")}
-                        </Navbar.Link>
+                        <SearchInput onClick={() => {setIsSearchOpen(!isSearchOpen)}} isOpen={isSearchOpen} />
+                        {!isSearchOpen &&
                         <Navbar.Item>
                             <Button
                                 auto
                                 color="error"
                                 flat
                                 as={Link}
-                                href="/signup"
+                                href="/login"
+                                disabled={login_disabled}
                             >
-                                {t("Header.signup")}
+                                {t("Header.login")}
                             </Button>
                         </Navbar.Item>
+                        }
                     </Navbar.Content>
                 )}
             </Navbar>
