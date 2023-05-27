@@ -35,8 +35,11 @@
         "react-dom": "18.2.0",
         "react-feather": "^2.0.10",
         "react-i18next": "^12.2.2",
+        "react-image-crop": "^10.0.11",
+        "sass": "^1.62.1",
         "speakeasy": "^2.0.0",
-        "stripe": "^12.6.0"
+        "stripe": "^12.6.0",
+        "styled-components": "^5.3.11"
     },
     "devDependencies": {
         "@swc/cli": "^0.1.62",

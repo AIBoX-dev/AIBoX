@@ -116,31 +116,31 @@ export default function Header(props: Props) {
                             aria-label="Avatar Actions"
                         >
                             <Dropdown.Item
+                                color="primary"
                                 key="profile"
                                 css={{ height: "$18" }}
                             >
                                 <Text b color="inherit" css={{ d: "flex" }}>
-                                    Signed in as
                                 </Text>
                                 <Text b color="inherit" css={{ d: "flex" }}>
                                     {sessionData.email}
                                 </Text>
                             </Dropdown.Item>
-                            <Dropdown.Item key="configurations" withDivider>
-                                <Link href="/dashboard">Dashboard</Link>
+                            <Dropdown.Item key="configurations" withDivider color="primary">
+                                <Link href="/dashboard">ダッシュボード</Link>
                             </Dropdown.Item>
-                            <Dropdown.Item key="settings">
-                                Settings
+                            <Dropdown.Item key="settings" color="primary">
+                                設定
                             </Dropdown.Item>
-                            <Dropdown.Item key="help_and_feedback" withDivider>
-                                Help & Feedback
+                            <Dropdown.Item key="help_and_feedback" withDivider color="primary">
+                                フィードバック
                             </Dropdown.Item>
                             <Dropdown.Item
                                 key="logout"
                                 color="error"
                                 withDivider
                             >
-                                <a onClick={logoutUser}>Log Out</a>
+                                <a onClick={logoutUser} style={{color: "red"}}>Log Out</a>
                             </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>

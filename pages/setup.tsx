@@ -17,6 +17,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useEffect } from "react";
 
 import { AtSign, Eye, Calendar } from "react-feather";
+import { FileInput } from "@/components/FileInput/FileInput"
 import Header from "@/components/Header";
 import { useAuth } from "@/hooks/auth";
 
@@ -44,11 +45,11 @@ export default function Setup() {
     };
 
     useEffect(() => {
-        confirmSession(uid as string).then((sessionValid) => {
-            if (!sessionValid) {
-                router.push("/");
-            }
-        });
+        // confirmSession(uid as string).then((sessionValid) => {
+        //     if (!sessionValid) {
+        //         router.push("/");
+        //     }
+        // });
     });
 
     return (
@@ -111,6 +112,8 @@ export default function Setup() {
                         type="datetime-local"
                         onChange={(e) => setDob(e.target.value)}
                     />
+                    <Spacer y={1} />
+                    <FileInput />
                     <Spacer y={1} />
                     <Button
                         onPress={handleProfile}

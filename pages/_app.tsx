@@ -2,6 +2,7 @@
 import { NextUIProvider } from "@nextui-org/react";
 import { AppProps } from "next/app";
 import { appWithTranslation } from "next-i18next";
+import '../styles/crop.scss';
 
 function MyApp({ Component, pageProps }: AppProps) {
     return (
