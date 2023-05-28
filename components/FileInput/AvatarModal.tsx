@@ -18,7 +18,7 @@ type Cropprops = {
     src: string;
 };
 
-export interface Crop {
+interface Crop {
     x: number
     y: number
     width: number
@@ -26,11 +26,11 @@ export interface Crop {
     unit: 'px' | '%'
 }
 
-export interface PixelCrop extends Crop {
+interface PixelCrop extends Crop {
     unit: 'px'
 }
 
-export interface PercentCrop extends Crop {
+interface PercentCrop extends Crop {
     unit: '%'
 }
 
