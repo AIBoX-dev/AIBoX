@@ -3,8 +3,6 @@ import React, { useState, useRef } from "react";
 import ReactCrop, {
     makeAspectCrop,
     centerCrop,
-    PercentCrop,
-    PixelCrop,
 } from "react-image-crop";
 import { canvasPreview } from "./utils/canvasPreview";
 
@@ -19,6 +17,22 @@ type props = {
 type Cropprops = {
     src: string;
 };
+
+export interface Crop {
+    x: number
+    y: number
+    width: number
+    height: number
+    unit: 'px' | '%'
+}
+
+export interface PixelCrop extends Crop {
+    unit: 'px'
+}
+
+export interface PercentCrop extends Crop {
+    unit: '%'
+}
 
 const saveBlob = (blob: Blob) => {
     const downloadLink = document.createElement("a");
