@@ -3,9 +3,12 @@
         "next/core-web-vitals",
         "plugin:import/recommended",
         "plugin:import/warnings",
-        "prettier"
+        "prettier",
+        "react-app",
+        "react-app/jest"
     ],
     "rules": {
+        "react-hooks/exhaustive-deps": "off",
         "import/order": [
             "error",
             {
