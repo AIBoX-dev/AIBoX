@@ -10,16 +10,6 @@
         "lint": "next lint --fix",
         "format": "prettier --write --ignore-path .gitignore ./**/*.{js,jsx,ts,tsx,json}"
     },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged"
-        }
-    },
-    "lint-staged": {
-        "*.{ts,tsx,css,scs}": [
-            "prettier --write"
-        ]
-    },
     "dependencies": {
         "@marsidev/react-turnstile": "^0.2.1",
         "@nextui-org/react": "^1.0.0-beta.12",
