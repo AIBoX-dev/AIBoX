@@ -127,7 +127,7 @@ export const AvatarModal: React.FC<props> = ({
                             if (!blob) return;
                             console.log(URL.createObjectURL(blob));
                             handleBlob(blob);
-                            saveBlob(blob)
+                            //saveBlob(blob)
 
                         });
                         onClose();
