@@ -32,7 +32,7 @@ export const AvatarModal: React.FC<props> = ({
     onClose,
     onCancel,
     src,
-    onBlob
+    onBlob,
 }) => {
     const completedRef = useRef<PixelCrop | null>(null);
     const imgRef = useRef<HTMLImageElement>(null);
@@ -128,7 +128,6 @@ export const AvatarModal: React.FC<props> = ({
                             console.log(URL.createObjectURL(blob));
                             handleBlob(blob);
                             //saveBlob(blob)
-
                         });
                         onClose();
                     }}

@@ -17,10 +17,10 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useEffect } from "react";
 
 import { AtSign, Eye, Calendar } from "react-feather";
-import { FileInput } from "@/components/FileInput/FileInput"
+import { FileInput } from "@/components/FileInput/FileInput";
 import Header from "@/components/Header";
 import { useAuth } from "@/hooks/auth";
-import { imageHandler } from "@/hooks/imageHandler"
+import { imageHandler } from "@/hooks/imageHandler";
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
     props: {
@@ -33,7 +33,7 @@ export default function Setup() {
     const router = useRouter();
     const { id: uid } = router.query;
     const { createProfile, confirmSession } = useAuth();
-    const { uploadProfileAvatar } = imageHandler()
+    const { uploadProfileAvatar } = imageHandler();
     const [displayName, setDisplayName] = React.useState("");
     const [dob, setDob] = React.useState("");
     const [userId, setUserId] = React.useState("");
@@ -41,7 +41,7 @@ export default function Setup() {
 
     const handleProfile = () => {
         try {
-            uploadProfileAvatar(blob as Blob, uid as string)
+            uploadProfileAvatar(blob as Blob, uid as string);
             createProfile(uid as string, userId, displayName, dob);
         } catch (error) {
             console.log(error);
@@ -117,7 +117,7 @@ export default function Setup() {
                         onChange={(e) => setDob(e.target.value)}
                     />
                     <Spacer y={1} />
-                    <FileInput setBlob={setBlob}/>
+                    <FileInput setBlob={setBlob} />
                     <Spacer y={1} />
                     <Button
                         onPress={handleProfile}

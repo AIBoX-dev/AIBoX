@@ -38,10 +38,10 @@ export const FileInput: React.FC<FileInputProps> = ({ setBlob }) => {
                     setIsOpen(false);
                 }}
                 onCancel={() => {
-                    if (!inputRef.current) return
-                    inputRef.current.value = ""
-                    setFileName("選択されていません")
-                    setIsOpen(false)
+                    if (!inputRef.current) return;
+                    inputRef.current.value = "";
+                    setFileName("選択されていません");
+                    setIsOpen(false);
                 }}
                 src={url}
                 onBlob={handleBlob}
