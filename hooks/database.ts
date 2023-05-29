@@ -113,6 +113,7 @@ export const stripeDatabase = () => {
         await supabase.from("CustomerPlans").insert([
             {
                 user_id: id,
+                stripe_id: stripe_id
             },
         ]);
     };
