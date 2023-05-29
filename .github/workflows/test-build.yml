@@ -20,7 +20,7 @@ jobs:
             - uses: pnpm/action-setup@v2
               with:
                   version: 8.5.1
-              run: pnpm install
+            - run: pnpm install
 
             - name: Build Next.js application
               run: |
