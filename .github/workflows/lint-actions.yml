@@ -14,14 +14,18 @@ jobs:
               uses: actions/setup-node@v3
               with:
                   node-version: 18
-                  cache: npm
-            - run: npm install
-            
+                  cache: pnpm
+
+            - uses: pnpm/action-setup@v2
+              with:
+                  version: 8.5.1
+            - run: pnpm install
+
             - name: format
-              run: npm run format
-            
+              run: pnpm run format
+
             - name: lint
-              run: npm run lint
+              run: pnpm run lint
 
             - name: commit
               run: |
