@@ -52,12 +52,13 @@ export default function Setup() {
     };
 
     useEffect(() => {
-        // confirmSession(uid as string).then((sessionValid) => {
-        //     if (!sessionValid) {
-        //         router.push("/");
-        //     }
-        // });
-    });
+        ;(async () => {
+            confirmSession(uid as string).then((sessionValid) => {
+                if (!sessionValid) {
+                    router.push("/");
+                }})
+        })()
+    }, []);
 
     return (
         <>
