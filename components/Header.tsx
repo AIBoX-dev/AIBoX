@@ -39,13 +39,13 @@ export default function Header(props: Props) {
 
     useEffect(() => {
         getSessionUser(sessionData, setSessionData);
-    }, []);
+    },[]);
 
     if (sessionData.logged) {
     }
     return (
         <Layout>
-            <Navbar isBordered variant="floating">
+            <Navbar isBordered variant="floating" css={{width: "100%"}}>
                 <Navbar.Brand>
                     <Navbar.Toggle aria-label="toggle navigation" showIn="xs" />
                     <Link href="/" color={"text"}>

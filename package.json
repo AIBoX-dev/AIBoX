@@ -28,6 +28,7 @@
         "react-feather": "^2.0.10",
         "react-i18next": "^12.2.2",
         "react-image-crop": "^10.0.11",
+        "recharts": "^2.6.2",
         "sass": "^1.62.1",
         "speakeasy": "^2.0.0",
         "stripe": "^12.6.0",
