@@ -103,9 +103,12 @@ export const useAuth = () => {
             if (!error) {
                 if (!is_activated) {
                     console.log(data.session?.user.id);
+                    console.log(data.session?.user.id.length);
                     await router.push(
                         `/setup?id=${encodeURIComponent(
                             String(data.session?.user.id)
+                        )}&email=${encodeURIComponent(
+                            String(data.session?.user.email)
                         )}`
                     );
                 } else {

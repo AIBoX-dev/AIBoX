@@ -1,18 +1,18 @@
 import { get } from "http";
 import Stripe from "stripe";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
+const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY || "", {
     apiVersion: "2022-11-15",
 });
 
 export const stripePayment = () => {
-    const stripeCreateNormalCustomer = async (id: string, email: string) => {
+    const stripeCreateNormalCustomer = async (uid: string, email: string) => {
         return await stripe.customers.create({
             metadata: {
-                user_id: id,
+                user_id: uid,
             },
             email: email,
-            description: "Normal Customer : " + id,
+            description: "Normal Customer : " + uid,
         });
     };
 

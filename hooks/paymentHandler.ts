@@ -1,7 +1,7 @@
 import { stripeDatabase } from "@/hooks/database";
 import { stripePayment } from "@/hooks/stripe";
 
-export const paymentHandler = async () => {
+export const paymentHandler = () => {
     const {
         createCustomerRow,
         updateCustomerRow,
