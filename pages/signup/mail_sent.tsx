@@ -49,14 +49,14 @@ export default function MailSent() {
     };
 
     useEffect(() => {
-        ;(async () => {
+        (async () => {
             const regex_email =
-            /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+                /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
             if (!String(emailParam).match(regex_email)) {
                 await router.push("/signup");
             }
-        })()
-    }, [])
+        })();
+    }, []);
 
     return (
         <>
