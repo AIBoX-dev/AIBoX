@@ -21,7 +21,7 @@ import { FileInput } from "@/components/FileInput/FileInput";
 import Header from "@/components/Header";
 import { useAuth } from "@/hooks/auth";
 import { imageHandler } from "@/hooks/imageHandler";
-import { paymentHandler } from "@/hooks/paymentHandler"
+import { paymentHandler } from "@/hooks/paymentHandler";
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
     props: {
@@ -34,7 +34,7 @@ export default function Setup() {
     const router = useRouter();
     const { id: uid, email } = router.query;
     const { createProfile, confirmSession } = useAuth();
-    const { createCustomer } = paymentHandler()
+    const { createCustomer } = paymentHandler();
     const { uploadProfileAvatar } = imageHandler();
     const [displayName, setDisplayName] = React.useState("");
     const [dob, setDob] = React.useState("");
@@ -45,7 +45,7 @@ export default function Setup() {
         try {
             uploadProfileAvatar(blob as Blob, uid as string);
             createProfile(uid as string, userId, displayName, dob);
-            createCustomer(uid as string, email as string)
+            createCustomer(uid as string, email as string);
         } catch (error) {
             console.log(error);
         }
