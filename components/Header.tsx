@@ -104,101 +104,75 @@ export default function Header(props: Props) {
                         </Link>
                     </Navbar.CollapseItem>
                 </Navbar.Collapse>
-                {sessionData.logged ? (
-                    <Navbar.Content>
-                        <SearchInput
-                            onClick={() => {
-                                setIsSearchOpen(!isSearchOpen);
-                            }}
-                            isOpen={isSearchOpen}
-                        />
-                        {!isSearchOpen && (
-                            <Dropdown placement="bottom-left">
-                                <Dropdown.Trigger>
-                                    <User
-                                        src={sessionData.icon_url}
-                                        name={sessionData.displayname}
-                                    >
-                                        <User.Link href="https://nextui.org/">
-                                            {sessionData.account_id
-                                                ? `@${sessionData.account_id}`
-                                                : null}
-                                        </User.Link>
-                                    </User>
-                                </Dropdown.Trigger>
-                                <Dropdown.Menu
-                                    color="secondary"
-                                    aria-label="Avatar Actions"
+                <Navbar.Content>
+                    <SearchInput onClick={() => {setIsSearchOpen(!isSearchOpen)}} isOpen={isSearchOpen} />
+                    {sessionData.logged ? (
+                    <>
+                        <Dropdown placement="bottom-left">
+                            <Dropdown.Trigger>
+                                <User
+                                    src={sessionData.icon_url}
+                                    name={sessionData.displayname}
                                 >
-                                    <Dropdown.Item
-                                        key="profile"
-                                        css={{ height: "$18" }}
-                                    >
-                                        <Text
-                                            b
-                                            color="inherit"
-                                            css={{ d: "flex" }}
-                                        >
-                                            Signed in as
-                                        </Text>
-                                        <Text
-                                            b
-                                            color="inherit"
-                                            css={{ d: "flex" }}
-                                        >
-                                            {sessionData.email}
-                                        </Text>
-                                    </Dropdown.Item>
-                                    <Dropdown.Item
-                                        key="configurations"
-                                        withDivider
-                                    >
-                                        <Link href="/dashboard">Dashboard</Link>
-                                    </Dropdown.Item>
-                                    <Dropdown.Item key="settings">
-                                        Settings
-                                    </Dropdown.Item>
-                                    <Dropdown.Item
-                                        key="help_and_feedback"
-                                        withDivider
-                                    >
-                                        Help & Feedback
-                                    </Dropdown.Item>
-                                    <Dropdown.Item
-                                        key="logout"
-                                        color="error"
-                                        withDivider
-                                    >
-                                        <a onClick={logoutUser}>Log Out</a>
-                                    </Dropdown.Item>
-                                </Dropdown.Menu>
-                            </Dropdown>
-                        )}
-                    </Navbar.Content>
-                ) : (
-                    <Navbar.Content>
-                        <SearchInput
-                            onClick={() => {
-                                setIsSearchOpen(!isSearchOpen);
-                            }}
-                            isOpen={isSearchOpen}
-                        />
-                        {!isSearchOpen && (
-                            <Navbar.Item>
-                                <Button
-                                    auto
+                                    <User.Link href="https://nextui.org/">
+                                        {sessionData.account_id
+                                            ? `@${sessionData.account_id}`
+                                            : null}
+                                    </User.Link>
+                                </User>
+                            </Dropdown.Trigger>
+                            <Dropdown.Menu
+                                color="secondary"
+                                aria-label="Avatar Actions"
+                            >
+                                <Dropdown.Item
+                                    color="primary"
+                                    key="profile"
+                                    css={{ height: "$18" }}
+                                >
+                                    <Text b color="inherit" css={{ d: "flex" }}>
+                                    </Text>
+                                    <Text b color="inherit" css={{ d: "flex" }}>
+                                        {sessionData.email}
+                                    </Text>
+                                </Dropdown.Item>
+                                <Dropdown.Item key="configurations" withDivider color="primary">
+                                    <Link href="/dashboard">ダッシュボード</Link>
+                                </Dropdown.Item>
+                                <Dropdown.Item key="settings" color="primary">
+                                    設定
+                                </Dropdown.Item>
+                                <Dropdown.Item key="help_and_feedback" withDivider color="primary">
+                                    フィードバック
+                                </Dropdown.Item>
+                                <Dropdown.Item
+                                    key="logout"
                                     color="error"
-                                    flat
-                                    as={Link}
-                                    href="/login"
-                                    disabled={login_disabled}
+                                    withDivider
                                 >
-                                    {t("Header.login")}
-                                </Button>
-                            </Navbar.Item>
-                        )}
-                    </Navbar.Content>
-                )}
+                                    <a onClick={logoutUser} style={{color: "red"}}>Log Out</a>
+                                </Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    </>
+                    ) : (
+                        <>
+                        {!isSearchOpen &&
+                        <Navbar.Item>
+                            <Button
+                                auto
+                                color="error"
+                                flat
+                                as={Link}
+                                href="/login"
+                                disabled={login_disabled}
+                            >
+                                {t("Header.login")}
+                            </Button>
+                        </Navbar.Item>}
+                        </>
+                    )}
+                </Navbar.Content>
             </Navbar>
         </Layout>
     );
