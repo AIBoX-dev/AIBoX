@@ -1,7 +1,5 @@
-name: next run lint by Actions
-
-on:
-    push:
+name: Review Dog
+on: [pull_request]
 
 jobs:
     lint:
@@ -20,21 +18,10 @@ jobs:
                   version: 8.5.1
             - run: pnpm install
 
-            - name: format
-              run: pnpm run format
-
-            - name: lint
-              run: pnpm run lint
-
-            - name: commit
-              run: |
-                  git config --local user.email "github-actions[bot]@users.noreply.github.com"
-                  git config --local user.name "github-actions[bot]"
-                  git add -A
-                  git commit -m "Lint Actions"
-
-            - name: push changes
-              uses: ad-m/github-push-action@master
+            - uses: reviewdog/action-setup@v1
               with:
-                  github_token: ${{ secrets.GITHUB_TOKEN }}
-                  branch: ${{ github.ref }}
+                reviewdog_version: latest
+            - name: Run reviewdog
+              env:
+                REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              run: npm run lint | reviewdog -f=eslint -reporter=github-pr-review -filter-mode=diff_context -fail-on-error=true
