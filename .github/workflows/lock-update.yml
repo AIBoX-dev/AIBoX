@@ -1,9 +1,9 @@
-name: Build Test
+name: pnpm-lock.yml update
 on:
     workflow_dispatch:
 
 jobs:
-    build:
+    lock:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v3
