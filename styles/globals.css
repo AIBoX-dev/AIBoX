@@ -21,3 +21,7 @@
 .ProseMirror blockquote {
   @apply editor-blockquote
 }
+
+* {
+  outline: none!important;
+}

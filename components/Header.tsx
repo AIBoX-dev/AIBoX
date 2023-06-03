@@ -161,7 +161,9 @@ export default function Header(props: Props) {
                                         key="settings"
                                         color="primary"
                                     >
-                                        設定
+                                        <Link href="/settings">
+                                            設定
+                                        </Link>
                                     </Dropdown.Item>
                                     <Dropdown.Item
                                         key="help_and_feedback"

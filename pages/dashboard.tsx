@@ -122,10 +122,7 @@ export default function Dashboard() {
                                         <Dropdown.Trigger>
                                             <Text
                                                 h4
-                                                css={{
-                                                    display: "flex",
-                                                    alignItems: "center",
-                                                }}
+                                                className="flex"
                                             >
                                                 Profile 1
                                                 <ChevronDown
@@ -161,7 +158,7 @@ export default function Dashboard() {
                                     </Dropdown>
                                 </div>
                                 <Spacer y={2} />
-                                <Button css={{ marginLeft: "auto", marginRight: "auto" }}>投稿する</Button>
+                                <Button color="error" css={{ marginLeft: "auto", marginRight: "auto", backgroundColor: "var(--nextui-colors-error)!important" }}>投稿する</Button>
                                 <Spacer y={2} />
                                 <Container css={{ textAlign: "left", width: "80%", marginLeft: "auto", marginRight: "auto" }}>
                                     <Link href="#" color="error" css={{ fontSize: "1.1rem" }}>概要</Link>
