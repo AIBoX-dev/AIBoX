@@ -1,4 +1,8 @@
-lockfileVersion: '6.0'
+lockfileVersion: '6.1'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
 
 dependencies:
   '@marsidev/react-turnstile':
@@ -9,7 +13,7 @@ dependencies:
     version: 1.0.0-beta.12(react-dom@18.2.0)(react@18.2.0)
   '@supabase/gotrue-js':
     specifier: github:supabase/gotrue-js
-    version: github.com/supabase/gotrue-js/4b924e0a74681b3107c3949b5504ccbbfc1c4aa4
+    version: github.com/supabase/gotrue-js/83bc5b62ef9c951c1eb445c037a1d10abdf9f401
   '@supabase/supabase-js':
     specifier: ^2.21.0
     version: 2.21.0
@@ -5440,8 +5444,8 @@ packages:
     resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
     dev: false
 
-  github.com/supabase/gotrue-js/4b924e0a74681b3107c3949b5504ccbbfc1c4aa4:
-    resolution: {tarball: https://codeload.github.com/supabase/gotrue-js/tar.gz/4b924e0a74681b3107c3949b5504ccbbfc1c4aa4}
+  github.com/supabase/gotrue-js/83bc5b62ef9c951c1eb445c037a1d10abdf9f401:
+    resolution: {tarball: https://codeload.github.com/supabase/gotrue-js/tar.gz/83bc5b62ef9c951c1eb445c037a1d10abdf9f401}
     name: '@supabase/gotrue-js'
     version: 0.0.0
     dependencies:
