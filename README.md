@@ -19,13 +19,13 @@ First, Fork & Clone This Repo
 
 ```bash
 git clone https://<your_username>/AIBoX
-cd AIBoX && npm i
+cd AIBoX && pnpm i
 ```
 
 Second, run the development server:
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
