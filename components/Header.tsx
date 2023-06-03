@@ -82,27 +82,86 @@ export default function Header(props: Props) {
                         {t("Header.notice")}
                     </Navbar.Link>
                 </Navbar.Content>
-                <Navbar.Collapse>
-                    <Navbar.CollapseItem>
-                        <Link color="inherit" href="/">
-                            {t("Header.home")}
-                        </Link>
-                    </Navbar.CollapseItem>
-                    <Navbar.CollapseItem>
-                        <Link color="inherit" href="/about">
-                            {t("Header.about")}
-                        </Link>
-                    </Navbar.CollapseItem>
-                    <Navbar.CollapseItem>
-                        <Link color="inherit" href="/creators">
-                            {t("Header.creators")}
-                        </Link>
-                    </Navbar.CollapseItem>
-                    <Navbar.CollapseItem>
-                        <Link color="inherit" href="/notice">
-                            {t("Header.notice")}
-                        </Link>
-                    </Navbar.CollapseItem>
+                <Navbar.Collapse css={{
+                    display: "flex",
+                    flexDirection: "column",
+                    rowGap: "0.2rem",
+                    paddingTop: "1rem"
+                }}>
+                    {sessionData.logged ? (
+                    <>
+                        <Navbar.CollapseItem>
+                            <Button size={"md"} color="error" css={{ backgroundColor: "var(--nextui-colors-error)!important" }}>
+                                投稿する
+                            </Button>
+                        </Navbar.CollapseItem>
+                        <Navbar.CollapseItem>
+                            <Link color="inherit" href="/dashboard">
+                                <Text size={"$md"}>
+                                    ダッシュボード
+                                </Text>
+                            </Link>
+                        </Navbar.CollapseItem>
+                        <Navbar.CollapseItem>
+                            <Link color="inherit" href="/dashboard">
+                                <Text size={"$md"}>
+                                    プラン管理
+                                </Text>
+                            </Link>
+                        </Navbar.CollapseItem>  
+                        <Navbar.CollapseItem>
+                            <Link color="inherit" href="/dashboard">
+                                <Text size={"$md"}>
+                                    パッケージ管理
+                                </Text>
+                            </Link>
+                        </Navbar.CollapseItem>  
+                        <Navbar.CollapseItem>
+                            <Link color="inherit" href="/dashboard">
+                                <Text size={"$md"}>
+                                    収益管理
+                                </Text>
+                            </Link>
+                        </Navbar.CollapseItem>  
+                        <Navbar.CollapseItem>
+                            <Link color="inherit" href="/settings">
+                                <Text size={"$md"}>
+                                    設定
+                                </Text>
+                            </Link>
+                        </Navbar.CollapseItem>   
+                    </>
+                    ):(
+                    <>
+                        <Navbar.CollapseItem>
+                            <Link color="inherit" href="/">
+                                <Text size={"$md"}>
+                                    {t("Header.home")}
+                                </Text>
+                            </Link>
+                        </Navbar.CollapseItem>
+                        <Navbar.CollapseItem>
+                            <Link color="inherit" href="/about">
+                                <Text size={"$md"}>
+                                    {t("Header.about")}
+                                </Text>
+                            </Link>
+                        </Navbar.CollapseItem>
+                        <Navbar.CollapseItem>
+                            <Link color="inherit" href="/creators">
+                                <Text size={"$md"}>
+                                    {t("Header.creators")}
+                                </Text>
+                            </Link>
+                        </Navbar.CollapseItem>
+                        <Navbar.CollapseItem>
+                            <Link color="inherit" href="/notice">
+                                <Text size={"$md"}>
+                                    {t("Header.notice")}
+                                </Text>
+                            </Link>
+                        </Navbar.CollapseItem>
+                    </>)}
                 </Navbar.Collapse>
                 <Navbar.Content>
                     <SearchInput
@@ -113,6 +172,7 @@ export default function Header(props: Props) {
                     />
                     {sessionData.logged ? (
                         <>
+                        {!isSearchOpen && (
                             <Dropdown placement="bottom-left">
                                 <Dropdown.Trigger>
                                     <User
@@ -186,6 +246,7 @@ export default function Header(props: Props) {
                                     </Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
+                        )}
                         </>
                     ) : (
                         <>

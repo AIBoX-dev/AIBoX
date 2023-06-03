@@ -27,6 +27,7 @@ import {
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { useAuth } from "@/hooks/auth";
+import useMediaQuery from "@/hooks/mediaquery";
 
 const data = [
     { name: "Page A", uv: 400, pv: 2400, amt: 2400 },
@@ -44,6 +45,8 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 
 export default function Dashboard() {
     const { t } = useTranslation("common");
+    const isxs = useMediaQuery("(min-width: 650px)");
+    const issm = useMediaQuery("(max-width: 960px)");
 
     const [AddVisible, setAddVisible] = React.useState(false);
     const [sessionData, setSessionData] = useState({
@@ -82,11 +85,19 @@ export default function Dashboard() {
                 }}
             >
                 <Header />
-                <Container css={{ marginTop: "10px", height: "100%" }}>
+                <Container css={{
+                    marginTop: "10px",
+                    height: "100%",
+                    flexDirection: issm ? "column" : "row",
+                    padding: "0px",
+                }}>
                     <Text
-                        size={"$3xl"}
+                        size={issm ? "$2xl" : "$3xl"}
                         weight={"semibold"}
-                        css={{ padding: "1rem" }}
+                        css={{ 
+                            padding: issm ? "0.4rem" : "1rem",
+                            paddingLeft: issm ? "1rem": "",
+                        }}
                     >
                         {t("Dashboard.dashboard")}
                     </Text>
@@ -100,7 +111,11 @@ export default function Dashboard() {
                             paddingBottom: "2.5rem",
                         }}
                     />
-                    <Row>
+                    <Row css={{
+                        margin: "0px",
+                        padding: "0px",
+                    }}>
+                        {isxs &&
                         <Col span={2.5}>
                             <Card variant="flat" css={{ height: "100vh" }}>
                                 <Spacer y={1} />
@@ -171,57 +186,74 @@ export default function Dashboard() {
                                     <Spacer y={2} />
                                 </Container>
                             </Card>
-                        </Col>
-
-                        <Col span={9}>
-                            <Spacer y={1} />
-                            <Container>
-                                <Row gap={2}>
+                        </Col>}
+                        <Col span={issm ? 12 : 9}>
+                            {!issm && <Spacer y={1} />}
+                            <Container css={{
+                                padding: issm ? "0px" : "",
+                            }}>
+                                <Row gap={2} css={{
+                                    margin: issm ? "0px" : "",
+                                    padding: issm ? "0px" : "",
+                                    flexDirection: issm ? "column" : "row",
+                                    rowGap: issm ? "1rem" : "0rem"
+                                }}>
                                     <Col>
                                         <Card
                                             variant="bordered"
-                                            css={{ height: "25%" }}
+                                            css={{ height: "40%" }}
                                         >
                                             <Card.Header>
-                                                <Text h5>プラン管理</Text>
+                                                <Text h5 weight="semibold">総収益</Text>
                                             </Card.Header>
-                                            <Card.Body>￥0</Card.Body>
+                                            <Card.Body css={{ padding: "1rem" }}>
+                                                <Text size={"$2xl"} weight="semibold">0</Text>
+                                            </Card.Body>
                                         </Card>
                                     </Col>
                                     <Col>
                                         <Card
                                             variant="bordered"
-                                            css={{ height: "25%" }}
+                                            css={{ height: "40%" }}
                                         >
                                             <Card.Header>
-                                                <Text h5>パッケージ管理</Text>
+                                                <Text h5 weight="semibold">フォロワー数</Text>
                                             </Card.Header>
-                                            <Card.Body>￥0</Card.Body>
+                                            <Card.Body css={{ padding: "1rem" }}>
+                                                <Text size={"$2xl"} weight="semibold">0</Text>
+                                            </Card.Body>
                                         </Card>
                                     </Col>
                                     <Col>
                                         <Card
                                             variant="bordered"
-                                            css={{ height: "25%" }}
+                                            css={{ height: "40%" }}
                                         >
                                             <Card.Header>
-                                                <Text h5>パッケージ管理</Text>
+                                                <Text h5 weight="semibold">支援者数</Text>
                                             </Card.Header>
-                                            <Card.Body>￥0</Card.Body>
+                                            <Card.Body css={{ padding: "1rem" }}>
+                                                <Text size={"$2xl"} weight="semibold">0</Text>
+                                            </Card.Body>
                                         </Card>
                                     </Col>
                                 </Row>
                             </Container>
                             <Spacer y={1} />
-                            <Container>
-                                <Row gap={2}>
+                            <Container css={{
+                                padding: issm ? "0px" : "",
+                            }}>
+                                <Row gap={2} css={{
+                                    margin: issm ? "0px" : "",
+                                    padding: issm ? "0px" : "",
+                                }}>
                                     <Col>
                                         <Card
                                             variant="bordered"
                                             css={{ height: "500px" }}
                                         >
                                             <Card.Header>
-                                                <Text h5>プラン管理</Text>
+                                                <Text h5 weight="semibold">概要</Text>
                                             </Card.Header>
                                             <Card.Body>
                                                 <LineChart
