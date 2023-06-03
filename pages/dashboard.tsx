@@ -7,6 +7,7 @@ import {
     Spacer,
     Link,
     Avatar,
+    Button,
     Dropdown
 } from "@nextui-org/react";
 import { GetStaticProps } from "next";
@@ -119,15 +120,17 @@ export default function Dashboard() {
                                         </Dropdown.Menu>
                                     </Dropdown>
                                 </div>
-                                <Spacer y={3} />
-                                <Container css={{ textAlign: "left", marginLeft: "20%" }}>
-                                    <Link href="#" color="error" >概要</Link>
+                                <Spacer y={2} />
+                                <Button css={{ marginLeft: "auto", marginRight: "auto" }}>投稿する</Button>
+                                <Spacer y={2} />
+                                <Container css={{ textAlign: "left", width: "80%", marginLeft: "auto", marginRight: "auto" }}>
+                                    <Link href="#" color="error" css={{ fontSize: "1.1rem" }}>概要</Link>
                                     <Spacer y={1} />
-                                    <Link href="#" color="text">プラン管理</Link>
+                                    <Link href="#" color="text" css={{ fontSize: "1.1rem" }}>プラン管理</Link>
                                     <Spacer y={1} />
-                                    <Link href="#" color="text">パッケージ管理</Link>
+                                    <Link href="#" color="text" css={{ fontSize: "1.1rem" }}>パッケージ管理</Link>
                                     <Spacer y={1} />
-                                    <Link href="#" color="text">収益管理</Link>
+                                    <Link href="#" color="text" css={{ fontSize: "1.1rem" }}>収益管理</Link>
                                     <Spacer y={2} />
                                 </Container>
                             </Card>

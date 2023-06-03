@@ -140,7 +140,7 @@ export default function Header(props: Props) {
                                     <Link href="/dashboard">ダッシュボード</Link>
                                 </Dropdown.Item>
                                 <Dropdown.Item key="settings" color="primary">
-                                    設定
+                                    <Link href="/settings">設定</Link>
                                 </Dropdown.Item>
                                 <Dropdown.Item key="help_and_feedback" withDivider color="primary">
                                     フィードバック
