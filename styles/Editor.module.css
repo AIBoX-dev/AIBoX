@@ -4,7 +4,7 @@
     margin-left: auto;
     margin-right: auto;
     outline: none;
-    @apply prose prose-lg  prose-slate prose-blockquote:editor-blockquote prose-code:whitespace-pre-wrap prose-hr:h-[1px];
+    @apply prose prose-lg prose-slate prose-code:whitespace-pre-wrap prose-hr:h-[1px];
 }
 
 .codeGray {

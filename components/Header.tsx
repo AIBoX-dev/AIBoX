@@ -39,13 +39,13 @@ export default function Header(props: Props) {
 
     useEffect(() => {
         getSessionUser(sessionData, setSessionData);
-    },[]);
+    }, []);
 
     if (sessionData.logged) {
     }
     return (
         <Layout>
-            <Navbar isBordered variant="floating" css={{width: "100%"}}>
+            <Navbar isBordered variant="floating" css={{ width: "100%" }}>
                 <Navbar.Brand>
                     <Navbar.Toggle aria-label="toggle navigation" showIn="xs" />
                     <Link href="/" color={"text"}>
@@ -105,71 +105,102 @@ export default function Header(props: Props) {
                     </Navbar.CollapseItem>
                 </Navbar.Collapse>
                 <Navbar.Content>
-                    <SearchInput onClick={() => {setIsSearchOpen(!isSearchOpen)}} isOpen={isSearchOpen} />
+                    <SearchInput
+                        onClick={() => {
+                            setIsSearchOpen(!isSearchOpen);
+                        }}
+                        isOpen={isSearchOpen}
+                    />
                     {sessionData.logged ? (
-                    <>
-                        <Dropdown placement="bottom-left">
-                            <Dropdown.Trigger>
-                                <User
-                                    src={sessionData.icon_url}
-                                    name={sessionData.displayname}
+                        <>
+                            <Dropdown placement="bottom-left">
+                                <Dropdown.Trigger>
+                                    <User
+                                        src={sessionData.icon_url}
+                                        name={sessionData.displayname}
+                                    >
+                                        <User.Link href="https://nextui.org/">
+                                            {sessionData.account_id
+                                                ? `@${sessionData.account_id}`
+                                                : null}
+                                        </User.Link>
+                                    </User>
+                                </Dropdown.Trigger>
+                                <Dropdown.Menu
+                                    color="secondary"
+                                    aria-label="Avatar Actions"
                                 >
-                                    <User.Link href="https://nextui.org/">
-                                        {sessionData.account_id
-                                            ? `@${sessionData.account_id}`
-                                            : null}
-                                    </User.Link>
-                                </User>
-                            </Dropdown.Trigger>
-                            <Dropdown.Menu
-                                color="secondary"
-                                aria-label="Avatar Actions"
-                            >
-                                <Dropdown.Item
-                                    color="primary"
-                                    key="profile"
-                                    css={{ height: "$18" }}
-                                >
-                                    <Text b color="inherit" css={{ d: "flex" }}>
-                                    </Text>
-                                    <Text b color="inherit" css={{ d: "flex" }}>
-                                        {sessionData.email}
-                                    </Text>
-                                </Dropdown.Item>
-                                <Dropdown.Item key="configurations" withDivider color="primary">
-                                    <Link href="/dashboard">ダッシュボード</Link>
-                                </Dropdown.Item>
-                                <Dropdown.Item key="settings" color="primary">
-                                    <Link href="/settings">設定</Link>
-                                </Dropdown.Item>
-                                <Dropdown.Item key="help_and_feedback" withDivider color="primary">
-                                    フィードバック
-                                </Dropdown.Item>
-                                <Dropdown.Item
-                                    key="logout"
-                                    color="error"
-                                    withDivider
-                                >
-                                    <a onClick={logoutUser} style={{color: "red"}}>Log Out</a>
-                                </Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
-                    </>
+                                    <Dropdown.Item
+                                        color="primary"
+                                        key="profile"
+                                        css={{ height: "$18" }}
+                                    >
+                                        <Text
+                                            b
+                                            color="inherit"
+                                            css={{ d: "flex" }}
+                                        ></Text>
+                                        <Text
+                                            b
+                                            color="inherit"
+                                            css={{ d: "flex" }}
+                                        >
+                                            {sessionData.email}
+                                        </Text>
+                                    </Dropdown.Item>
+                                    <Dropdown.Item
+                                        key="configurations"
+                                        withDivider
+                                        color="primary"
+                                    >
+                                        <Link href="/dashboard">
+                                            ダッシュボード
+                                        </Link>
+                                    </Dropdown.Item>
+                                    <Dropdown.Item
+                                        key="settings"
+                                        color="primary"
+                                    >
+                                        設定
+                                    </Dropdown.Item>
+                                    <Dropdown.Item
+                                        key="help_and_feedback"
+                                        withDivider
+                                        color="primary"
+                                    >
+                                        フィードバック
+                                    </Dropdown.Item>
+                                    <Dropdown.Item
+                                        key="logout"
+                                        color="error"
+                                        withDivider
+                                    >
+                                        <a
+                                            onClick={logoutUser}
+                                            style={{ color: "red" }}
+                                        >
+                                            Log Out
+                                        </a>
+                                    </Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                        </>
                     ) : (
                         <>
-                        {!isSearchOpen &&
-                        <Navbar.Item>
-                            <Button
-                                auto
-                                color="error"
-                                flat
-                                as={Link}
-                                href="/login"
-                                disabled={login_disabled}
-                            >
-                                {t("Header.login")}
-                            </Button>
-                        </Navbar.Item>}
+                            {!isSearchOpen && (
+                                <Navbar.Item>
+                                    <Button
+                                        auto
+                                        color="error"
+                                        flat
+                                        as={Link}
+                                        href="/login"
+                                        disabled={login_disabled}
+                                    >
+                                        {t("Header.login")}
+                                    </Button>
+                                </Navbar.Item>
+                            )}
                         </>
                     )}
                 </Navbar.Content>

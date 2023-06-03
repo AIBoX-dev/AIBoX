@@ -7,7 +7,7 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint --fix",
+        "lint": "next lint -f stylish",
         "format": "prettier --write --ignore-path .gitignore ./**/*.{js,jsx,ts,tsx,json}"
     },
     "dependencies": {

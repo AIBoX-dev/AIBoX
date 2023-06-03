@@ -17,3 +17,7 @@
     @apply text-base not-quote not-italic font-normal px-6 py-3 bg-slate-100 rounded-lg border-none;
   }
 }
+
+.ProseMirror blockquote {
+  @apply editor-blockquote
+}

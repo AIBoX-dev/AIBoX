@@ -16,13 +16,25 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useEffect, useState } from "react";
 import { Plus, ChevronDown } from "react-feather";
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
+import {
+    LineChart,
+    Line,
+    CartesianGrid,
+    XAxis,
+    YAxis,
+    Tooltip,
+} from "recharts";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { useAuth } from "@/hooks/auth";
 
-const data = [{ name: 'Page A', uv: 400, pv: 2400, amt: 2400 }, { name: 'Page B', uv: 400, pv: 2400, amt: 2400 }, { name: 'Page C', uv: 400, pv: 2400, amt: 2400 }, { name: 'Page D', uv: 420, pv: 2800, amt: 2400 }, { name: 'Page E', uv: 400, pv: 2400, amt: 2400 }];
-
+const data = [
+    { name: "Page A", uv: 400, pv: 2400, amt: 2400 },
+    { name: "Page B", uv: 400, pv: 2400, amt: 2400 },
+    { name: "Page C", uv: 400, pv: 2400, amt: 2400 },
+    { name: "Page D", uv: 420, pv: 2800, amt: 2400 },
+    { name: "Page E", uv: 400, pv: 2400, amt: 2400 },
+];
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
     props: {
@@ -42,7 +54,7 @@ export default function Dashboard() {
         email: "",
     });
     const { logoutUser, getSessionUser } = useAuth();
-    const router = useRouter()
+    const router = useRouter();
 
     const handleAddProfile = (e: any) => {
         setAddVisible(true);
@@ -58,18 +70,24 @@ export default function Dashboard() {
         // if (!sessionData.logged) {
         //     router.push("/")
         // }
-    },[]);
+    }, []);
 
     return (
         <>
-            <div style={{
-                "display": "grid",
-                "gridTemplateRows": "auto 1fr",
-                "minHeight": "100vh"
-            }}>
+            <div
+                style={{
+                    display: "grid",
+                    gridTemplateRows: "auto 1fr",
+                    minHeight: "100vh",
+                }}
+            >
                 <Header />
-                <Container css={{ marginTop: "10px", height: "100%"}}>
-                    <Text size={"$3xl"} weight={"semibold"} css={{ padding: "1rem" }}>
+                <Container css={{ marginTop: "10px", height: "100%" }}>
+                    <Text
+                        size={"$3xl"}
+                        weight={"semibold"}
+                        css={{ padding: "1rem" }}
+                    >
                         {t("Dashboard.dashboard")}
                     </Text>
                     <Spacer
@@ -84,26 +102,38 @@ export default function Dashboard() {
                     />
                     <Row>
                         <Col span={2.5}>
-                            <Card variant="flat" css={{ "height": "100vh" }}>
+                            <Card variant="flat" css={{ height: "100vh" }}>
                                 <Spacer y={1} />
-                                <div style={{
-                                    display: "flex", flexDirection: "column",
-                                    textAlign: "center", "justifyContent": "center", "alignItems": "center"
-                                }}>
+                                <div
+                                    style={{
+                                        display: "flex",
+                                        flexDirection: "column",
+                                        textAlign: "center",
+                                        justifyContent: "center",
+                                        alignItems: "center",
+                                    }}
+                                >
                                     <Avatar
                                         src={sessionData.icon_url}
-                                        css={{ "size": "100px" }}
+                                        css={{ size: "100px" }}
                                     />
                                     <Spacer y={1} />
                                     <Dropdown>
                                         <Dropdown.Trigger>
-                                            <Text h4 css={{
-                                                display: "flex",
-                                                alignItems: "center",
-                                            }} >Profile 1 
+                                            <Text
+                                                h4
+                                                css={{
+                                                    display: "flex",
+                                                    alignItems: "center",
+                                                }}
+                                            >
+                                                Profile 1
                                                 <ChevronDown
                                                     size={23}
-                                                    style={{ marginLeft: "5px", paddingTop: "9px" }}
+                                                    style={{
+                                                        marginLeft: "5px",
+                                                        paddingTop: "9px",
+                                                    }}
                                                 />
                                             </Text>
                                         </Dropdown.Trigger>
@@ -111,10 +141,20 @@ export default function Dashboard() {
                                             variant="light"
                                             aria-label="Actions"
                                         >
-                                            <Dropdown.Item key="2">Profile 2</Dropdown.Item>
-                                            <Dropdown.Item key="3">Profile 3</Dropdown.Item>
-                                            <Dropdown.Item key="4">Profile 4</Dropdown.Item>
-                                            <Dropdown.Item key="add" color="error" withDivider>
+                                            <Dropdown.Item key="2">
+                                                Profile 2
+                                            </Dropdown.Item>
+                                            <Dropdown.Item key="3">
+                                                Profile 3
+                                            </Dropdown.Item>
+                                            <Dropdown.Item key="4">
+                                                Profile 4
+                                            </Dropdown.Item>
+                                            <Dropdown.Item
+                                                key="add"
+                                                color="error"
+                                                withDivider
+                                            >
                                                 新しいプロファイルを作成
                                             </Dropdown.Item>
                                         </Dropdown.Menu>
@@ -141,34 +181,36 @@ export default function Dashboard() {
                             <Container>
                                 <Row gap={2}>
                                     <Col>
-                                        <Card variant="bordered" css={{ "height": "25%" }}>
+                                        <Card
+                                            variant="bordered"
+                                            css={{ height: "25%" }}
+                                        >
                                             <Card.Header>
                                                 <Text h5>プラン管理</Text>
                                             </Card.Header>
-                                            <Card.Body>
-                                                ￥0
-                                            </Card.Body>
-                                        </Card>
-
-                                    </Col>
-                                    <Col>
-                                        <Card variant="bordered" css={{ "height": "25%" }}>
-                                            <Card.Header>
-                                                <Text h5>パッケージ管理</Text>
-                                            </Card.Header>
-                                            <Card.Body>
-                                                ￥0
-                                            </Card.Body>
+                                            <Card.Body>￥0</Card.Body>
                                         </Card>
                                     </Col>
                                     <Col>
-                                        <Card variant="bordered" css={{ "height": "25%" }}>
+                                        <Card
+                                            variant="bordered"
+                                            css={{ height: "25%" }}
+                                        >
                                             <Card.Header>
                                                 <Text h5>パッケージ管理</Text>
                                             </Card.Header>
-                                            <Card.Body>
-                                                ￥0
-                                            </Card.Body>
+                                            <Card.Body>￥0</Card.Body>
+                                        </Card>
+                                    </Col>
+                                    <Col>
+                                        <Card
+                                            variant="bordered"
+                                            css={{ height: "25%" }}
+                                        >
+                                            <Card.Header>
+                                                <Text h5>パッケージ管理</Text>
+                                            </Card.Header>
+                                            <Card.Body>￥0</Card.Body>
                                         </Card>
                                     </Col>
                                 </Row>
@@ -177,14 +219,32 @@ export default function Dashboard() {
                             <Container>
                                 <Row gap={2}>
                                     <Col>
-                                        <Card variant="bordered" css={{ "height": "500px" }}>
+                                        <Card
+                                            variant="bordered"
+                                            css={{ height: "500px" }}
+                                        >
                                             <Card.Header>
                                                 <Text h5>プラン管理</Text>
                                             </Card.Header>
                                             <Card.Body>
-                                                <LineChart data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
-                                                    <Line type="monotone" dataKey="uv" stroke="#8884d8" />
-                                                    <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+                                                <LineChart
+                                                    data={data}
+                                                    margin={{
+                                                        top: 5,
+                                                        right: 20,
+                                                        bottom: 5,
+                                                        left: 0,
+                                                    }}
+                                                >
+                                                    <Line
+                                                        type="monotone"
+                                                        dataKey="uv"
+                                                        stroke="#8884d8"
+                                                    />
+                                                    <CartesianGrid
+                                                        stroke="#ccc"
+                                                        strokeDasharray="5 5"
+                                                    />
                                                     <XAxis dataKey="name" />
                                                     <YAxis />
                                                     <Tooltip />
@@ -199,7 +259,7 @@ export default function Dashboard() {
                     </Row>
                 </Container>
                 <Footer />
-            </div >
+            </div>
         </>
     );
 }
