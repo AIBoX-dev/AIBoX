@@ -3,6 +3,8 @@ import React, { useState, useRef } from "react";
 import ReactCrop, {
     makeAspectCrop,
     centerCrop,
+} from "react-image-crop";
+import type {
     PercentCrop,
     PixelCrop,
 } from "react-image-crop";

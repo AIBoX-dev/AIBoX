@@ -7,7 +7,8 @@ import {
     Spacer,
     Link,
     Avatar,
-    Dropdown,
+    Button,
+    Dropdown
 } from "@nextui-org/react";
 import { GetStaticProps } from "next";
 import { useRouter } from "next/router";
@@ -121,10 +122,7 @@ export default function Dashboard() {
                                         <Dropdown.Trigger>
                                             <Text
                                                 h4
-                                                css={{
-                                                    display: "flex",
-                                                    alignItems: "center",
-                                                }}
+                                                className="flex"
                                             >
                                                 Profile 1
                                                 <ChevronDown
@@ -159,28 +157,17 @@ export default function Dashboard() {
                                         </Dropdown.Menu>
                                     </Dropdown>
                                 </div>
-                                <Spacer y={3} />
-                                <Container
-                                    css={{
-                                        textAlign: "left",
-                                        marginLeft: "20%",
-                                    }}
-                                >
-                                    <Link href="#" color="error">
-                                        概要
-                                    </Link>
+                                <Spacer y={2} />
+                                <Button color="error" css={{ marginLeft: "auto", marginRight: "auto", backgroundColor: "var(--nextui-colors-error)!important" }}>投稿する</Button>
+                                <Spacer y={2} />
+                                <Container css={{ textAlign: "left", width: "80%", marginLeft: "auto", marginRight: "auto" }}>
+                                    <Link href="#" color="error" css={{ fontSize: "1.1rem" }}>概要</Link>
                                     <Spacer y={1} />
-                                    <Link href="#" color="text">
-                                        プラン管理
-                                    </Link>
+                                    <Link href="#" color="text" css={{ fontSize: "1.1rem" }}>プラン管理</Link>
                                     <Spacer y={1} />
-                                    <Link href="#" color="text">
-                                        パッケージ管理
-                                    </Link>
+                                    <Link href="#" color="text" css={{ fontSize: "1.1rem" }}>パッケージ管理</Link>
                                     <Spacer y={1} />
-                                    <Link href="#" color="text">
-                                        収益管理
-                                    </Link>
+                                    <Link href="#" color="text" css={{ fontSize: "1.1rem" }}>収益管理</Link>
                                     <Spacer y={2} />
                                 </Container>
                             </Card>
