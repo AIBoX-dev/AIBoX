@@ -41,11 +41,11 @@ export default function Setup() {
     const [userId, setUserId] = React.useState("");
     const [blob, setBlob] = React.useState<Blob | null>(null);
 
-    const handleProfile = () => {
+    const handleProfile = async () => {
         try {
-            uploadProfileAvatar(blob as Blob, uid as string);
-            createProfile(uid as string, userId, displayName, dob);
-            createCustomer(uid as string, email as string);
+            const cf_url = await uploadProfileAvatar(blob as Blob, uid as string);
+            await createProfile(uid as string, userId, displayName, dob, cf_url);
+            await createCustomer(uid as string, email as string)
         } catch (error) {
             console.log(error);
         }

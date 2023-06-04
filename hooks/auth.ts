@@ -68,7 +68,8 @@ export const useAuth = () => {
         uid: string,
         account_id: string,
         display_name: string,
-        dob: string
+        dob: string,
+        cf_url: string
     ) => {
         try {
             const description = "Hello!";
@@ -80,7 +81,8 @@ export const useAuth = () => {
                 display_name,
                 description,
                 created_at,
-                updated_at
+                updated_at,
+                cf_url
             );
             await updateDob(uid, dob);
             await setActivated(uid);

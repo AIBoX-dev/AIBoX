@@ -36,7 +36,8 @@ export const database = () => {
         display_name: string,
         description: string,
         created_at: string,
-        updated_at: string
+        updated_at: string,
+        cf_url: string
     ) => {
         const id = await getID(uid);
         if (!id) return;
@@ -49,6 +50,7 @@ export const database = () => {
                 description: description,
                 created_at: created_at,
                 updated_at: updated_at,
+                icon_url: cf_url
             },
         ]);
 

@@ -1,36 +1,31 @@
-import axios from "axios";
+export const cfImage = () => {
+  const getDirectCreatorUploadLink = async () => {
+    try {
+      return await (await fetch(`/api/directCreatorUploadLink`)).json();
+    } catch(error) {
 
-const cloudflare_account_id = process.env
-    .NEXT_PUBLIC_CLOUDFLARE_ACCOUNT_ID as string;
-const cloudflare_token = process.env.NEXT_PUBLIC_CLOUDFLARE_TOKEN as string;
+    }
+  }
 
-export const images = () => {
-    const uploadImage = async (image: Blob) => {
-        try {
-            const form = new FormData();
-            form.append("requireSignedURLs", "true");
-            form.append("metadata", JSON.stringify({ key: "value" }));
-            form.append("file", image);
+  const uploadImage = async (blob: Blob, user_id: string): Promise<string> => {
+    const { id, uploadURL } = await getDirectCreatorUploadLink();
+    const form = new FormData();
+    form.append("file", blob, user_id + "");
+    return fetch(uploadURL, {
+      method: "POST",
+      body: form,
+    }).then(
+      response => {
+        const urlObject = new URL(response.url);
+        const id = urlObject.pathname.split('/')[2];
+        console.log(id)
+        return Promise.resolve(`https://imagedelivery.net/ixYF3FkF_lFGPNWGS94NUg/${id}/public`)
 
-            const { data } = await axios(
-                `https://api.cloudflare.com/client/v4/accounts/${cloudflare_account_id}/images/v1`,
-                {
-                    method: "POST",
-                    headers: {
-                        Authorization: `Bearer ${cloudflare_token}`,
-                        "Content-Type": "multipart/form-data",
-                    },
-                    data: form,
-                }
-            );
+      }
+    )
+  }
 
-            console.log(data);
-        } catch (e) {
-            console.log(e);
-        }
-    };
-
-    return {
-        uploadImage,
-    };
+  return {
+    uploadImage
+  }
 };
