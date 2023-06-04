@@ -45,7 +45,7 @@ export default function Header(props: Props) {
     }
     return (
         <Layout>
-            <Navbar isBordered variant="floating">
+            <Navbar isBordered variant="floating" css={{ width: "100%" }}>
                 <Navbar.Brand>
                     <Navbar.Toggle aria-label="toggle navigation" showIn="xs" />
                     <Link href="/" color={"text"}>
@@ -82,36 +82,96 @@ export default function Header(props: Props) {
                         {t("Header.notice")}
                     </Navbar.Link>
                 </Navbar.Content>
-                <Navbar.Collapse>
-                    <Navbar.CollapseItem>
-                        <Link color="inherit" href="/">
-                            {t("Header.home")}
-                        </Link>
-                    </Navbar.CollapseItem>
-                    <Navbar.CollapseItem>
-                        <Link color="inherit" href="/about">
-                            {t("Header.about")}
-                        </Link>
-                    </Navbar.CollapseItem>
-                    <Navbar.CollapseItem>
-                        <Link color="inherit" href="/creators">
-                            {t("Header.creators")}
-                        </Link>
-                    </Navbar.CollapseItem>
-                    <Navbar.CollapseItem>
-                        <Link color="inherit" href="/notice">
-                            {t("Header.notice")}
-                        </Link>
-                    </Navbar.CollapseItem>
+                <Navbar.Collapse css={{
+                    display: "flex",
+                    flexDirection: "column",
+                    rowGap: "0.2rem",
+                    paddingTop: "1rem"
+                }}>
+                    {sessionData.logged ? (
+                    <>
+                        <Navbar.CollapseItem>
+                            <Button size={"md"} color="error" css={{ backgroundColor: "var(--nextui-colors-error)!important" }}>
+                                投稿する
+                            </Button>
+                        </Navbar.CollapseItem>
+                        <Navbar.CollapseItem>
+                            <Link color="inherit" href="/dashboard">
+                                <Text size={"$md"}>
+                                    ダッシュボード
+                                </Text>
+                            </Link>
+                        </Navbar.CollapseItem>
+                        <Navbar.CollapseItem>
+                            <Link color="inherit" href="/dashboard">
+                                <Text size={"$md"}>
+                                    プラン管理
+                                </Text>
+                            </Link>
+                        </Navbar.CollapseItem>  
+                        <Navbar.CollapseItem>
+                            <Link color="inherit" href="/dashboard">
+                                <Text size={"$md"}>
+                                    パッケージ管理
+                                </Text>
+                            </Link>
+                        </Navbar.CollapseItem>  
+                        <Navbar.CollapseItem>
+                            <Link color="inherit" href="/dashboard">
+                                <Text size={"$md"}>
+                                    収益管理
+                                </Text>
+                            </Link>
+                        </Navbar.CollapseItem>  
+                        <Navbar.CollapseItem>
+                            <Link color="inherit" href="/settings">
+                                <Text size={"$md"}>
+                                    設定
+                                </Text>
+                            </Link>
+                        </Navbar.CollapseItem>   
+                    </>
+                    ):(
+                    <>
+                        <Navbar.CollapseItem>
+                            <Link color="inherit" href="/">
+                                <Text size={"$md"}>
+                                    {t("Header.home")}
+                                </Text>
+                            </Link>
+                        </Navbar.CollapseItem>
+                        <Navbar.CollapseItem>
+                            <Link color="inherit" href="/about">
+                                <Text size={"$md"}>
+                                    {t("Header.about")}
+                                </Text>
+                            </Link>
+                        </Navbar.CollapseItem>
+                        <Navbar.CollapseItem>
+                            <Link color="inherit" href="/creators">
+                                <Text size={"$md"}>
+                                    {t("Header.creators")}
+                                </Text>
+                            </Link>
+                        </Navbar.CollapseItem>
+                        <Navbar.CollapseItem>
+                            <Link color="inherit" href="/notice">
+                                <Text size={"$md"}>
+                                    {t("Header.notice")}
+                                </Text>
+                            </Link>
+                        </Navbar.CollapseItem>
+                    </>)}
                 </Navbar.Collapse>
-                {sessionData.logged ? (
-                    <Navbar.Content>
-                        <SearchInput
-                            onClick={() => {
-                                setIsSearchOpen(!isSearchOpen);
-                            }}
-                            isOpen={isSearchOpen}
-                        />
+                <Navbar.Content>
+                    <SearchInput
+                        onClick={() => {
+                            setIsSearchOpen(!isSearchOpen);
+                        }}
+                        isOpen={isSearchOpen}
+                    />
+                    {sessionData.logged ? (
+                        <>
                         {!isSearchOpen && (
                             <Dropdown placement="bottom-left">
                                 <Dropdown.Trigger>
@@ -131,6 +191,7 @@ export default function Header(props: Props) {
                                     aria-label="Avatar Actions"
                                 >
                                     <Dropdown.Item
+                                        color="primary"
                                         key="profile"
                                         css={{ height: "$18" }}
                                     >
@@ -138,9 +199,7 @@ export default function Header(props: Props) {
                                             b
                                             color="inherit"
                                             css={{ d: "flex" }}
-                                        >
-                                            Signed in as
-                                        </Text>
+                                        ></Text>
                                         <Text
                                             b
                                             color="inherit"
@@ -152,53 +211,62 @@ export default function Header(props: Props) {
                                     <Dropdown.Item
                                         key="configurations"
                                         withDivider
+                                        color="primary"
                                     >
-                                        <Link href="/dashboard">Dashboard</Link>
+                                        <Link href="/dashboard">
+                                            ダッシュボード
+                                        </Link>
                                     </Dropdown.Item>
-                                    <Dropdown.Item key="settings">
-                                        Settings
+                                    <Dropdown.Item
+                                        key="settings"
+                                        color="primary"
+                                    >
+                                        <Link href="/settings">
+                                            設定
+                                        </Link>
                                     </Dropdown.Item>
                                     <Dropdown.Item
                                         key="help_and_feedback"
                                         withDivider
+                                        color="primary"
                                     >
-                                        Help & Feedback
+                                        フィードバック
                                     </Dropdown.Item>
                                     <Dropdown.Item
                                         key="logout"
                                         color="error"
                                         withDivider
                                     >
-                                        <a onClick={logoutUser}>Log Out</a>
+                                        <a
+                                            onClick={logoutUser}
+                                            style={{ color: "red" }}
+                                        >
+                                            Log Out
+                                        </a>
                                     </Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                         )}
-                    </Navbar.Content>
-                ) : (
-                    <Navbar.Content>
-                        <SearchInput
-                            onClick={() => {
-                                setIsSearchOpen(!isSearchOpen);
-                            }}
-                            isOpen={isSearchOpen}
-                        />
-                        {!isSearchOpen && (
-                            <Navbar.Item>
-                                <Button
-                                    auto
-                                    color="error"
-                                    flat
-                                    as={Link}
-                                    href="/login"
-                                    disabled={login_disabled}
-                                >
-                                    {t("Header.login")}
-                                </Button>
-                            </Navbar.Item>
-                        )}
-                    </Navbar.Content>
-                )}
+                        </>
+                    ) : (
+                        <>
+                            {!isSearchOpen && (
+                                <Navbar.Item>
+                                    <Button
+                                        auto
+                                        color="error"
+                                        flat
+                                        as={Link}
+                                        href="/login"
+                                        disabled={login_disabled}
+                                    >
+                                        {t("Header.login")}
+                                    </Button>
+                                </Navbar.Item>
+                            )}
+                        </>
+                    )}
+                </Navbar.Content>
             </Navbar>
         </Layout>
     );

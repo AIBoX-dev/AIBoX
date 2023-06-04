@@ -107,7 +107,11 @@ export const useAuth = () => {
                     console.log(data.session?.user.id);
                     console.log(data.session?.user.id.length);
                     await router.push(
-                        `/setup?id=${encodeURIComponent(String(data.session?.user.id))}&email=${encodeURIComponent(String(data.session?.user.email))}`
+                        `/setup?id=${encodeURIComponent(
+                            String(data.session?.user.id)
+                        )}&email=${encodeURIComponent(
+                            String(data.session?.user.email)
+                        )}`
                     );
                 } else {
                     if (login_remember) {
