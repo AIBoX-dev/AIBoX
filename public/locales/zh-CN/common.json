@@ -17,7 +17,8 @@
         "password": "密码",
         "forgot": "忘记密码？",
         "remember": "保存登录信息",
-        "google": "用谷歌登录"
+        "google": "用谷歌登录",
+        "faillogin": "メールアドレスまたはパスワードが違います"
     },
     "Signup": {
         "signup": "新注册",
