@@ -17,7 +17,8 @@
         "password": "Password",
         "forgot": "Forgot Password?",
         "remember": "Remember Me",
-        "google": "Login with Google"
+        "google": "Login with Google",
+        "faillogin": "メールアドレスまたはパスワードが違います"
     },
     "Signup": {
         "signup": "Sign Up",
