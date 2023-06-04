@@ -31,6 +31,20 @@ export default function Login() {
     const { signInWithGoogle, loginWithPassword } = useAuth();
     const { userdata, setUserdata } = Checks();
     const [loading, setLoading] = React.useState(false);
+    const [loginError, setLoginError] = React.useState(false)
+
+    const handlesignin = async () => {
+        await loginWithPassword(
+            userdata.email,
+            userdata.password,
+            userdata.login_remember
+            ).then(error => {
+                if (error) {
+                    setLoading(false)
+                    setLoginError(true)
+                }
+            })
+    }
     return (
         <>
             <Header />
@@ -121,6 +135,25 @@ export default function Login() {
                             </Checkbox>
                             <Text size={14}>{t("Login.forgot")}</Text>
                         </Row>
+                        {loginError && (
+                            <Text
+                                color="error"
+                                size={14}
+                                css={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+
+                                }}
+                            >
+                                <AlertTriangle
+                                    style={{
+                                        marginRight: "5px",
+                                    }}
+                                />
+                                {t("Login.faillogin")}
+                            </Text>
+                            )}
                         <Spacer y={1} />
                         <Turnstile
                             siteKey={
@@ -138,13 +171,7 @@ export default function Login() {
                             onClick={() => {
                                 setLoading(true);
                             }}
-                            onPress={() => {
-                                loginWithPassword(
-                                    userdata.email,
-                                    userdata.password,
-                                    userdata.login_remember
-                                );
-                            }}
+                            onPress={handlesignin}
                             bordered
                             color="gradient"
                             auto
