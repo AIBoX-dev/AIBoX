@@ -95,7 +95,7 @@ export const useAuth = () => {
         email: string,
         password: string,
         login_remember: boolean
-    ): Promise<void> => {
+        ) => {
         try {
             const { data, error } = await supabase.auth.signInWithPassword({
                 email: email,
@@ -126,10 +126,13 @@ export const useAuth = () => {
                     );
                 }
             } else {
+                return error;
             }
         } catch (error) {
             console.error(error);
+            return error;
         }
+        return null
     };
 
     const resendVerificationEmail = async (email: string) => {
