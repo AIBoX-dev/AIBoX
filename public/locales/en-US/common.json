@@ -17,7 +17,8 @@
         "password": "Password",
         "forgot": "Forgot Password?",
         "remember": "Remember Me",
-        "google": "Login with Google"
+        "google": "Login with Google",
+        "faillogin": "メールアドレスまたはパスワードが違います"
     },
     "Signup": {
         "signup": "Sign Up",
@@ -27,7 +28,7 @@
         "password": "Password",
         "confirm_password": "パスワードの確認",
         "agree": "次の規約に同意する：",
-        "agreements": "利用規約とプライバシーポリシー"
+        "agreements": "Terms of Service and Privacy Policy"
     },
     "Header": {
         "home": "Home",
@@ -48,15 +49,15 @@
     "Setup": {
         "setup": "セットアップ",
         "user_id": "ユーザーID",
-        "display_name": "表示名",
+        "display_name": "Display name",
         "dob": "生年月日",
         "start": "Start your journey"
     },
     "Dashboard": {
-        "dashboard": "ダッシュボード",
-        "profile": "プロフィール",
-        "assets": "投稿",
-        "plans": "支援プラン",
+        "dashboard": "Dashboard",
+        "profile": "Profile",
+        "assets": "Post",
+        "plans": "Plan",
         "packages": "パッケージ",
         "earnings": "収益",
         "addProfile": "プロフィールを追加"
@@ -64,7 +65,7 @@
     "MailSent": {
         "mailsent": "登録メールを送信完了",
         "mailsentto": "登録メールを {{ email }} に送信しました",
-        "resend": "再送信する",
+        "resend": "Submit again",
         "back": "戻る",
         "resent": "再送信完了"
     }
