@@ -5,11 +5,11 @@ export const imageHandler = () => {
     const { uploadImage } = cfImage();
     const { blobToFile, convertToWebP, saveBlob} = Convert();
 
-    const uploadProfileAvatar = async (blob: Blob, uid: string) => {
+    const uploadProfileAvatar = async (blob: Blob, uid: string): Promise<string> => {
         const image = blobToFile(blob, uid);
-        convertToWebP(image).then(async webpBlob => {
+        return convertToWebP(image).then(async webpBlob => {
             console.log(webpBlob.type)
-            await uploadImage(webpBlob)
+            return Promise.resolve(await uploadImage(webpBlob, uid))
         });
     };
 
