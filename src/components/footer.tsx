@@ -1,6 +1,6 @@
 export const Footer = () => {
   return (
-    <footer className="absolute w-full bottom-0 p-12 border-t grid grid-cols-5">
+    <footer className="absolute w-full h-60 bottom-0 p-12 border-t grid grid-cols-5">
       <div className="col-span-2 space-y-4">
         <span className="text-2xl font-semibold text-foreground">AIBoX</span>
         <p className="text-muted-foreground">AIBoXはAIクリエイターのために作られた支援サービスです</p>

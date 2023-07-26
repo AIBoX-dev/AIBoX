@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "./ui/button";
-import { MoonIcon, SunIcon, DesktopIcon } from "@radix-ui/react-icons"
+import { Moon, Sun, Monitor } from "lucide-react";
 import { useTheme } from "next-themes"
 import {
   DropdownMenu,
@@ -23,22 +23,22 @@ const ModeToggle = () => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="icon">
-          <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuRadioGroup value={theme}>
           <DropdownMenuRadioItem className="gap-x-2" value="light" onClick={() => setTheme("light")}>
-            <SunIcon />
+            <Sun className="w-4 h-4" />
             ライト
           </DropdownMenuRadioItem>
           <DropdownMenuRadioItem className="gap-x-2" value="dark" onClick={() => setTheme("dark")}>
-            <MoonIcon />
+            <Moon className="w-4 h-4" />
             ダーク
           </DropdownMenuRadioItem>
           <DropdownMenuRadioItem className="gap-x-2" value="system" onClick={() => setTheme("system")}>
-            <DesktopIcon />
+            <Monitor className="w-4 h-4" />
             システム
           </DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>

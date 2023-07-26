@@ -12,7 +12,7 @@ import {
   AvatarImage,
 } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
-import { ExitIcon, GearIcon, Pencil2Icon, PieChartIcon } from "@radix-ui/react-icons"
+import { LogOut, Settings, PenSquare, BarChartBig } from "lucide-react"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -24,6 +24,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
+import Link from "next/link"
 
 export const AvatarButton = () => {
   return (
@@ -39,21 +40,27 @@ export const AvatarButton = () => {
       <DropdownMenuContent className="w-56" align="end">
         <DropdownMenuLabel>ユーザー名</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="gap-x-2">
-          <Pencil2Icon />
-          投稿する
+        <DropdownMenuItem asChild>
+          <Link href="/post" className="flex gap-x-2">
+            <PenSquare className="w-4 h-4" />
+            投稿する
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem asChild>
+          <Link href="/dashboard" className="flex gap-x-2">
+            <BarChartBig className="w-4 h-4" />
+            ダッシュボード
+          </Link>
         </DropdownMenuItem>
         <DropdownMenuItem className="gap-x-2">
-          <PieChartIcon />
-          ダッシュボード
-        </DropdownMenuItem>
-        <DropdownMenuItem className="gap-x-2">
-          <GearIcon />
-          設定
+          <Link href="/settings" className="flex gap-x-2">
+            <Settings className="w-4 h-4" />
+            設定
+          </Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem className="gap-x-2">
-          <ExitIcon />
+          <LogOut className="w-4 h-4" />
           ログアウト
         </DropdownMenuItem>
       </DropdownMenuContent>

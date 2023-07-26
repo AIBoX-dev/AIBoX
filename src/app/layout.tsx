@@ -7,8 +7,11 @@ import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata: Metadata = {
-  title: 'AIBoX',
+export const metadata = {
+  title: {
+    default: 'AIBoX',
+    template: '%s | AIBoX',
+  },
   description: '',
 }
 
@@ -19,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} min-h-screen`}>
+      <body className={`${inter.className} min-h-screen relative pb-60 box-border`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />
           {children}
