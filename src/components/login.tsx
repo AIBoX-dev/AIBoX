@@ -1,4 +1,4 @@
-"use";
+"use client";
 
 import {
   Dialog,
@@ -57,7 +57,7 @@ export const LoginButton = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="bg-pink-500 hover:!bg-pink-500">ログイン</Button>
+        <Button variant="brand">ログイン</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
