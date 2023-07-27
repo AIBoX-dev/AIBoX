@@ -1,14 +1,30 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# AIBoX
+
+## [AIBoX](https://aibox.moe)は、AI コミュニティによる、AI クリエイターのための継続支援プラットフォームです。
+
+[AI ものづくり研究会](https://discord.gg/ai-jp)を中心としたオープンソースな Web アプリケーションです。
+
+## 技術スタック
+
+-   [Next.js](https://nextjs.org/)
+-   [Tailwind](https://tailwindcss.com/)
+-   [Cloudflare Images](https://www.cloudflare.com/ja-jp/products/cloudflare-images/)
+-   [Supabase](https://supabase.com/)
+-   [Stripe](https://stripe.com)
+-   [Vercel](https://vercel.com)
 
 ## Getting Started
 
-First, run the development server:
+First, Fork & Clone This Repo
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+git clone https://<your_username>/AIBoX
+cd AIBoX && pnpm i
+```
+
+Second, run the development server:
+
+```bash
 pnpm dev
 ```
 
