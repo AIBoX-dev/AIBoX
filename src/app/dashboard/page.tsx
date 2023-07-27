@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card";
 import { article, columns } from "./colmuns";
 import { DataTable } from "./data-table";
+import { Separator } from "@/components/ui/separator"
 
 export const metadata = {
   title: "ダッシュボード",
@@ -124,6 +125,7 @@ export default function Dashboard() {
   return (
     <main className="p-12 space-y-4">
       <h1 className="text-2xl font-semibold">ダッシュボード</h1>
+      <Separator />
       <Tabs defaultValue="general" className="w-full">
         <TabsList>
           <TabsTrigger value="general">概要</TabsTrigger>

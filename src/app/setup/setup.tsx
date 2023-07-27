@@ -136,10 +136,10 @@ export const SetupForm = () => {
               name="image"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>表示名</FormLabel>
+                  <FormLabel>アイコン</FormLabel>
                   <FormControl>
                     {/*@ts-ignore*/ }
-                    <FileInput accept="image/png, image/jpeg, image/webp" placeholder="表示名" {...field} />
+                    <FileInput accept="image/png, image/jpeg, image/webp" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

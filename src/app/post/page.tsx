@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label"
 import { Button } from '@/components/ui/button'
+import { Separator } from '@/components/ui/separator'
 
 
 export const metadata = {
@@ -15,6 +16,7 @@ export default function Post() {
   return (
     <main className='p-12 space-y-4'>
       <h1 className='text-2xl font-semibold'>投稿</h1>
+      <Separator />
       <div className='grid grid-cols-3 gap-x-6 pt-6'>
         <Card className='col-span-2 border p-4 rounded-lg'>
           <CardContent>
