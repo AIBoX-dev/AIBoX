@@ -5,7 +5,7 @@ import { Footer } from '@/components/footer'
 import { ThemeProvider } from "@/components/theme-provider"
 import { M_PLUS_2 } from 'next/font/google'
 
-const inter = M_PLUS_2({ weight: "500", subsets: ["latin"] })
+const inter = M_PLUS_2({ weight: ["100","200","300","400","500","600","700","800","900"], subsets: ["latin"] })
 
 export const metadata = {
   title: {
