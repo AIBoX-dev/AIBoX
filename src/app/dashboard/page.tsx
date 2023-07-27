@@ -25,7 +25,7 @@ const articles: article[] = [
   {
     title: "タイトル2",
     wordCount: 2000,
-    status: "課金者限定",
+    status: "支援者限定",
     lastUpdated: "2023-07-26T18:13:38+09:00",
   },
   {
@@ -43,7 +43,7 @@ const articles: article[] = [
   {
     title: "タイトル5",
     wordCount: 5000,
-    status: "課金者限定",
+    status: "支援者限定",
     lastUpdated: "2023-07-26T18:13:38+09:00",
   },
   {
@@ -61,7 +61,7 @@ const articles: article[] = [
   {
     title: "タイトル8",
     wordCount: 8000,
-    status: "課金者限定",
+    status: "支援者限定",
     lastUpdated: "2023-07-26T18.13.38+09.00",
   },
   {
@@ -79,7 +79,7 @@ const articles: article[] = [
   {
     title: "タイトル11",
     wordCount: 11000,
-    status: "課金者限定",
+    status: "支援者限定",
     lastUpdated: "2023-07-26T18.13.38+09.00",
   },
   {
@@ -97,7 +97,7 @@ const articles: article[] = [
   {
     title: "タイトル14",
     wordCount: 14000,
-    status: "課金者限定",
+    status: "支援者限定",
     lastUpdated: "2023-07-26T18.13.38+09.00",
   },
   {
@@ -115,7 +115,7 @@ const articles: article[] = [
   {
     title: "タイトル17",
     wordCount: 17000,
-    status: "課金者限定",
+    status: "支援者限定",
     lastUpdated: "2023-07-26T18.13.38+09.00",
   },
 ];

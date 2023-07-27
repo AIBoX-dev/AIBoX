@@ -75,4 +75,23 @@
   body {
     @apply bg-background text-foreground;
   }
+  .not-quote {
+    quotes: none;
+  }
+  .prosemirror-focus {
+    @apply relative overflow-visible;
+  }
+  /* :not(p.is-editor-empty) */
+  .prosemirror-focus:not(p.is-editor-empty)::before {
+    @apply absolute top-0 left-[-20px] w-1 h-full bg-secondary
+  }
 }
+
+.ProseMirror p.is-editor-empty:first-child::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
