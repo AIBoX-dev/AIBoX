@@ -195,7 +195,7 @@ const Tiptap = () => {
         <ImagePlus className='w-4 h-4' />
         画像をアップロード
       </Button>
-      <input className='text-4xl font-semibold focus:outline-none' placeholder='タイトル'></input>
+      <input className='text-4xl font-semibold focus:outline-none ' placeholder='タイトル'></input>
       {editor && <CustomBubbleMenu editor={editor} />}
       {editor && <CustomFloatingMenu editor={editor} />}
       <EditorContent editor={editor} />

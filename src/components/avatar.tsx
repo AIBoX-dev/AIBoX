@@ -41,19 +41,19 @@ export const AvatarButton = () => {
         <DropdownMenuLabel>ユーザー名</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <Link href="/post" className="flex gap-x-2">
+          <Link href="/post" className="flex gap-x-2 w-full">
             <PenSquare className="w-4 h-4" />
             投稿する
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <Link href="/dashboard" className="flex gap-x-2">
+          <Link href="/dashboard" className="flex gap-x-2 w-full">
             <BarChartBig className="w-4 h-4" />
             ダッシュボード
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem className="gap-x-2">
-          <Link href="/settings" className="flex gap-x-2">
+          <Link href="/settings" className="flex gap-x-2 w-full">
             <Settings className="w-4 h-4" />
             設定
           </Link>

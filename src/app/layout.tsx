@@ -3,9 +3,9 @@ import type { Metadata } from 'next'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { ThemeProvider } from "@/components/theme-provider"
-import { Inter } from 'next/font/google'
+import { M_PLUS_2 } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = M_PLUS_2({ weight: "500", subsets: ["latin"] })
 
 export const metadata = {
   title: {
