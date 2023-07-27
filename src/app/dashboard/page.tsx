@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card";
 import { article, columns } from "./colmuns";
 import { DataTable } from "./data-table";
-import { Separator } from "@/components/ui/separator"
+import { Separator } from "@/components/ui/separator";
 
 export const metadata = {
   title: "ダッシュボード",

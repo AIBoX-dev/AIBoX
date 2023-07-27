@@ -2,22 +2,22 @@
 
 import { Button } from "./ui/button";
 import { Moon, Sun, Monitor } from "lucide-react";
-import { useTheme } from "next-themes"
+import { useTheme } from "next-themes";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
-  DropdownMenuRadioGroup
-} from "@/components/ui/dropdown-menu"
+  DropdownMenuRadioGroup,
+} from "@/components/ui/dropdown-menu";
 import Link from "next/link";
-import { LoginButton } from "@/components/login"
-import { AvatarButton } from "@/components/avatar"
+import { LoginButton } from "@/components/login";
+import { AvatarButton } from "@/components/avatar";
 
-const isLogin = true
+const isLogin = true;
 
 const ModeToggle = () => {
-  const { theme, setTheme } = useTheme()
+  const { theme, setTheme } = useTheme();
 
   return (
     <DropdownMenu>
@@ -29,29 +29,43 @@ const ModeToggle = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuRadioGroup value={theme}>
-          <DropdownMenuRadioItem className="gap-x-2" value="light" onClick={() => setTheme("light")}>
+          <DropdownMenuRadioItem
+            className="gap-x-2"
+            value="light"
+            onClick={() => setTheme("light")}
+          >
             <Sun className="w-4 h-4" />
             ライト
           </DropdownMenuRadioItem>
-          <DropdownMenuRadioItem className="gap-x-2" value="dark" onClick={() => setTheme("dark")}>
+          <DropdownMenuRadioItem
+            className="gap-x-2"
+            value="dark"
+            onClick={() => setTheme("dark")}
+          >
             <Moon className="w-4 h-4" />
             ダーク
           </DropdownMenuRadioItem>
-          <DropdownMenuRadioItem className="gap-x-2" value="system" onClick={() => setTheme("system")}>
+          <DropdownMenuRadioItem
+            className="gap-x-2"
+            value="system"
+            onClick={() => setTheme("system")}
+          >
             <Monitor className="w-4 h-4" />
             システム
           </DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>
       </DropdownMenuContent>
     </DropdownMenu>
-  )
-}
+  );
+};
 
 export const Header = () => {
   return (
     <header className="flex justify-between items-center w-full px-12 p-4 border-b">
       <div className="flex gap-x-24 items-center">
-        <Link href="/" className="text-2xl font-semibold text-foreground">AIBoX</Link>
+        <Link href="/" className="text-2xl font-semibold text-foreground">
+          AIBoX
+        </Link>
         <span className="flex text-sm gap-x-6 text-foreground/60">
           <Link href="/">ホーム</Link>
           <p>クリエイター</p>

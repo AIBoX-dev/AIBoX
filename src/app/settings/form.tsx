@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import * as z from "zod"
-import { useFieldArray, useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
+import * as z from "zod";
+import { useFieldArray, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
   FormControl,
@@ -11,30 +11,32 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Button } from "@/components/ui/button"
-import { Plus } from "lucide-react"
-import { cn } from "@/lib/utils"
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { Plus } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const formSchema = z.object({
   username: z.string().nonempty({
-    message: "ユーザー名は1文字以上である必要があります"
+    message: "ユーザー名は1文字以上である必要があります",
   }),
   displayname: z.string().nonempty({
-    message: "表示名は1文字以上である必要があります"
+    message: "表示名は1文字以上である必要があります",
   }),
   description: z.string().optional(),
-  socialLinks: z.array(
-    z.object({
-      value: z.string().url({ message: "正しいurlを入力してください" }),
-    })
-  ).optional(),
+  socialLinks: z
+    .array(
+      z.object({
+        value: z.string().url({ message: "正しいurlを入力してください" }),
+      }),
+    )
+    .optional(),
   // image: z.custom<FileList>().refine((file) => !!file, {
   //   message: '画像を選択して下さい'
   // }).transform((file) => file[0]),
-})
+});
 
 export const ProfileForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -43,20 +45,22 @@ export const ProfileForm = () => {
       username: "",
       displayname: "",
       description: "",
-      socialLinks: [{
-        value: ""
-      }]
+      socialLinks: [
+        {
+          value: "",
+        },
+      ],
     },
-  })
+  });
 
   const { fields, append } = useFieldArray({
     name: "socialLinks",
     control: form.control,
-  })
+  });
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values)
-  }
+    console.log(values);
+  };
 
   return (
     <Form {...form}>
@@ -120,5 +124,5 @@ export const ProfileForm = () => {
         <Button type="submit">保存する</Button>
       </form>
     </Form>
-  )
-}
+  );
+};

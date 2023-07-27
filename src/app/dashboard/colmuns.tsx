@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -8,23 +8,26 @@ import {
   DropdownMenuLabel,
   DropdownMenuItem,
   DropdownMenuSeparator,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 
-import { Column, ColumnDef } from "@tanstack/react-table"
-import { ArrowUpDown, MoreHorizontal, Pencil, Trash2 } from 'lucide-react'
-import { Badge } from "@/components/ui/badge"
-import { Checkbox } from "@/components/ui/checkbox"
+import { Column, ColumnDef } from "@tanstack/react-table";
+import { ArrowUpDown, MoreHorizontal, Pencil, Trash2 } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Checkbox } from "@/components/ui/checkbox";
 
 export type article = {
-  title: string,
-  wordCount: number,
-  status: string,
-  lastUpdated: string
-}
+  title: string;
+  wordCount: number;
+  status: string;
+  lastUpdated: string;
+};
 
-const TableHeader = ({column, title}: {
-  column: Column<article, unknown>,
-  title: string
+const TableHeader = ({
+  column,
+  title,
+}: {
+  column: Column<article, unknown>;
+  title: string;
 }) => {
   return (
     <Button
@@ -36,8 +39,8 @@ const TableHeader = ({column, title}: {
       {title}
       <ArrowUpDown className="ml-2 h-4 w-4" />
     </Button>
-  )
-}
+  );
+};
 
 export const columns: ColumnDef<article>[] = [
   {
@@ -45,7 +48,9 @@ export const columns: ColumnDef<article>[] = [
     header: ({ table }) => (
       <Checkbox
         checked={table.getIsAllPageRowsSelected()}
-        onCheckedChange={(value: any) => table.toggleAllPageRowsSelected(!!value)}
+        onCheckedChange={(value: any) =>
+          table.toggleAllPageRowsSelected(!!value)
+        }
         aria-label="すべて選択"
       />
     ),
@@ -66,26 +71,36 @@ export const columns: ColumnDef<article>[] = [
   {
     accessorKey: "wordCount",
     header: ({ column }) => {
-      return <TableHeader column={column} title="文字数" />
+      return <TableHeader column={column} title="文字数" />;
     },
   },
   {
     accessorKey: "status",
     header: ({ column }) => {
-      return <TableHeader column={column} title="状態" />
+      return <TableHeader column={column} title="状態" />;
     },
     cell: ({ row }) => {
       return (
-        <Badge variant="outline" className={
-          row.getValue("status") == "全体公開" ? "" : row.getValue("status") == "下書き" ? "border-blue-300 dark:border-blue-900" : "border-orange-300 dark:border-orange-900"}>{row.getValue("status")}</Badge>
-      )
-    }
+        <Badge
+          variant="outline"
+          className={
+            row.getValue("status") == "全体公開"
+              ? ""
+              : row.getValue("status") == "下書き"
+              ? "border-blue-300 dark:border-blue-900"
+              : "border-orange-300 dark:border-orange-900"
+          }
+        >
+          {row.getValue("status")}
+        </Badge>
+      );
+    },
   },
   {
     accessorKey: "lastUpdated",
     header: ({ column }) => {
-      return <TableHeader column={column} title="最終更新" />
-    }
+      return <TableHeader column={column} title="最終更新" />;
+    },
   },
   {
     id: "actions",
@@ -110,7 +125,7 @@ export const columns: ColumnDef<article>[] = [
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
-      )
+      );
     },
-  }
-]
+  },
+];

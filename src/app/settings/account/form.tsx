@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import * as z from "zod"
-import { useForm } from "react-hook-form"
-import { FileInput } from "@/components/ui/file-input"
-import { zodResolver } from "@hookform/resolvers/zod"
+import * as z from "zod";
+import { useForm } from "react-hook-form";
+import { FileInput } from "@/components/ui/file-input";
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
   FormControl,
@@ -12,9 +12,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -25,16 +25,19 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
+} from "@/components/ui/alert-dialog";
 
 const formSchema = z.object({
   displayname: z.string().nonempty({
-    message: "表示名は1文字以上である必要があります"
+    message: "表示名は1文字以上である必要があります",
   }),
-  icon: z.custom<FileList>().refine((file) => !!file, {
-    message: '画像を選択して下さい'
-  }).transform((file) => file[0]),
-})
+  icon: z
+    .custom<FileList>()
+    .refine((file) => !!file, {
+      message: "画像を選択して下さい",
+    })
+    .transform((file) => file[0]),
+});
 
 export const ProfileForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -42,11 +45,11 @@ export const ProfileForm = () => {
     defaultValues: {
       displayname: "",
     },
-  })
+  });
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values)
-  }
+    console.log(values);
+  };
 
   return (
     <>
@@ -72,8 +75,11 @@ export const ProfileForm = () => {
               <FormItem>
                 <FormLabel>アイコン</FormLabel>
                 <FormControl>
-                  {/*@ts-ignore*/ }
-                  <FileInput accept="image/png, image/jpeg, image/webp" {...field} />
+                  {/*@ts-ignore*/}
+                  <FileInput
+                    accept="image/png, image/jpeg, image/webp"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -104,5 +110,5 @@ export const ProfileForm = () => {
         </form>
       </Form>
     </>
-  )
-}
+  );
+};

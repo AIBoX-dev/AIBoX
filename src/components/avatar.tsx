@@ -4,15 +4,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
   DropdownMenuLabel,
-  DropdownMenuSeparator
-} from "@/components/ui/dropdown-menu"
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
-import { LogOut, Settings, PenSquare, BarChartBig } from "lucide-react"
+  DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { LogOut, Settings, PenSquare, BarChartBig } from "lucide-react";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -23,8 +19,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
-import Link from "next/link"
+} from "@/components/ui/alert-dialog";
+import Link from "next/link";
 
 export const AvatarButton = () => {
   return (
@@ -65,5 +61,5 @@ export const AvatarButton = () => {
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  )
-}
+  );
+};
