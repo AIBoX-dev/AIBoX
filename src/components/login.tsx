@@ -23,9 +23,11 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useRef } from "react";
+import { useAuth } from "@/../hooks/auth";
 import { useTranslations } from 'next-intl';
 
 export const LoginButton = () => {
+  const { signInWithGoogle, loginWithPassword } = useAuth();
   const t = useTranslations('Login');
   const ct = useTranslations('Check');
 
@@ -53,8 +55,12 @@ export const LoginButton = () => {
     },
   });
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
     console.log(values);
+    await loginWithPassword(
+      values.email,
+      values.password,
+    )
     if (closeRef.current) closeRef.current.click();
   };
 
