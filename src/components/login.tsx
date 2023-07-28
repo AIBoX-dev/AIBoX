@@ -24,6 +24,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useRef } from "react";
 
+import { useAuth } from "@/../hooks/auth";
+
 const formSchema = z.object({
   email: z.string().email({
     message: "正しいメールアドレスを入力してください",
@@ -39,6 +41,7 @@ const formSchema = z.object({
 });
 
 export const LoginButton = () => {
+  const { signInWithGoogle, loginWithPassword } = useAuth();
   const closeRef = useRef<null | HTMLButtonElement>(null);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -49,8 +52,12 @@ export const LoginButton = () => {
     },
   });
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
     console.log(values);
+    await loginWithPassword(
+      values.email,
+      values.password,
+    )
     if (closeRef.current) closeRef.current.click();
   };
 
