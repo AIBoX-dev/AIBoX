@@ -1,3 +1,9 @@
+// .vscode/setting.json
 {
-  "nuxt.isNuxtApp": false
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true
+    },
+    "eslint.alwaysShowStatus": true
 }

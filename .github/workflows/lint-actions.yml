@@ -1,21 +1,22 @@
 name: Linter
 on: [pull_request]
 jobs:
-  eslint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8.5.1
-      - run: pnpm install --no-frozen-lockfile
-      
-      - name: eslint
-        uses: reviewdog/action-eslint@v1
-        with:
-          github_token: ${{ secrets.github_token }}
-          reporter: github-pr-review
-          fail_on_error: 'true'
+    eslint:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: "18"
+            - uses: pnpm/action-setup@v2
+              with:
+                  version: 8
+            - run: pnpm add -D eslint-config-prettier
+            - run: pnpm install --no-frozen-lockfile
+
+            - name: eslint
+              uses: reviewdog/action-eslint@v1
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  reporter: github-pr-review
+                  fail_on_error: "true"
