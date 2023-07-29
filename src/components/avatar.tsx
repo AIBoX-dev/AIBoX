@@ -21,8 +21,11 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import Link from "next/link";
+import { useTranslations } from 'next-intl';
 
 export const AvatarButton = () => {
+  const t = useTranslations('Dashboard');
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -39,13 +42,13 @@ export const AvatarButton = () => {
         <DropdownMenuItem asChild>
           <Link href="/post" className="flex gap-x-2 w-full">
             <PenSquare className="w-4 h-4" />
-            投稿する
+            {t('assets')}
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
           <Link href="/dashboard" className="flex gap-x-2 w-full">
             <BarChartBig className="w-4 h-4" />
-            ダッシュボード
+            {t('dashboard')}
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem className="gap-x-2">

@@ -23,25 +23,28 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useRef } from "react";
-
 import { useAuth } from "@/../hooks/auth";
-
-const formSchema = z.object({
-  email: z.string().email({
-    message: "正しいメールアドレスを入力してください",
-  }),
-  password: z
-    .string()
-    .min(8, {
-      message: "パスワードは8文字以上である必要があります",
-    })
-    .regex(/[!-/:-@[-`{-~]/, {
-      message: "パスワードには記号を入れてください",
-    }),
-});
+import { useTranslations } from 'next-intl';
 
 export const LoginButton = () => {
   const { signInWithGoogle, loginWithPassword } = useAuth();
+  const t = useTranslations('Login');
+  const ct = useTranslations('Check');
+
+  const formSchema = z.object({
+    email: z.string().email({
+      message: ct("wrongemail"),
+    }),
+    password: z
+      .string()
+      .min(8, {
+        message: ct('pw_length'),
+      })
+      .regex(/[!-/:-@[-`{-~]/, {
+        message: ct('pw_include_symbol'),
+      }),
+  });
+
   const closeRef = useRef<null | HTMLButtonElement>(null);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -64,17 +67,17 @@ export const LoginButton = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="brand">ログイン</Button>
+        <Button variant="brand">{t('login')}</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>ログイン</DialogTitle>
+          <DialogTitle>{t('login')}</DialogTitle>
         </DialogHeader>
         <div className="pt-4 w-full space-y-4">
           <DialogTrigger asChild>
             <Button variant="outline" className="w-full flex gap-x-2">
               <Icons.google />
-              Googleでログイン
+              {t('google')}
             </Button>
           </DialogTrigger>
           <div className="relative">
@@ -94,7 +97,7 @@ export const LoginButton = () => {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>メールアドレス</FormLabel>
+                    <FormLabel>{t('email')}</FormLabel>
                     <FormControl>
                       <Input placeholder="e-mail" {...field} type="email" />
                     </FormControl>
@@ -107,7 +110,7 @@ export const LoginButton = () => {
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>パスワード</FormLabel>
+                    <FormLabel>{t('password')}</FormLabel>
                     <FormControl>
                       <Input
                         placeholder="password"
@@ -120,7 +123,7 @@ export const LoginButton = () => {
                 )}
               />
               <Button type="submit" className="w-full">
-                ログイン
+                {t('login')}
               </Button>
             </form>
           </Form>

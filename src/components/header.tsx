@@ -13,11 +13,13 @@ import {
 import Link from "next/link";
 import { LoginButton } from "@/components/login";
 import { AvatarButton } from "@/components/avatar";
+import { useTranslations } from 'next-intl';
 
 const isLogin = true;
 
 const ModeToggle = () => {
   const { theme, setTheme } = useTheme();
+  const t = useTranslations('Header');
 
   return (
     <DropdownMenu>
@@ -60,6 +62,8 @@ const ModeToggle = () => {
 };
 
 export const Header = () => {
+  const t = useTranslations('Header');
+
   return (
     <header className="flex justify-between items-center w-full px-12 p-4 border-b">
       <div className="flex gap-x-24 items-center">
@@ -67,9 +71,9 @@ export const Header = () => {
           AIBoX
         </Link>
         <span className="flex text-sm gap-x-6 text-foreground/60">
-          <Link href="/">ホーム</Link>
-          <p>クリエイター</p>
-          <p>お知らせ</p>
+          <Link href="/">{t('home')}</Link>
+          <p>{t('creators')}</p>
+          <p>{t('notice')}</p>
         </span>
       </div>
       <div className="flex gap-x-4 items-center">
