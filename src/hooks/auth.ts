@@ -1,6 +1,6 @@
 import { useRouter } from "next/navigation";
-import { database } from "@/../hooks/database";
-import { supabase } from "@/../hooks/supabase";
+import { database } from "@/hooks/database";
+import { supabase } from "@/hooks/supabase";
 const {
     insertUser,
     insertProfile,
@@ -91,10 +91,7 @@ export const useAuth = () => {
         }
     };
 
-    const loginWithPassword = async (
-        email: string,
-        password: string,
-        ) => {
+    const loginWithPassword = async (email: string, password: string) => {
         try {
             const { data, error } = await supabase.auth.signInWithPassword({
                 email: email,
@@ -126,7 +123,7 @@ export const useAuth = () => {
             console.error(error);
             return error;
         }
-        return null
+        return null;
     };
 
     const resendVerificationEmail = async (email: string) => {

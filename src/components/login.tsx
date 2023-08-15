@@ -23,7 +23,7 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useRef } from "react";
-import { useAuth } from "@/../hooks/auth";
+import { useAuth } from "@/hooks/auth";
 import { useTranslations } from 'next-intl';
 
 export const LoginButton = () => {

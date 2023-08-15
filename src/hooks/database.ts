@@ -1,5 +1,5 @@
 import crypto from "crypto";
-import { supabase } from "@/../hooks/supabase";
+import { supabase } from "@/hooks/supabase";
 
 export const database = () => {
     const insertUser = async (
@@ -50,7 +50,7 @@ export const database = () => {
                 description: description,
                 created_at: created_at,
                 updated_at: updated_at,
-                icon_url: cf_url
+                icon_url: cf_url,
             },
         ]);
 
