@@ -22,10 +22,11 @@ import {
 } from "@/components/ui/alert-dialog";
 import Link from "next/link";
 import { useTranslations } from 'next-intl';
+import { useAuth } from "@/hooks/auth";
 
 export const AvatarButton = () => {
   const t = useTranslations('Dashboard');
-
+  const { logoutUser } = useAuth()
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -59,7 +60,7 @@ export const AvatarButton = () => {
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem className="gap-x-2">
-          <LogOut className="w-4 h-4" />
+          <LogOut className="w-4 h-4" onClick={() => logoutUser()}/>
           ログアウト
         </DropdownMenuItem>
       </DropdownMenuContent>
