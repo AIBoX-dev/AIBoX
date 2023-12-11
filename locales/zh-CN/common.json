@@ -1,71 +1,71 @@
 {
-    "Home": {
-        "forai": "AIBoXはAIクリエイターのための継続的支援サービスです。",
-        "find": "クリエイターを見つける",
-        "slogan1": "あなたの作品で",
-        "slogan2": "新たな可能性を切り開き",
-        "slogan3": "さらに多くのファンへ届けましょう"
-    },
-    "About": {
-        "creater": "AIクリエイターのための",
-        "patron": "支援サービス",
-        "aibox": "「AIBoX」"
-    },
-    "Login": {
-        "login": "登录",
-        "email": "电子邮件地址",
-        "password": "密码",
-        "forgot": "忘记密码？",
-        "remember": "保存登录信息",
-        "google": "用谷歌登录"
-    },
-    "Signup": {
-        "signup": "新注册",
-        "email": "电子邮件地址",
-        "start": "开始...",
-        "google": "在谷歌注册",
-        "password": "密码",
-        "confirm_password": "パスワードの確認",
-        "agree": "次の規約に同意する：",
-        "agreements": "利用規約とプライバシーポリシー"
-    },
-    "Header": {
-        "home": "首页",
-        "about": "关于AIBoX",
-        "creators": "创建者",
-        "notice": "通知。",
-        "login": "登录",
-        "signup": "新注册",
-        "google": "在谷歌注册"
-    },
-    "Check": {
-        "wrongemail": "メールアドレスの形式が間違っています",
-        "password_length": "パスワードは12文字以上で設定してください",
-        "confirm_notmatch": "パスワードが一致しません",
-        "pw_length": "パスワードは八文字以上で設定してください",
-        "pw_include_symbol": "パスワードには記号を入れてください"
-    },
-    "Setup": {
-        "setup": "セットアップ",
-        "user_id": "ユーザーID",
-        "display_name": "表示名",
-        "dob": "生年月日",
-        "start": "开始..."
-    },
-    "Dashboard": {
-        "dashboard": "ダッシュボード",
-        "profile": "プロフィール",
-        "assets": "投稿",
-        "plans": "支援プラン",
-        "packages": "パッケージ",
-        "earnings": "収益",
-        "addProfile": "プロフィールを追加"
-    },
-    "MailSent": {
-        "mailsent": "登録メールを送信完了",
-        "mailsentto": "登録メールを {{ email }} に送信しました",
-        "resend": "再送信する",
-        "back": "戻る",
-        "resent": "再送信完了"
-    }
+	"Home": {
+		"forai": "AIBoXはAIクリエイターのための継続的支援サービスです。",
+		"find": "クリエイターを見つける",
+		"slogan1": "あなたの作品で",
+		"slogan2": "新たな可能性を切り開き",
+		"slogan3": "さらに多くのファンへ届けましょう"
+	},
+	"About": {
+		"creater": "AIクリエイターのための",
+		"patron": "支援サービス",
+		"aibox": "「AIBoX」"
+	},
+	"Login": {
+		"login": "登录",
+		"email": "电子邮件地址",
+		"password": "密码",
+		"forgot": "忘记密码？",
+		"remember": "保存登录信息",
+		"google": "用谷歌登录"
+	},
+	"Signup": {
+		"signup": "新注册",
+		"email": "电子邮件地址",
+		"start": "开始...",
+		"google": "在谷歌注册",
+		"password": "密码",
+		"confirm_password": "パスワードの確認",
+		"agree": "次の規約に同意する：",
+		"agreements": "利用規約とプライバシーポリシー"
+	},
+	"Header": {
+		"home": "首页",
+		"about": "关于AIBoX",
+		"creators": "创建者",
+		"notice": "通知。",
+		"login": "登录",
+		"signup": "新注册",
+		"google": "在谷歌注册"
+	},
+	"Check": {
+		"wrongemail": "メールアドレスの形式が間違っています",
+		"password_length": "パスワードは12文字以上で設定してください",
+		"confirm_notmatch": "パスワードが一致しません",
+		"pw_length": "パスワードは八文字以上で設定してください",
+		"pw_include_symbol": "パスワードには記号を入れてください"
+	},
+	"Setup": {
+		"setup": "セットアップ",
+		"user_id": "ユーザーID",
+		"display_name": "表示名",
+		"dob": "生年月日",
+		"start": "开始..."
+	},
+	"Dashboard": {
+		"dashboard": "ダッシュボード",
+		"profile": "プロフィール",
+		"assets": "投稿",
+		"plans": "支援プラン",
+		"packages": "パッケージ",
+		"earnings": "収益",
+		"addProfile": "プロフィールを追加"
+	},
+	"MailSent": {
+		"mailsent": "登録メールを送信完了",
+		"mailsentto": "登録メールを {{ email }} に送信しました",
+		"resend": "再送信する",
+		"back": "戻る",
+		"resent": "再送信完了"
+	}
 }

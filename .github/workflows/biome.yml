@@ -1,0 +1,26 @@
+name: Biome
+
+on:
+    push:
+        branches:
+            - main
+        paths:
+            - "./src"
+    pull_request:
+        branches:
+            - main
+        paths:
+            - "./src"
+
+jobs:
+    run:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+            - name: Setup Biome
+              uses: biomejs/setup-biome@v1
+              with:
+                  version: 1.3.3
+            - name: Run Biome
+              run: biome ci .
